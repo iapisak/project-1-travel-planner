@@ -9,7 +9,6 @@ router.get('/findUser', ctrl.auth.findUser)
 
 router.post('/signup', ctrl.auth.createUser);
 router.post('/login', ctrl.auth.createSession);
-
 router.delete('/logout', ctrl.auth.deleteSession);
 router.get('/verify', ctrl.auth.verifyAuth);
 
