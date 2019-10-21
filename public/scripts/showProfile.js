@@ -1,14 +1,13 @@
 const logoutButton = document.querySelector('#logout');
 
-// Listen for logout click event
 logoutButton.addEventListener('click', (event) => {
   event.preventDefault();
   fetch('/api/v1/logout', {
     method: 'DELETE',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
   })
     .then(dataStream => dataStream.json())
     .then(res => {
@@ -18,9 +17,7 @@ logoutButton.addEventListener('click', (event) => {
     })
 })
 
-
 const userId = window.location.pathname.split('/')[2];
-console.log(userId);
 
 const handleSuccess = (user) => {
   document.querySelector('.container').insertAdjacentHTML('beforeend', `
