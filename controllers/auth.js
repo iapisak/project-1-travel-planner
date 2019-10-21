@@ -13,7 +13,6 @@ const findUser = (req, res) => {
 
 // POST Sign Up
 const createUser = (req, res) => {
-  console.log('Create User Rourte')
   db.User.findOne({ email: req.body.email }, (err, foundUser) => {
       if (err) return res.status(500).json ({
           status: 500,
@@ -87,7 +86,6 @@ const createSession = (req, res) => {
 
           if (isMatch) {
               req.session.currentUser = foundUser._id
-              // Must return to somewhere but later
               
               return res.status(201).json({
                   status: 201,

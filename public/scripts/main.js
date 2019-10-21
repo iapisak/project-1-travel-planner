@@ -1,24 +1,4 @@
 const form = document.querySelector('form');
-const logoutButton = document.querySelector('#logout');
-
-// Listen for logout click event
-logoutButton.addEventListener('click', (event) => {
-  event.preventDefault();
-  fetch('/api/v1/logout', {
-    method: 'DELETE',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-  })
-    .then(dataStream => dataStream.json())
-    .then(res => {
-      if (res.status === 200) {
-        window.location = '/';
-      }
-    })
-})
-
 
 // If form is not falsey, listen for form submit event
 form && form.addEventListener('submit', (event) => {
@@ -67,7 +47,7 @@ form && form.addEventListener('submit', (event) => {
       .then(dataStream => dataStream.json())
       .then(res => {
         console.log(res);
-        if (res.status === 201) return window.location = `/profile/${res.data.id}`;
+        if (res.status === 201) return window.location = `/`;
       })
       .catch(err => console.log(err));
   }
