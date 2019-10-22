@@ -1,5 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const ctrl = require('../controllers')
+
+router.get('/findUser', ctrl.auth.findUser)
+router.get('/findTrip', ctrl.auth.findTrip)
+
 
 // GET Home
 router.get('/', (req, res) => {
@@ -25,5 +30,12 @@ router.get('/profile/:userId', (req, res) => {
     root: `${__dirname}/../`
   });
 });
+
+// GET Trip Form
+router.get('/trip', (req, res) => {
+  res.sendFile('views/auth/createTrip.html', {
+    root: `${__dirname}/../`
+  })
+})
 
 module.exports = router
