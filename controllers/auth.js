@@ -13,7 +13,6 @@ const findUser = (req, res) => {
 const findTrip = (req, res) => {
   db.Trip.find({}, (err, foundTrip) => {
     if (err) {return console.log(err)}
-    console.log(foundTrip)
     res.json(foundTrip)
   })
 }
