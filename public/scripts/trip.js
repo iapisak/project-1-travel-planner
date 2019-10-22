@@ -1,3 +1,5 @@
+// ================ Trip form front-end ================  //
+
 let validation = true
 
 const formValidation = () => {
@@ -41,13 +43,15 @@ const onError = (response) => {
 }
 
 
+// ================ Show Trip ================  //
+
 const onSuccessGetTrip = (data) => {
     // console.log(data)
     data.forEach(function(element) {
         const tripTemplete = `
         <div>
-            <p>${element.name}</p>
-            <p>${element.destination}</p>
+            <p>Name : ${element.name}</p>
+            <p>Destination : ${element.destination}</p>
         </div>
     `
     $('.show-trip').append(tripTemplete)
