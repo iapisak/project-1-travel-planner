@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Main CSS -->
     <link rel="stylesheet" href="/styles/main.css">
-    <!-- Profile JS -->
+    <script defer
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
     <script defer src="/scripts/showProfile.js"></script>
-    <!-- Main JS -->
-    <script defer src="/scripts/main.js"></script>
+    <script defer src="/scripts/trip.js"></script>
     <title>Profile</title>
   </head>
   <body>
@@ -19,16 +21,39 @@
         <li><a id="logout" href="/logout">Log Out</a></li>
       </ul>
     </nav>
+    <section class="container"></section>
 
     <main>
-      <section class="container">
-        <h1>Welcome User</h1>
-        <h2>dkdkdkdkdk</h2>
-      </section>
-    </main>
+        <form id="form">
+            <div class="form-group">
+                <label for="name">Trip Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="destination">Destination</label>
+              <input type="text" class="form-control" id="destination" name="destination">
+          </div>
+            <div class="form-group">
+              <label for="date_start">Date Start</label>
+              <input type="date" class="form-control" id="date_start" name="date_start">
+          </div>
+            <div class="form-group">
+                <label for="date_end">Date End</label>
+                <input type="date" class="form-control" id="date_end" name="date_end">
+            </div>
+            <div class="form-group">
+                <label for="activity">Activity</label>
+                <input type="text" class="form-control" id="activity" name="activity">
+            </div>
+
+            <input type="submit" value="Submit"/>
+        </form>
+      </main>
+
+      <section class='show-trip'></section>
 
     <footer>
-      <p>&copy; 2019 Acme Inc.</p>
+      <p>&copy; Brent & Jun Travel Inc.</p>
     </footer>
 
   </body>

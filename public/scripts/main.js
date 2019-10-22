@@ -31,22 +31,17 @@ form && form.addEventListener('submit', (event) => {
     }
   });
 
-  console.log(userData);
-
   // Handle Signup Form
   if (form.id === 'signup' && formIsValid) {
     fetch('/api/v1/signup', {
       method: 'POST',
-      // credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(userData)
     })
       .then(dataStream => dataStream.json())
       .then(res => {
-        console.log(res);
         if (res.status === 201) return window.location = `/`;
       })
       .catch(err => console.log(err));
@@ -54,7 +49,6 @@ form && form.addEventListener('submit', (event) => {
 
   // Handle Login
   if (form.id === 'login' && formIsValid) {
-    console.log('Submitting user login --> ', userData);
     fetch('/api/v1/login', {
       method: 'POST',
       credentials: 'include',
@@ -65,7 +59,6 @@ form && form.addEventListener('submit', (event) => {
     })
       .then(dataStream => dataStream.json())
       .then(res => {
-        console.log(res);
         if (res.status === 201) return window.location = `/profile/${res.data.id}`;
       })
       .catch(err => console.log(err));

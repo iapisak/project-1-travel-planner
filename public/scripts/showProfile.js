@@ -1,14 +1,9 @@
-const logoutButton = document.querySelector('#logout');
+const logout = $('#logout');
 
-// Listen for logout click event
-logoutButton.addEventListener('click', (event) => {
+logout.on('click', (event) => {
   event.preventDefault();
   fetch('/api/v1/logout', {
     method: 'DELETE',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
   })
     .then(dataStream => dataStream.json())
     .then(res => {
@@ -18,34 +13,29 @@ logoutButton.addEventListener('click', (event) => {
     })
 })
 
+let userId = window.location.pathname.split('/')[2]
 
-const userId = window.location.pathname.split('/')[2];
-console.log(userId);
-
-const handleSuccess = (user) => {
-  document.querySelector('.container').insertAdjacentHTML('beforeend', `
-    <div>
-      <h4><strong>Name:</strong> ${user.name}</h4>
-      <p><strong>Email</strong>: ${user.email}</p>
-    </div>
-  `);
+const onSuccess = (user) => {
+        const template = `
+            <p><strong>Name</strong>: ${user.name}</p>
+            <p><strong>Email</strong>: ${user.email}</p>
+            <p><strong>id</strong>: ${user._id}</p>
+        `
+        $('.container').append(template)
 }
-
 
 const getProfile = () => {
   fetch(`/api/v1/profiles/${userId}`, {
     method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    }
   })
     .then(dataStream => dataStream.json())
     .then(res => {
-      console.log(res);
-      handleSuccess(res.data);
+       onSuccess(res.data)
     })
     .catch(err => console.log(err));
 }
 
-getProfile();
+getProfile()
+
+
+

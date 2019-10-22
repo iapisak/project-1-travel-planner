@@ -2,19 +2,20 @@ const express = require('express')
 const router = express.Router()
 const ctrl = require('../controllers')
 
-// find User Temp
-router.get('/findUser', ctrl.auth.findUser)
-
 // ----------------------------- AUTH -------------------------- //
 
-router.post('/signup', ctrl.auth.createUser);
-router.post('/login', ctrl.auth.createSession);
-router.delete('/logout', ctrl.auth.deleteSession);
-router.get('/verify', ctrl.auth.verifyAuth);
-
+router.post('/signup', ctrl.auth.createUser)
+router.post('/login', ctrl.auth.createSession)
+router.delete('/logout', ctrl.auth.deleteSession)
 
 // ----------------------------- PROFILE -------------------------- //
 
-router.get('/profiles/:userId', ctrl.auth.showProfile);
+router.get('/profiles/:userId', ctrl.auth.showProfile)
 
-module.exports = router;
+// ----------------------------- TRIPS -------------------------- //
+
+router.get('/trip/:userId', ctrl.trip.showTrip)
+router.post('/trip/create', ctrl.trip.createTrip)
+router.delete('/trip/delete/:name', ctrl.trip.deleteTrip)
+
+module.exports = router
