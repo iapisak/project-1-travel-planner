@@ -150,9 +150,7 @@ const showProfile = (req, res) => {
 };
 
 const createTrip = (req, res) => {
-  console.log(req.body)
   db.Trip.create(req.body, (err, createEvent) => {
-
     if (createEvent) {
         res.json(createEvent)
     } else {

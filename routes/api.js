@@ -14,7 +14,6 @@ router.get('/verify', ctrl.auth.verifyAuth);
 
 router.get('/profiles/:userId', ctrl.auth.showProfile);
 
-
 // ----------------------------- TRIPS -------------------------- //
 router.post('/trip/create', ctrl.auth.createTrip)
 

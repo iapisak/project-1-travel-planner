@@ -28,7 +28,6 @@ const handleSuccess = (user) => {
   `);
 }
 
-
 const getProfile = () => {
   fetch(`/api/v1/profiles/${userId}`, {
     method: 'GET',
@@ -39,7 +38,6 @@ const getProfile = () => {
   })
     .then(dataStream => dataStream.json())
     .then(res => {
-      console.log(res);
       handleSuccess(res.data);
     })
     .catch(err => console.log(err));
