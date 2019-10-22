@@ -18,7 +18,6 @@ const findTrip = (req, res) => {
   })
 }
 
-
 // POST Sign Up
 const createUser = (req, res) => {
   db.User.findOne({ email: req.body.email }, (err, foundUser) => {
@@ -71,7 +70,6 @@ const createUser = (req, res) => {
       
   })
 }
-
 
 // POST Login
 const createSession = (req, res) => {
