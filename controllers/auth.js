@@ -1,22 +1,5 @@
 const bcrypt = require('bcryptjs');
-
 const db = require('../models');
-
-// Just Temp
-const findUser = (req, res) => {
-  db.User.find({}, (err, foundUser) => {
-    if (err) {return console.log(err)}
-    res.json(foundUser)
-  })
-}
-
-const findTrip = (req, res) => {
-  db.Trip.find({}, (err, foundTrip) => {
-    if (err) {return console.log(err)}
-    console.log(foundTrip)
-    res.json(foundTrip)
-  })
-}
 
 // POST Sign Up
 const createUser = (req, res) => {
@@ -33,14 +16,12 @@ const createUser = (req, res) => {
           })
       }
 
-      // Number of salt rounds
       bcrypt.genSalt(10, (err, salt) => {
           if (err) return res.status(500).json ({
               status: 500,
               error: [{ message: 'Something went wrong. Please try again' }]
           })
 
-          // Bcrypt takes password and salt
           bcrypt.hash(req.body.password, salt, (err, hash) => {
               if (err) return res.status(500).json ({
                   status: 500,
@@ -67,7 +48,6 @@ const createUser = (req, res) => {
               })
           })
       })
-      
   })
 }
 
@@ -99,7 +79,7 @@ const createSession = (req, res) => {
           } else {
               return res.status(400).json({
                   status: 400,
-                  error: [{ message: 'Username or password is incorrect'}],                    
+                  error: [{ message: 'Username or password is incorrect'}],
               })
           }
       })
@@ -120,21 +100,6 @@ const deleteSession = (req, res) => {
   });
 }
 
-// POST Verify Auth
-const verifyAuth = (req, res) => {
-  if (!req.session.currentUser) {
-    return res.status(401).json({
-      status: 401,
-      error: [{ message: 'Unauthorized. Pleas login and try again' }],
-    });
-  }
-
-  res.status(200).json({
-    status: 200,
-    user: req.session.currentUser,
-  });
-}
-
 // GET Show Profile
 const showProfile = (req, res) => {
   db.User.findById(req.params.userId, (err, foundProfile) => {
@@ -150,26 +115,9 @@ const showProfile = (req, res) => {
   });
 };
 
-const createTrip = (req, res) => {
-  console.log(req.body)
-  db.Trip.create(req.body, (err, createEvent) => {
-
-    if (createEvent) {
-        res.json(createEvent)
-    } else {
-        console.log(err)
-    }
-  })
-}
-
-
 module.exports = {
   createUser,
   createSession,
   deleteSession,
-  verifyAuth,
   showProfile,
-  createTrip,
-  findUser,
-  findTrip,
 };
