@@ -1,6 +1,4 @@
 // ================ Trip form front-end ================  //
-
-
 let validation = true
 
 const formValidation = () => {
@@ -43,6 +41,21 @@ const onError = (response) => {
     console.log(response);
 }
 
+// ================ Delete Trip ================  //
+
+$('.show-trip').on('click', '.delete', function (event) {
+    console.log(event.target)
+    // $(this).parent().remove()
+
+    fetch(`api/v1/trip/delete`, {
+        method: 'DELETE',
+    })
+    .then(stream => stream.json())
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => console.log(err))
+})
 
 // ================ Show Trip ================  //
 
@@ -53,6 +66,7 @@ const onSuccessGetTrip = (data) => {
         <div>
             <p>Name : ${element.name}</p>
             <p>Destination : ${element.destination}</p>
+            <button class="delete">Delete</button>
         </div>
     `
     $('.show-trip').append(tripTemplete)
