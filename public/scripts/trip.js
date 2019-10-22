@@ -29,6 +29,7 @@ $('#form').on('submit', function (event) {
             error: onError
         })
         $('input').val('')
+        return window.location = `/profile`
     } else {
         return validation = true
     }
