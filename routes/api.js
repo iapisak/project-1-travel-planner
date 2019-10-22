@@ -18,4 +18,4 @@ router.get('/profiles/:userId', ctrl.auth.showProfile);
 // ----------------------------- TRIPS -------------------------- //
 router.post('/trip/create', ctrl.auth.createTrip)
 
-module.exports = router;
+module.exports = router
