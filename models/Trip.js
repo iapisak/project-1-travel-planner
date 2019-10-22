@@ -7,6 +7,10 @@ const tripSchema = new Schema({
   start: Date,
   end: Date,
   activities: String,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref :'User'
+  }
 })
 
 module.exports = mongoose.model('Trip', tripSchema)
