@@ -28,7 +28,6 @@ $('#form').on('submit', function (event) {
             error: onError
         })
         $('input').val('')
-        
     } else {
         return validation = true
     }
@@ -47,16 +46,17 @@ const onError = (response) => {
 
 $('.show-trip').on('click', '.delete', function (event) {
     console.log(event.target)
-    // $(this).parent().remove()
-    const name = $('.show-trip p')
-    // fetch(`api/v1/trip/delete/${name}`, {
-    //     method: 'DELETE',
-    // })
-    // .then(stream => stream.json())
-    // .then(res => {
-    //     console.log(res)
-    // })
-    // .catch(err => console.log(err))
+    $(this).parent().remove()
+    let tripId = $(event.target).parent().attr('id')
+    console.log(tripId)
+    fetch(`http://localhost:3000/api/v1/trip/delete/${tripId}`, {
+        method: 'DELETE',
+    })
+    .then(stream => stream.json())
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => console.log(err))
 })
 
 // ================ Show Trip ================  //

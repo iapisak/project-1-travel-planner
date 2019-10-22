@@ -16,6 +16,6 @@ router.get('/profiles/:userId', ctrl.auth.showProfile)
 
 router.get('/trip/:userId', ctrl.trip.showTrip)
 router.post('/trip/create', ctrl.trip.createTrip)
-router.delete('/trip/delete/:name', ctrl.trip.deleteTrip)
+router.delete('/trip/delete/:tripId', ctrl.trip.deleteTrip)
 
 module.exports = router
