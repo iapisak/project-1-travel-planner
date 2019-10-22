@@ -10,6 +10,13 @@ const findUser = (req, res) => {
   })
 }
 
+const findTrip = (req, res) => {
+  db.Trip.find({}, (err, foundTrip) => {
+    if (err) {return console.log(err)}
+    console.log(foundTrip)
+    res.json(foundTrip)
+  })
+}
 
 // POST Sign Up
 const createUser = (req, res) => {
@@ -42,9 +49,9 @@ const createUser = (req, res) => {
 
               const newUser = {
                   name: req.body.name,
+                  lastName: req.body.lastName,
                   email: req.body.email,
                   password: hash,
-                  
               }
 
               db.User.create(newUser, (err, createUser) => {
@@ -63,7 +70,6 @@ const createUser = (req, res) => {
       
   })
 }
-
 
 // POST Login
 const createSession = (req, res) => {
@@ -86,7 +92,6 @@ const createSession = (req, res) => {
 
           if (isMatch) {
               req.session.currentUser = foundUser._id
-              
               return res.status(201).json({
                   status: 201,
                   data: { id: foundUser._id}
@@ -145,11 +150,26 @@ const showProfile = (req, res) => {
   });
 };
 
+const createTrip = (req, res) => {
+  console.log(req.body)
+  db.Trip.create(req.body, (err, createEvent) => {
+
+    if (createEvent) {
+        res.json(createEvent)
+    } else {
+        console.log(err)
+    }
+  })
+}
+
+
 module.exports = {
   createUser,
   createSession,
   deleteSession,
   verifyAuth,
   showProfile,
+  createTrip,
   findUser,
+  findTrip,
 };
