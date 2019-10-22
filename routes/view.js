@@ -33,6 +33,8 @@ router.get('/profile/:userId', (req, res) => {
 
 // GET Trip Form
 router.get('/trip', (req, res) => {
+  console.log(req.session.currentUser)
+  
   res.sendFile('views/auth/createTrip.html', {
     root: `${__dirname}/../`
   })
