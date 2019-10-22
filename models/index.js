@@ -13,4 +13,5 @@ mongoose.connect(DB, {
 
 module.exports = {
   User: require('./User'),
+  Trip: require('./Trip'),
 };

@@ -2,8 +2,6 @@ const express = require('express')
 const router = express.Router()
 const ctrl = require('../controllers')
 
-// find User Temp
-router.get('/findUser', ctrl.auth.findUser)
 
 // ----------------------------- AUTH -------------------------- //
 
@@ -16,5 +14,9 @@ router.get('/verify', ctrl.auth.verifyAuth);
 // ----------------------------- PROFILE -------------------------- //
 
 router.get('/profiles/:userId', ctrl.auth.showProfile);
+
+
+// ----------------------------- TRIPS -------------------------- //
+router.post('/trip/create', ctrl.auth.createTrip)
 
 module.exports = router;
