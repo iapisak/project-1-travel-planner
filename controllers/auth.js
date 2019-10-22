@@ -1,22 +1,6 @@
 const bcrypt = require('bcryptjs');
 const db = require('../models');
 
-// Just Temp
-const findUser = (req, res) => {
-  db.User.find({}, (err, foundUser) => {
-    if (err) {return console.log(err)}
-    res.json(foundUser)
-  })
-}
-
-const findTrip = (req, res) => {
-  db.Trip.find({}, (err, foundTrip) => {
-    if (err) {return console.log(err)}
-    console.log(foundTrip)
-    res.json(foundTrip)
-  })
-}
-
 // POST Sign Up
 const createUser = (req, res) => {
   db.User.findOne({ email: req.body.email }, (err, foundUser) => {
@@ -136,6 +120,4 @@ module.exports = {
   createSession,
   deleteSession,
   showProfile,
-  findUser,
-  findTrip,
 };
