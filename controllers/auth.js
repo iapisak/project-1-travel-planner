@@ -1,5 +1,4 @@
 const bcrypt = require('bcryptjs');
-
 const db = require('../models');
 
 // Just Temp
@@ -10,9 +9,18 @@ const findUser = (req, res) => {
   })
 }
 
+// const findTrip = (req, res) => {
+//   db.Trip.find({}, (err, foundTrip) => {
+//     if (err) {return console.log(err)}
+//     console.log(foundTrip)
+//     res.json(foundTrip)
+//   })
+// }
+
 const findTrip = (req, res) => {
-  db.Trip.find({}, (err, foundTrip) => {
+  db.Trip.find({}).populate('user').exec((err, foundTrip) => {
     if (err) {return console.log(err)}
+    console.log(foundTrip)
     res.json(foundTrip)
   })
 }

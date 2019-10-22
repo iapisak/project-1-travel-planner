@@ -19,16 +19,7 @@ logoutButton.addEventListener('click', (event) => {
 
 const userId = window.location.pathname.split('/')[2];
 
-const handleSuccess = (user) => {
-  document.querySelector('.container').insertAdjacentHTML('beforeend', `
-    <div>
-      <h4><strong>Name:</strong> ${user.name}</h4>
-      <p><strong>Email</strong>: ${user.email}</p>
-    </div>
-  `);
-}
-
-const getProfile = () => {
+const getTrip = () => {
   fetch(`/api/v1/profiles/${userId}`, {
     method: 'GET',
     credentials: 'include',
@@ -38,9 +29,10 @@ const getProfile = () => {
   })
     .then(dataStream => dataStream.json())
     .then(res => {
-      handleSuccess(res.data);
+      console.log(res)
+       
     })
     .catch(err => console.log(err));
 }
 
-getProfile();
+getTrip();

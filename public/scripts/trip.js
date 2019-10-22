@@ -17,8 +17,6 @@ logoutButton.addEventListener('click', (event) => {
     })
 })
 
-const userId = window.location.pathname.split('/')[2];
-
 let validation = true
 
 const formValidation = () => {
