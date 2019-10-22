@@ -13,7 +13,7 @@ logout.on('click', (event) => {
     })
 })
 
-const userId = window.location.pathname.split('/')[2]
+let userId = window.location.pathname.split('/')[2]
 
 const onSuccess = (user) => {
         const template = `

@@ -1,5 +1,6 @@
 // ================ Trip form front-end ================  //
 
+
 let validation = true
 
 const formValidation = () => {
@@ -23,12 +24,12 @@ $('#form').on('submit', function (event) {
                 "start": $('#date_start').val(),
                 "end": $('#date_end').val(),
                 "activities": $('#activity').val(),
-                // "user": req.session.currentUser,
             },
             success: onSuccessTrip,
             error: onError
         })
         $('input').val('')
+        // window.location = `/profile/${userId}`
     } else {
         return validation = true
     }
@@ -60,7 +61,7 @@ const onSuccessGetTrip = (data) => {
 }
 
 const getTrip = () => {
-    fetch(`/api/v1/trip`, {
+    fetch(`/api/v1/trip/${userId}`, {
         method: 'GET',
       })
         .then(dataStream => dataStream.json())

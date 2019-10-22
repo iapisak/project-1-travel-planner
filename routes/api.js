@@ -14,7 +14,7 @@ router.get('/profiles/:userId', ctrl.auth.showProfile)
 
 // ----------------------------- TRIPS -------------------------- //
 
-router.get('/trip', ctrl.trip.showTrip)
+router.get('/trip/:userId', ctrl.trip.showTrip)
 router.post('/trip/create', ctrl.trip.createTrip)
 
 module.exports = router
