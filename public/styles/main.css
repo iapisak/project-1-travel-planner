@@ -1,23 +1,27 @@
 * {
     box-sizing: border-box;
-    padding: 0.5%;
+    /* padding: 0.5%; */
     margin: 0;
     outline: 0;
   }
   
-  /* html {
+  html {
     position: relative;
     min-height: 100%;
-  } */
+  }
   
   body {
     font-family: sans-serif;
     /* margin-bottom: 100px; */
-    min-height: 100vh;
+    min-height: 90vh;
+    background-image: url("/ave-of-giants.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
   }
   
   h1, h2 {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
     color: white;
   }
   
@@ -41,6 +45,7 @@
     background: rgb(243, 245, 247);
     width: auto;
     padding: 10px 20px;
+    /* margin-bottom: 15px; */
     font-size: 16px;
     color: rgb(59, 57, 57);
     font-weight: 600;
@@ -54,10 +59,10 @@
 
 
 main {
-  background-image: url("/ave-of-giants.jpg");
+  /* background-image: url("/ave-of-giants.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 90vh;
+  min-height: 90vh; */
 }
 
   /* LAYOUT */
@@ -67,7 +72,7 @@ main {
     /* margin: 0 auto 40px; */
     margin: 2px;
     overflow: hidden;
-    padding: 30px;
+    padding: 20px;
     border: 0;
   }
   
@@ -85,16 +90,26 @@ main {
   /* NAVIGATION */
   
   nav {
-    background-color: rgba(11, 206, 241, 0.5);
+    background-color: rgba(11, 206, 241, 0.7);
     width: 100%;
     padding: 0;
-    color: rgb(68, 68, 68);
+    color: rgb(253, 251, 251);
     /* margin-bottom: 40px; */
     overflow: hidden;
   }
   
-  nav ul {
-    font-size: 10px;
+  /* nav ul li:first-child { 
+    list-style:none;
+    float: left;
+    justify-content: center;
+    width: 200px;
+    padding: 20px 20px;
+    font-size: 30px;
+  
+  } */
+
+  nav ul li{
+    list-style:none;
     float: right;
     justify-content: center;
   }
@@ -103,7 +118,7 @@ main {
     list-style-type: none;
     display: inline-block;
     font-size: 20px;
-    margin-right: 30px;
+    /* margin-right: 20px; */
   }
   
   /* nav li:last-child {
@@ -112,7 +127,7 @@ main {
   
   nav li a {
     display: block;
-    padding: 20px 0px;
+    padding: 25px 0px;
     width: 100px;
     text-decoration: none;
     color: rgb(253, 251, 251);
@@ -145,8 +160,8 @@ main {
   /* FOOTER */
   
   footer {
-    position: relative;
-    background-color: rgba(11, 206, 241, 0.5);
+    position: absolute;
+    background-color: rgba(11, 206, 241, 0.7);
     width: 100%;
     color: rgba(68, 68, 68, 0.637);
     text-align: center;
