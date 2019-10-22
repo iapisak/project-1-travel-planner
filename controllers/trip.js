@@ -32,8 +32,8 @@ const createTrip = (req, res) => {
 
 const deleteTrip = (req, res) => {
 
-    // const isTrip = req.session.currentUser
-    // db.Trip.findByIdAndDelete(req.params.tripId , (err, deleteThis) => {
+    
+    // db.Trip.findByIdAndDelete(req.params.name , (err, deleteThis) => {
     //     if (deleteThis) { res.json(deleteThis)}
     //     console.log(err)
     // })

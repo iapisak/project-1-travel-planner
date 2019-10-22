@@ -10,6 +10,7 @@ const formValidation = () => {
 }
 
 $('#form').on('submit', function (event) {
+    let newId = window.location.pathname.split('/')[2]
     event.preventDefault()
     formValidation()
     if (validation) {
@@ -27,10 +28,11 @@ $('#form').on('submit', function (event) {
             error: onError
         })
         $('input').val('')
-        // window.location = `/profile/${userId}`
+        
     } else {
         return validation = true
     }
+    window.location = `/profile/${newId}`
 })
 
 const onSuccessTrip = (data)=> {
@@ -46,15 +48,15 @@ const onError = (response) => {
 $('.show-trip').on('click', '.delete', function (event) {
     console.log(event.target)
     // $(this).parent().remove()
-
-    fetch(`api/v1/trip/delete`, {
-        method: 'DELETE',
-    })
-    .then(stream => stream.json())
-    .then(res => {
-        console.log(res)
-    })
-    .catch(err => console.log(err))
+    const name = $('.show-trip p')
+    // fetch(`api/v1/trip/delete/${name}`, {
+    //     method: 'DELETE',
+    // })
+    // .then(stream => stream.json())
+    // .then(res => {
+    //     console.log(res)
+    // })
+    // .catch(err => console.log(err))
 })
 
 // ================ Show Trip ================  //
@@ -63,7 +65,7 @@ const onSuccessGetTrip = (data) => {
     // console.log(data)
     data.forEach(function(element) {
         const tripTemplete = `
-        <div>
+        <div id=${element._id}>
             <p>Name : ${element.name}</p>
             <p>Destination : ${element.destination}</p>
             <button class="delete">Delete</button>
