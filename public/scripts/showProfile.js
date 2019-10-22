@@ -1,13 +1,9 @@
-const logoutButton = document.querySelector('#logout');
+const logout = $('#logout');
 
-logoutButton.addEventListener('click', (event) => {
+logout.on('click', (event) => {
   event.preventDefault();
   fetch('/api/v1/logout', {
     method: 'DELETE',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    },
   })
     .then(dataStream => dataStream.json())
     .then(res => {
@@ -17,22 +13,29 @@ logoutButton.addEventListener('click', (event) => {
     })
 })
 
-const userId = window.location.pathname.split('/')[2];
+const userId = window.location.pathname.split('/')[2]
 
-const getTrip = () => {
+const onSuccess = (user) => {
+        const template = `
+            <p><strong>Name</strong>: ${user.name}</p>
+            <p><strong>Email</strong>: ${user.email}</p>
+            <p><strong>id</strong>: ${user._id}</p>
+        `
+        $('.container').append(template)
+}
+
+const getProfile = () => {
   fetch(`/api/v1/profiles/${userId}`, {
     method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    }
   })
     .then(dataStream => dataStream.json())
     .then(res => {
-      console.log(res)
-       
+       onSuccess(res.data)
     })
     .catch(err => console.log(err));
 }
 
-getTrip();
+getProfile()
+
+
+

@@ -49,7 +49,6 @@ form && form.addEventListener('submit', (event) => {
 
   // Handle Login
   if (form.id === 'login' && formIsValid) {
-    console.log('Submitting user login --> ', userData);
     fetch('/api/v1/login', {
       method: 'POST',
       credentials: 'include',
