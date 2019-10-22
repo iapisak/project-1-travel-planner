@@ -1,5 +1,4 @@
 // ================ Trip form front-end ================  //
-
 let validation = true
 
 const formValidation = () => {
@@ -11,6 +10,7 @@ const formValidation = () => {
 }
 
 $('#form').on('submit', function (event) {
+    let newId = window.location.pathname.split('/')[2]
     event.preventDefault()
     formValidation()
     if (validation) {
@@ -23,15 +23,16 @@ $('#form').on('submit', function (event) {
                 "start": $('#date_start').val(),
                 "end": $('#date_end').val(),
                 "activities": $('#activity').val(),
-                // "user": req.session.currentUser,
             },
             success: onSuccessTrip,
             error: onError
         })
         $('input').val('')
+        
     } else {
         return validation = true
     }
+    window.location = `/profile/${newId}`
 })
 
 const onSuccessTrip = (data)=> {
@@ -42,6 +43,21 @@ const onError = (response) => {
     console.log(response);
 }
 
+// ================ Delete Trip ================  //
+
+$('.show-trip').on('click', '.delete', function (event) {
+    console.log(event.target)
+    // $(this).parent().remove()
+    const name = $('.show-trip p')
+    // fetch(`api/v1/trip/delete/${name}`, {
+    //     method: 'DELETE',
+    // })
+    // .then(stream => stream.json())
+    // .then(res => {
+    //     console.log(res)
+    // })
+    // .catch(err => console.log(err))
+})
 
 // ================ Show Trip ================  //
 
@@ -49,9 +65,10 @@ const onSuccessGetTrip = (data) => {
     // console.log(data)
     data.forEach(function(element) {
         const tripTemplete = `
-        <div>
+        <div id=${element._id}>
             <p>Name : ${element.name}</p>
             <p>Destination : ${element.destination}</p>
+            <button class="delete">Delete</button>
         </div>
     `
     $('.show-trip').append(tripTemplete)
@@ -60,7 +77,7 @@ const onSuccessGetTrip = (data) => {
 }
 
 const getTrip = () => {
-    fetch(`/api/v1/trip`, {
+    fetch(`/api/v1/trip/${userId}`, {
         method: 'GET',
       })
         .then(dataStream => dataStream.json())

@@ -1,10 +1,31 @@
 const express = require('express')
 const router = express.Router()
-const ctrl = require('../controllers')
+const db = require('../models')
 
-router.get('/findUser', ctrl.auth.findUser)
-router.get('/findTrip', ctrl.auth.findTrip)
 
+// ------------- Temp -------------- //
+router.get('/findUser', (req, res) => {
+  db.User.find({}, (err, foundUser) => {
+    if (err) {return console.log(err)}
+    res.json(foundUser)
+  })
+})
+
+router.get('/findTrip', (req, res) => {
+  db.Trip.find({}, (err, foundTrip) => {
+    if (err) {return console.log(err)}
+    console.log(foundTrip)
+    res.json(foundTrip)
+  })
+})
+
+router.delete('/delete', (req, res) => {
+  db.User.deleteMany({}, (err, deleteIt) => {
+    if (err) {return console.log(err)}
+    res.json(deleteIt)
+  })
+})
+// ------------- Temp -------------- //
 
 // GET Home
 router.get('/', (req, res) => {

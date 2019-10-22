@@ -9,7 +9,7 @@ const index = (req, res) => {
 }
 
 const showTrip = (req, res) => {
-    db.Trip.find({}, (err, foundTrip) => {
+    db.Trip.find({ user: req.params.userId}, (err, foundTrip) => {
         if (err) {return console.log(err)}
         res.json({
             status: 200,
@@ -19,6 +19,8 @@ const showTrip = (req, res) => {
 }
   
 const createTrip = (req, res) => {
+    req.body.user = req.session.currentUser
+    console.log(req.body)
     db.Trip.create(req.body, (err, createEvent) => {
         if (createEvent) {
             res.json(createEvent)
@@ -28,8 +30,18 @@ const createTrip = (req, res) => {
     })
 }
 
+const deleteTrip = (req, res) => {
+
+    
+    // db.Trip.findByIdAndDelete(req.params.name , (err, deleteThis) => {
+    //     if (deleteThis) { res.json(deleteThis)}
+    //     console.log(err)
+    // })
+}
+
 module.exports = {
     index,
     showTrip,
     createTrip,
+    deleteTrip,
 }
