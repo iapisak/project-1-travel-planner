@@ -168,7 +168,7 @@ $(".show-trip").on('submit', ".update-form", function (event) {
     event.preventDefault()
     formValidation()
     let tripId = $(event.target).parent().attr('id')
-    console.log(tripId)
+    // console.log(tripId)
     // console.log('UPDATE FORM DATA --> ', $('.update-form').serialize())
     const updateData = {
         name: $('#update_name').val(),
