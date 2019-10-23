@@ -63,8 +63,8 @@ const onError = (response) => {
 
 // ================ Delete Trip ================  //
 $('.show-trip').on('click', '.delete', function (event) {
-    console.log(event.target)
-    $(this).parent().remove()
+    // console.log(event.target)
+    $(event.target).parents('.trip-section').remove()
     let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
     console.log(tripId)
     fetch(`http://localhost:3000/api/v1/trip/delete/${tripId}`, {
@@ -84,8 +84,9 @@ const onSuccessGetTrip = (data) => {
         const tripTemplete = `
         <div class="trip-section">
             <button class="dropdown-btn">
-                <p><h3>${element.name}</h3></p>
-                <p>Destination : ${element.destination} | ${new Date(element.start).toLocaleDateString()}</p>
+                ${element.name}<br>
+                Destination : ${element.destination}<br>
+                Date : ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
             </button>
             <div class="dropdown-container">
                 <div id=${element._id}>
@@ -94,6 +95,7 @@ const onSuccessGetTrip = (data) => {
                     <button class="update">Update</button>
                 </div>
             </div>
+            <div class="update-secssion"></div>
         </div>
     `
     $('.show-trip').append(tripTemplete)
@@ -114,41 +116,47 @@ const getTrip = () => {
 getTrip()
 
 // ================ Pull Data Before Update  ================  //
-const onSuccessPullTrip = (data) => {
-    // console.log(data)
+const onSuccessPullTrip = (data, newTarget) => {
+    console.log(newTarget)
     const tripUpdateTemplete = `
-    <main>
-      <section id="${data._id}" class="container">
-        <form class="update-form">
-            <div class="form-group">
-                <label for="name">Trip Name</label>
-                <input type="text" class="form-control" id="update_name" name="name" value="${data.name}">
+        <div>
+        
+        </div>
+        <section id="${data._id}" class="container">
+            <form class="update-form">
+                <div class="form-group">
+                    <label for="name">Trip Name</label>
+                    <input type="text" class="form-control" id="update_name" name="name" value="${data.name}">
+                </div>
+                <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" class="form-control" id="update_destination" name="destination" value="${data.destination}">
             </div>
-            <div class="form-group">
-              <label for="destination">Destination</label>
-              <input type="text" class="form-control" id="update_destination" name="destination" value="${data.destination}">
-          </div>
-            <div class="form-group">
-              <label for="date_start">Date Start</label>
-              <input type="text" class="form-control" id="update_date_start" name="date_start" value="${data.start}">
-          </div>
-            <div class="form-group">
-                <label for="date_end">Date End</label>
-                <input type="text" class="form-control" id="update_date_end" name="date_end" value="${data.end}">
+                <div class="form-group">
+                <label for="date_start">Date Start</label>
+                <input type="text" class="form-control" id="update_date_start" name="date_start" value="${data.start}">
             </div>
-            <div class="form-group">
-                <label for="activity">Activity</label>
-                <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
-            </div>
-            <input type="submit" value="Save"/>
-        </form> 
-      </section>
-      </main>
+                <div class="form-group">
+                    <label for="date_end">Date End</label>
+                    <input type="text" class="form-control" id="update_date_end" name="date_end" value="${data.end}">
+                </div>
+                <div class="form-group">
+                    <label for="activity">Activity</label>
+                    <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
+                </div>
+                <input type="submit" value="Save"/>
+            </form> 
+        </section>
     `
-    $('.show-trip').append(tripUpdateTemplete)
+    $(newTarget).parents('.dropdown-container').after(tripUpdateTemplete)
+    // $(newTarget).nextElementSibling.after(tripUpdateTemplete)
+    // update-secssion
 }
 
-$('.show-trip').on('click', '.update', function () {
+$('.show-trip').on('click', '.update', function (event) {
+    // event.target.parents('.dropdown-container').empty()
+    const newTarget = event.target
+    // console.log(event.target)
     let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
     // console.log(tripId)
     fetch(`http://localhost:3000/api/v1/${tripId}`, {
@@ -156,7 +164,7 @@ $('.show-trip').on('click', '.update', function () {
     })
     .then(stream => stream.json())
     .then(res => {
-        onSuccessPullTrip(res.data)
+        onSuccessPullTrip(res.data, newTarget)
     })
     .catch(err => console.log(err))
 })
@@ -177,7 +185,7 @@ $(".show-trip").on('submit', ".update-form", function (event) {
         end: $('#update_date_end').val(),
         activities: $('#update_activity').val(),
     }
-    console.log(updateData);
+    // console.log(updateData);
     fetch(`http://localhost:3000/api/v1/trip/update/${tripId}`, {
         method: 'PUT',
         headers: {
@@ -191,4 +199,28 @@ $(".show-trip").on('submit', ".update-form", function (event) {
     })
     .catch(err => console.log(err))
     window.location = `/profile/${newId}`
+})
+
+
+
+$('.dropdown-btn-add-trip').on('click', function (event) {
+    // console.log('hello')
+    event.target.classList.toggle("active")
+     dropdownContainer = event.target.nextElementSibling;
+    if (dropdownContainer.style.display === "block") {
+    dropdownContainer.style.display = "none"
+    } else {
+    dropdownContainer.style.display = "block"
+    }
+})
+
+$('.show-trip').on('click', '.dropdown-btn', function (event) {
+    // console.log('hello')
+    event.target.classList.toggle("active")
+    var dropdownContainer = event.target.nextElementSibling;
+    if (dropdownContainer.style.display === "block") {
+    dropdownContainer.style.display = "none"
+    } else {
+    dropdownContainer.style.display = "block"
+    }
 })
