@@ -3,7 +3,7 @@ const db = require('../models')
 const index = (req, res) => {
     db.Trip.find({}).populate('user').exec((err, foundTrip) => {
       if (err) {return console.log(err)}
-      console.log(foundTrip)
+    //   console.log(foundTrip)
       res.json(foundTrip)
     })
 }
@@ -20,7 +20,7 @@ const showTrip = (req, res) => {
   
 const createTrip = (req, res) => {
     req.body.user = req.session.currentUser
-    console.log(req.body)
+    // console.log(req.body)
     db.Trip.create(req.body, (err, createEvent) => {
         if (createEvent) {
             res.json(createEvent)
@@ -31,12 +31,10 @@ const createTrip = (req, res) => {
 }
 
 const deleteTrip = (req, res) => {
-
-    
-    // db.Trip.findByIdAndDelete(req.params.name , (err, deleteThis) => {
-    //     if (deleteThis) { res.json(deleteThis)}
-    //     console.log(err)
-    // })
+    db.Trip.findByIdAndDelete({ _id: req.params.tripId}, (err, deleteThis) => {
+        if (deleteThis) { res.json(deleteThis)}
+        console.log(err)
+    })
 }
 
 module.exports = {
