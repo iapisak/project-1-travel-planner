@@ -79,14 +79,13 @@ $('.show-trip').on('click', '.delete', function (event) {
 
 // ================ Show Trip ================  //
 const onSuccessGetTrip = (data) => {
-    console.log(Date(data[0].start))
+    // console.log(Date(data[0].start))
     data.forEach(function(element) {
         const tripTemplete = `
-        <div id=${element._id}>
         <div class="trip-section">
             <button class="dropdown-btn">
                 <p><h3>${element.name}</h3></p>
-                <p>Destination : ${element.destination} | ${Date(element.start)}</p>
+                <p>Destination : ${element.destination} | ${new Date(element.start).toLocaleDateString()}</p>
             </button>
             <div class="dropdown-container">
                 <div id=${element._id}>
@@ -95,7 +94,6 @@ const onSuccessGetTrip = (data) => {
                     <button class="update">Update</button>
                 </div>
             </div>
-
         </div>
     `
     $('.show-trip').append(tripTemplete)
@@ -165,11 +163,12 @@ $('.show-trip').on('click', '.update', function () {
 
 // ================ Update  ================  //
 $(".show-trip").on('submit', ".update-form", function (event) {
+    let newId = window.location.pathname.split('/')[2]
     // console.log('Hello')
     event.preventDefault()
     formValidation()
     let tripId = $(event.target).parent().attr('id')
-    console.log(tripId)
+    // console.log(tripId)
     // console.log('UPDATE FORM DATA --> ', $('.update-form').serialize())
     const updateData = {
         name: $('#update_name').val(),
@@ -191,4 +190,5 @@ $(".show-trip").on('submit', ".update-form", function (event) {
         console.log(res)
     })
     .catch(err => console.log(err))
+    window.location = `/profile/${newId}`
 })
