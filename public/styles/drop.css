@@ -5,7 +5,7 @@
     color: #f8f7f7;
     display: block;
     border: none;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);
     text-align: left;
     width: 100%;
     cursor: pointer;
@@ -19,7 +19,7 @@
     color: #ffffff;
     display: block;
     border: none;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);
     text-align: left;
     width: 100%;
     cursor: pointer;
@@ -27,14 +27,14 @@
 }
 
 .active {
-    background-color: rgb(68, 71, 68);
+    background-color: rgba(24, 78, 78, 0.6);
     color: white;
     }
 
 
 .dropdown-container {
     display: none;
-    background-color: #3a2626;
+    background-color: rgba(24, 78, 78, 0.6);
 }
 
 .dropdown-btn:hover { 
