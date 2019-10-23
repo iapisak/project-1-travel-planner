@@ -1,13 +1,17 @@
 // ================ Find Friends ================  //
+const onSuccessGetFriend = (friends) => {
+    console.log(friends)
+}
+
 
 $('#friends').on('click', function () {
     console.log('Hello')
-    fetch(`http://localhost:3000/api/v1/`, {
+    fetch(`http://localhost:3000/api/v1/friends`, {
         method: 'GET',
     })
     .then(stream => stream.json())
     .then(res => {
-        
+        onSuccessGetFriend(res.data)
     })
     .catch(err => console.log(err))
 })

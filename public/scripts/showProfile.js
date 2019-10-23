@@ -21,7 +21,7 @@ const onSuccess = (user) => {
             <p><strong>Email</strong>: ${user.email}</p>
             <p><strong>id</strong>: ${user._id}</p>
         `
-        $('.container').append(template)
+        $('.user-data').append(template)
 }
 
 const getProfile = () => {
