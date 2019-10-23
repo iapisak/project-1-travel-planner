@@ -79,13 +79,24 @@ $('.show-trip').on('click', '.delete', function (event) {
 
 // ================ Show Trip ================  //
 const onSuccessGetTrip = (data) => {
-    // console.log(data)
+    console.log(Date(data[0].start))
     data.forEach(function(element) {
         const tripTemplete = `
+<<<<<<< HEAD
+=======
+        <div id=${element._id}>
+            <p>Name : ${element.name}</p>
+            <p>Destination : ${element.destination}</p>
+            <p>Start Date : ${element.start}</p>
+            <p>End Date : ${element.end}</p>
+            <p>Activities : ${element.activities}</p>
+            <button class="delete">Delete</button>
+
+>>>>>>> 25e7b538783d4141e882ea0a689ea494d5ac3aef
         <div class="trip-section">
             <button class="dropdown-btn">
                 <p><h3>${element.name}</h3></p>
-                <p>Destination : ${element.destination} | ${element.start}</p>
+                <p>Destination : ${element.destination} | ${Date(element.start)}</p>
             </button>
             <div class="dropdown-container">
                 <div id=${element._id}>
@@ -94,6 +105,10 @@ const onSuccessGetTrip = (data) => {
                     <button class="update">Update</button>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 25e7b538783d4141e882ea0a689ea494d5ac3aef
         </div>
     `
     $('.show-trip').append(tripTemplete)
