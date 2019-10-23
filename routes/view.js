@@ -44,7 +44,7 @@ router.get('/signup', (req, res) => {
 // GET User Profile
 router.get('/profile/:userId', (req, res) => {
   if (!req.session.currentUser) {
-    return res.redirect('/login');
+    return res.redirect('/');
   }
     
   res.sendFile('views/profile/show.html', {
