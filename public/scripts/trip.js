@@ -85,7 +85,8 @@ const onSuccessGetTrip = (data) => {
         <div class="trip-section">
             <button class="dropdown-btn">
                 ${element.name}<br>
-                Destination : ${element.destination} | ${new Date(element.start).toLocaleDateString()} | ${new Date(element.end).toLocaleDateString()}
+                Destination : ${element.destination}<br>
+                Date: ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
             </button>
             <div class="dropdown-container">
                 <div id=${element._id}>
@@ -93,8 +94,7 @@ const onSuccessGetTrip = (data) => {
                     <button class="delete">Delete</button>
                     <button class="update">Update</button>
                 </div>
-            </div>
-            <div class="update-secssion"></div>
+            <div class="update-section"></div>
         </div>
     `
     $('.show-trip').append(tripTemplete)
@@ -118,9 +118,6 @@ getTrip()
 const onSuccessPullTrip = (data, newTarget) => {
     console.log(newTarget)
     const tripUpdateTemplete = `
-        <div>
-        
-        </div>
         <section id="${data._id}" class="container">
             <form class="update-form">
                 <div class="form-group">
@@ -147,13 +144,11 @@ const onSuccessPullTrip = (data, newTarget) => {
             </form> 
         </section>
     `
-    $(newTarget).parents('.dropdown-container').after(tripUpdateTemplete)
-    // $(newTarget).nextElementSibling.after(tripUpdateTemplete)
-    // update-secssion
+     $(newTarget).parents('.show-trip').children('.trip-section').children('.dropdown-container').children('.update-section').append(tripUpdateTemplete)
 }
 
 $('.show-trip').on('click', '.update', function (event) {
-    // event.target.parents('.dropdown-container').empty()
+    $('.update-section').children().remove()
     const newTarget = event.target
     // console.log(event.target)
     let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
