@@ -85,6 +85,9 @@ const onSuccessGetTrip = (data) => {
         <div id=${element._id}>
             <p>Name : ${element.name}</p>
             <p>Destination : ${element.destination}</p>
+            <p>Start Date : ${element.start}</p>
+            <p>End Date : ${element.end}</p>
+            <p>Activities : ${element.activities}</p>
             <button class="delete">Delete</button>
         </div>
     `

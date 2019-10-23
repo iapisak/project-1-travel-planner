@@ -19,7 +19,6 @@ const onSuccess = (user) => {
         const template = `
             <p><strong>Name</strong>: ${user.name}</p>
             <p><strong>Email</strong>: ${user.email}</p>
-            <p><strong>id</strong>: ${user._id}</p>
         `
         $('.user-data').append(template)
 }
