@@ -12,6 +12,9 @@ router.delete('/logout', ctrl.auth.deleteSession)
 
 router.get('/profiles/:userId', ctrl.auth.showProfile)
 
+// ----------------------------- FRIENDS -------------------------- //
+router.get('/friends', ctrl.friend.findFriends)
+
 // ----------------------------- TRIPS -------------------------- //
 
 router.get('/trip/:userId', ctrl.trip.showTrip)

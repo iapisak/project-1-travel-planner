@@ -1,3 +1,20 @@
+// ================ Find Friends ================  //
+
+$('#friends').on('click', function () {
+    console.log('Hello')
+    fetch(`http://localhost:3000/api/v1/`, {
+        method: 'GET',
+    })
+    .then(stream => stream.json())
+    .then(res => {
+        
+    })
+    .catch(err => console.log(err))
+})
+
+
+
+
 // ================ Trip form front-end ================  //
 let validation = true
 
@@ -47,7 +64,7 @@ const onError = (response) => {
 $('.show-trip').on('click', '.delete', function (event) {
     console.log(event.target)
     $(this).parent().remove()
-    let tripId = $(event.target).parent().attr('id')
+    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
     console.log(tripId)
     fetch(`http://localhost:3000/api/v1/trip/delete/${tripId}`, {
         method: 'DELETE',
