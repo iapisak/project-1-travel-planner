@@ -14,7 +14,8 @@
     font-family: sans-serif;
     /* margin-bottom: 100px; */
     min-height: 90vh;
-    background-image: url("/ave-of-giants.jpg");
+    background-image: url("/point-reyes.jpg");
+    
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -91,7 +92,7 @@ main {
   /* NAVIGATION */
   
   nav {
-    background-color: rgba(11, 206, 241, 0.7);
+    background-color: rgba(11, 206, 241, 0.5);
     width: 100%;
     padding: 0;
     color: rgb(253, 251, 251);
@@ -149,7 +150,14 @@ main {
     height: 100%;
   }
   
-  
+  .user-data {
+
+  }
+
+  .show-trip {
+
+    \
+  }
   
   /* LOGIN PAGE */
   
@@ -162,17 +170,19 @@ main {
   
   footer {
     position: absolute;
-    background-color: rgba(11, 206, 241, 0.7);
+    background-color: rgba(11, 206, 241, 0.5);
     width: 100%;
-    color: rgba(68, 68, 68, 0.637);
+    height: 72px;
+    color: rgba(39, 39, 39, 0.637);
+    text-shadow: lightcyan;
     text-align: center;
     overflow: hidden;
     /* height: 35px; */
     bottom: 0;
   }
 
-  p {
-    padding: 5px;
+  .copyright {
+    padding: 28px;
   }
 
    /* ALERT */
