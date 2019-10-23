@@ -20,10 +20,6 @@ const onSuccess = (user) => {
             <p><strong>Name</strong>: ${user.name} ${user.lastName}</p>
             <p><strong>Email</strong>: ${user.email}</p>
             <p><strong>Member Since</strong>: ${user.signupDate}</p>
-<<<<<<< HEAD
-=======
-
->>>>>>> 25e7b538783d4141e882ea0a689ea494d5ac3aef
         `
         $('.user-data').append(template)
 }
