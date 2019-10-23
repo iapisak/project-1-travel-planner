@@ -17,8 +17,6 @@ $('#friends').on('click', function () {
 })
 
 
-
-
 // ================ Trip form front-end ================  //
 let validation = true
 
@@ -64,7 +62,6 @@ const onError = (response) => {
 }
 
 // ================ Delete Trip ================  //
-
 $('.show-trip').on('click', '.delete', function (event) {
     console.log(event.target)
     $(this).parent().remove()
@@ -81,20 +78,26 @@ $('.show-trip').on('click', '.delete', function (event) {
 })
 
 // ================ Show Trip ================  //
-
 const onSuccessGetTrip = (data) => {
     // console.log(data)
     data.forEach(function(element) {
         const tripTemplete = `
-        <div id=${element._id}>
-            <p>Name : ${element.name}</p>
-            <p>Destination : ${element.destination}</p>
-            <button class="delete">Delete</button>
+        <div class="trip-section">
+            <button class="dropdown-btn">
+                <p><h3>${element.name}</h3></p>
+                <p>Destination : ${element.destination} | ${element.start}</p>
+            </button>
+            <div class="dropdown-container">
+                <div id=${element._id}>
+                    <p>Activity : ${element.activities}</p>
+                    <button class="delete">Delete</button>
+                    <button class="update">Update</button>
+                </div>
+            </div>
         </div>
     `
     $('.show-trip').append(tripTemplete)
     })
-    
 }
 
 const getTrip = () => {
@@ -109,3 +112,81 @@ const getTrip = () => {
 }
 
 getTrip()
+
+// ================ Pull Data Before Update  ================  //
+const onSuccessPullTrip = (data) => {
+    // console.log(data)
+    const tripUpdateTemplete = `
+    <main>
+      <section id="${data._id}" class="container">
+        <form class="update-form">
+            <div class="form-group">
+                <label for="name">Trip Name</label>
+                <input type="text" class="form-control" id="update_name" name="name" value="${data.name}">
+            </div>
+            <div class="form-group">
+              <label for="destination">Destination</label>
+              <input type="text" class="form-control" id="update_destination" name="destination" value="${data.destination}">
+          </div>
+            <div class="form-group">
+              <label for="date_start">Date Start</label>
+              <input type="text" class="form-control" id="update_date_start" name="date_start" value="${data.start}">
+          </div>
+            <div class="form-group">
+                <label for="date_end">Date End</label>
+                <input type="text" class="form-control" id="update_date_end" name="date_end" value="${data.end}">
+            </div>
+            <div class="form-group">
+                <label for="activity">Activity</label>
+                <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
+            </div>
+            <input type="submit" value="Save"/>
+        </form> 
+      </section>
+      </main>
+    `
+    $('.show-trip').append(tripUpdateTemplete)
+}
+
+$('.show-trip').on('click', '.update', function () {
+    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
+    // console.log(tripId)
+    fetch(`http://localhost:3000/api/v1/${tripId}`, {
+        method: 'GET',
+    })
+    .then(stream => stream.json())
+    .then(res => {
+        onSuccessPullTrip(res.data)
+    })
+    .catch(err => console.log(err))
+})
+
+// ================ Update  ================  //
+$(".show-trip").on('submit', ".update-form", function (event) {
+    // console.log('Hello')
+    event.preventDefault()
+    formValidation()
+    let tripId = $(event.target).parent().attr('id')
+    console.log(tripId)
+    // console.log('UPDATE FORM DATA --> ', $('.update-form').serialize())
+    const updateData = {
+        name: $('#update_name').val(),
+        destination: $('#update_destination').val(),
+        start: $('#update_date_start').val(),
+        end: $('#update_date_end').val(),
+        activities: $('#update_activity').val(),
+    }
+    console.log(updateData);
+    fetch(`http://localhost:3000/api/v1/trip/update/${tripId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updateData),
+    })
+    .then(stream => stream.json())
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => console.log(err))
+})
