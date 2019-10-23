@@ -163,6 +163,7 @@ $('.show-trip').on('click', '.update', function () {
 
 // ================ Update  ================  //
 $(".show-trip").on('submit', ".update-form", function (event) {
+    let newId = window.location.pathname.split('/')[2]
     // console.log('Hello')
     event.preventDefault()
     formValidation()
@@ -189,4 +190,5 @@ $(".show-trip").on('submit', ".update-form", function (event) {
         console.log(res)
     })
     .catch(err => console.log(err))
+    window.location = `/profile/${newId}`
 })
