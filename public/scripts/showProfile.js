@@ -17,8 +17,9 @@ let userId = window.location.pathname.split('/')[2]
 
 const onSuccess = (user) => {
         const template = `
-            <p><strong>Name</strong>: ${user.name}</p>
+            <p><strong>Name</strong>: ${user.name} ${user.lastName}</p>
             <p><strong>Email</strong>: ${user.email}</p>
+            <p><strong>Member Since</strong>: ${user.signupDate}</p>
         `
         $('.user-data').append(template)
 }
