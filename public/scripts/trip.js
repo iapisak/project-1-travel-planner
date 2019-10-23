@@ -26,6 +26,7 @@ const formValidation = () => {
     if ($('#date_start').val() === "") {validation = false}
     if ($('#date_end').val() === "") {validation = false}
     if ($('#activity').val() === "") {validation = false}
+    if ($('#description').val() === "") {validation = false}
 }
 
 $('#form').on('submit', function (event) {
@@ -42,6 +43,8 @@ $('#form').on('submit', function (event) {
                 "start": $('#date_start').val(),
                 "end": $('#date_end').val(),
                 "activities": $('#activity').val(),
+                "description": $('#description').val(),
+
             },
             success: onSuccessTrip,
             error: onError
@@ -63,10 +66,8 @@ const onError = (response) => {
 
 // ================ Delete Trip ================  //
 $('.show-trip').on('click', '.delete', function (event) {
-    // console.log(event.target)
     $(event.target).parents('.trip-section').remove()
     let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
-    console.log(tripId)
     fetch(`http://localhost:3000/api/v1/trip/delete/${tripId}`, {
         method: 'DELETE',
     })
@@ -79,7 +80,6 @@ $('.show-trip').on('click', '.delete', function (event) {
 
 // ================ Show Trip ================  //
 const onSuccessGetTrip = (data) => {
-    // console.log(Date(data[0].start))
     data.forEach(function(element) {
         const tripTemplete = `
         <div class="trip-section">
@@ -91,6 +91,7 @@ const onSuccessGetTrip = (data) => {
             <div class="dropdown-container">
                 <div id=${element._id}>
                     <p>Activity : ${element.activities}</p>
+                    <p>Description : ${element.description}</p>
                     <button class="delete">Delete</button>
                     <button class="update">Update</button>
                 </div>
@@ -116,7 +117,6 @@ getTrip()
 
 // ================ Pull Data Before Update  ================  //
 const onSuccessPullTrip = (data, newTarget) => {
-    console.log(newTarget)
     const tripUpdateTemplete = `
         <section id="${data._id}" class="container">
             <form class="update-form">
@@ -130,15 +130,19 @@ const onSuccessPullTrip = (data, newTarget) => {
             </div>
                 <div class="form-group">
                 <label for="date_start">Date Start</label>
-                <input type="text" class="form-control" id="update_date_start" name="date_start" value="${data.start}">
+                <input type="text" class="form-control" id="update_date_start" name="date_start" value="${new Date(data.start).toLocaleDateString()}">
             </div>
                 <div class="form-group">
                     <label for="date_end">Date End</label>
-                    <input type="text" class="form-control" id="update_date_end" name="date_end" value="${data.end}">
+                    <input type="text" class="form-control" id="update_date_end" name="date_end" value="${new Date(data.end).toLocaleDateString()}">
                 </div>
                 <div class="form-group">
                     <label for="activity">Activity</label>
                     <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" id="update_description" name="description" value="${data.description}">
                 </div>
                 <input type="submit" value="Save"/>
             </form> 
@@ -150,9 +154,7 @@ const onSuccessPullTrip = (data, newTarget) => {
 $('.show-trip').on('click', '.update', function (event) {
     $('.update-section').children().remove()
     const newTarget = event.target
-    // console.log(event.target)
     let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
-    // console.log(tripId)
     fetch(`http://localhost:3000/api/v1/${tripId}`, {
         method: 'GET',
     })
@@ -166,20 +168,17 @@ $('.show-trip').on('click', '.update', function (event) {
 // ================ Update  ================  //
 $(".show-trip").on('submit', ".update-form", function (event) {
     let newId = window.location.pathname.split('/')[2]
-    // console.log('Hello')
     event.preventDefault()
     formValidation()
     let tripId = $(event.target).parent().attr('id')
-    // console.log(tripId)
-    // console.log('UPDATE FORM DATA --> ', $('.update-form').serialize())
     const updateData = {
         name: $('#update_name').val(),
         destination: $('#update_destination').val(),
         start: $('#update_date_start').val(),
         end: $('#update_date_end').val(),
         activities: $('#update_activity').val(),
+        description: $('#update_description').val(),
     }
-    // console.log(updateData);
     fetch(`http://localhost:3000/api/v1/trip/update/${tripId}`, {
         method: 'PUT',
         headers: {
@@ -198,7 +197,6 @@ $(".show-trip").on('submit', ".update-form", function (event) {
 
 
 $('.dropdown-btn-add-trip').on('click', function (event) {
-    // console.log('hello')
     event.target.classList.toggle("active")
      dropdownContainer = event.target.nextElementSibling;
     if (dropdownContainer.style.display === "block") {
@@ -209,7 +207,6 @@ $('.dropdown-btn-add-trip').on('click', function (event) {
 })
 
 $('.show-trip').on('click', '.dropdown-btn', function (event) {
-    // console.log('hello')
     event.target.classList.toggle("active")
     var dropdownContainer = event.target.nextElementSibling;
     if (dropdownContainer.style.display === "block") {
