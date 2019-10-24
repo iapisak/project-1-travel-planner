@@ -6,7 +6,6 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    outline: 0;
     font-family: 'Lato', sans-serif;
     justify-content: center;
   }
@@ -17,20 +16,23 @@
   }
   
   body {
+    display: block;
     font-family: sans-serif;
     min-height: 90vh;
     max-height: 90vh;
     background-image: url("/point-reyes.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    max-width: 400px;
+    max-width: 375px;
     margin: 0 auto;
   }
-  
+
   h1, h2 {
     margin-bottom: 35px;
-    margin-left: 10px;
+    justify-content: center;
     color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
   }
   
   label {
@@ -67,11 +69,10 @@
   /* LAYOUT */
   
   .container {
-    max-width: 1200px;
-    /* margin: 0 auto 40px; */
-    margin: 5px;
+    max-width: 375px;
+    margin: 5px 5px 50px 5px;
     overflow: hidden;
-    padding: 20px;
+    padding: 10px 20px 50px 20px;
     border: 0;
   }
   
@@ -160,18 +161,18 @@ nav form {
 /* ------- FOOTER ------*/
   
   footer {
-    position: static;
+    position: absolute;
     background-color: rgba(11, 206, 241, 0.5);
-    width: 100%;
+    width: 375px;
     height: 74px;
     color: rgba(39, 39, 39, 0.637);
     text-shadow: lightcyan;
     text-align: center;
-    overflow: hidden;
     bottom: 0;
+    margin-top: 20px;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 400px) {
     footer {
       position: absolute;
     }
