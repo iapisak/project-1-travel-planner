@@ -10,10 +10,10 @@
     justify-content: center;
   }
   
-  html {
+  /* html {
     position: relative;
     min-height: 100vh;
-  }
+  } */
   
 .wrap {
   width: 550px;
@@ -21,10 +21,11 @@
 }
 
   body {
+    position: relative;
     display: block;
     font-family: sans-serif;
-    min-height: 90vh;
-    max-height: 90vh;
+    min-height: 100vh;
+    /* max-height: 90vh; */
     background-image: url("/point-reyes.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -32,6 +33,19 @@
     /* margin: 0 auto; */
     /* margin-bottom: 100px; */
   }
+
+  main {
+    /* position: relative; */
+    min-height: 78vh;
+    padding-bottom: 100px;
+  }
+
+/* @media (max-width: 380px){
+    html {  
+      min-height: 50vh;
+      margin-bottom: 0px; 
+    }
+  } */
 
   h1, h2 {
     margin: 20px 20px;
@@ -71,6 +85,11 @@
     cursor: pointer;
     box-shadow: none;
   }
+
+/* .form-section {
+  margin-bottom: -74px;
+} */
+
 
   /* LAYOUT */
   
@@ -161,10 +180,10 @@ nav form {
   
 /* ------- LOGIN PAGE ------- */
   
-  .login {
+  /* .login {
     max-width: 600px;
-    /* margin: 40px auto; */
-  }
+    margin: 40px auto;
+  } */
 
 /* ------- FOOTER ------*/
   
@@ -193,17 +212,6 @@ nav form {
   }
 
 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 /* ALERT */
 
     .alert.error:first-of-type {
