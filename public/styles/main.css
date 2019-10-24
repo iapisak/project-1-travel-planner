@@ -5,7 +5,6 @@
 
 * {
     box-sizing: border-box;
-    /* padding: 0.5%; */
     margin: 0;
     outline: 0;
     font-family: 'Lato', sans-serif;
@@ -24,7 +23,6 @@
     
     background-size: cover;
     background-repeat: no-repeat;
-
   }
   
   h1, h2 {
@@ -53,7 +51,7 @@
     background: rgb(243, 245, 247);
     width: auto;
     margin: 10px 20px;
-    margin-bottom: 15px;
+    margin-bottom: 70px;
     font-size: 16px;
     color: rgb(59, 57, 57);
     font-weight: 600;
@@ -63,15 +61,6 @@
     cursor: pointer;
     box-shadow: none;
   }
-  
-
-
-main {
-  /* background-image: url("/ave-of-giants.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 90vh; */
-}
 
   /* LAYOUT */
   
@@ -94,7 +83,6 @@ main {
     overflow: hidden;
   }
   
-  
   /* NAVIGATION */
   
   nav {
@@ -102,19 +90,8 @@ main {
     width: 100%;
     padding: 0;
     color: rgb(253, 251, 251);
-    /* margin-bottom: 40px; */
     overflow: hidden;
   }
-  
-  /* nav ul li:first-child { 
-    list-style:none;
-    float: left;
-    justify-content: center;
-    width: 200px;
-    padding: 20px 20px;
-    font-size: 30px;
-  
-  } */
 
   .organizer {
     float: left;
@@ -134,18 +111,8 @@ main {
     list-style-type: none;
     display: inline-block;
     font-size: 20px;
-    /* margin-right: 20px; */
   }
   
-  /* nav li:last-child {
-    margin-right: 0;
-  } */
-  
-/* #logout {
-  border-width: 2px;
-  border-radius: 20px;
-  border: white;
-} */
 
   nav li a {
     display: block;
@@ -161,8 +128,10 @@ main {
   li.active a, nav li:hover a {
     text-decoration: none;
     color: #ddd;
-    background: rgba(228, 140, 7, 0.37);
+    /* background: rgba(228, 140, 7, 0.37); */
+    border-width: 2px;
     border-radius: 20px;
+    border: white;
   }
   
   nav form {
@@ -175,15 +144,13 @@ main {
   }
   
   .user-data {
- margin-top: 15px;
- margin-left: 10px;
- color: white;
-
+  margin-top: 15px;
+  margin-left: 10px;
+  color: white;
   }
 
   .show-trip {
 
-    
   }
   
   /* LOGIN PAGE */
@@ -192,6 +159,7 @@ main {
     max-width: 600px;
     /* margin: 40px auto; */
   }
+
     
   /* FOOTER */
   
@@ -212,11 +180,11 @@ main {
     margin: 28px;
   }
 
-  li #logout {
-    border-width: 2px;
-    border-radius: 20px;
-    border: white;
-  }
+/* #logout {
+  border-width: 2px !important;
+  border-radius: 20px !important;
+  border: white !important;
+  } */
 
    /* ALERT */
   
