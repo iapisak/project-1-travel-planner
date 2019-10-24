@@ -33,6 +33,12 @@ $('#form').on('submit', function (event) {
     let newId = window.location.pathname.split('/')[2]
     event.preventDefault()
     formValidation()
+    
+    // let selectFriends = new Array ()
+    // $('input[name:"friend"]:checked').each(function () {
+    //     selectFriends.push(this.value)
+    // })
+
     if (validation) {
         $.ajax({
             method: "POST",
@@ -44,6 +50,7 @@ $('#form').on('submit', function (event) {
                 "end": $('#date_end').val(),
                 "activities": $('#activity').val(),
                 "description": $('#description').val(),
+                // "friend": selectFriends,
 
             },
             success: onSuccessTrip,

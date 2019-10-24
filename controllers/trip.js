@@ -24,15 +24,16 @@ const showTrip = (req, res) => {
 
 //-------------------- Create Trip ---------------------------//
 const createTrip = (req, res) => {
-    req.body.user = req.session.currentUser
-    // console.log(req.body)
-    db.Trip.create(req.body, (err, createEvent) => {
-        if (createEvent) {
-            res.json(createEvent)
-        } else {
-            console.log(err)
-        }
-    })
+    console.log(req.body)
+    // req.body.user = req.session.currentUser
+
+    // db.Trip.create(req.body, (err, createEvent) => {
+    //     if (createEvent) {
+    //         res.json(createEvent)
+    //     } else {
+    //         console.log(err)
+    //     }
+    // })
 }
 //-------------------- Delete Trip ---------------------------//
 const deleteTrip = (req, res) => {

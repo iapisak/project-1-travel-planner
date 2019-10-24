@@ -35,9 +35,10 @@
 .dropdown-container {
     display: none;
     background-color: rgba(24, 78, 78, 0.6);
+    transition-duration: 700ms;
 }
 
 .dropdown-btn:hover { 
-    transform: scale(1.01); 
+    /* transform: scale(1.01);  */
     /* box-shadow: 10px 10px 10px rgb(194, 184, 184); */
 }
