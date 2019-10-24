@@ -31,18 +31,15 @@ const formValidation = () => {
 
 const selectFriends = new Array ()
 $('#add-friends-section').on('click', 'input', function(event) {
-    console.log(event.target)
+    // console.log(event.target)
     if (event.target.checked) {
-        console.log('Hello')
-        console.log(this.value)
+        // console.log(this.value)
         selectFriends.push({
             friendId: this.value,
             name: this.name,
         })
     }
 })
-
-console.log(selectFriends)
 
 $('#form').on('submit', function (event) {
     let newId = window.location.pathname.split('/')[2]
@@ -60,7 +57,7 @@ $('#form').on('submit', function (event) {
                 "end": $('#date_end').val(),
                 "activities": $('#activity').val(),
                 "description": $('#description').val(),
-                "friend": selectFriends,
+                "friends": selectFriends,
 
             },
             success: onSuccessTrip,
@@ -97,7 +94,12 @@ $('.show-trip').on('click', '.delete', function (event) {
 
 // ================ Show Trip ================  //
 const onSuccessGetTrip = (data) => {
+    console.log(data)
+
     data.forEach(function(element) {
+        const members = element.friends.map(friend => {
+            return `<p>${friend.name}</p>`
+        });
         const tripTemplete = `
         <div class="trip-section">
             <button class="dropdown-btn">
@@ -107,7 +109,10 @@ const onSuccessGetTrip = (data) => {
             </button>
             <div class="dropdown-container">
                 <div id=${element._id}>
-                    // Appending New Data //
+                    
+                    ${
+                        members.join('')
+                    }
                     <p>Activity : ${element.activities}</p>
                     <p>Description : ${element.description}</p>
                     <button class="delete">Delete</button>
@@ -124,11 +129,11 @@ const getTrip = () => {
     fetch(`/api/v1/trip/${userId}`, {
         method: 'GET',
       })
-        .then(dataStream => dataStream.json())
-        .then(res => {
-           onSuccessGetTrip(res.data)
-        })
-        .catch(err => console.log(err));
+    .then(dataStream => dataStream.json())
+    .then(res => {
+        onSuccessGetTrip(res.data)
+    })
+    .catch(err => console.log(err));
 }
 
 getTrip()
