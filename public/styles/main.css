@@ -49,7 +49,7 @@
 
   h1, h2 {
     margin: 0px 20px 0px 20px;
-    justify-content: center;
+    text-align: center;
     color: white;
     font-family: 'Dancing Script', cursive;
     font-size: 40px;
@@ -128,10 +128,10 @@
   
 
   .header-opactity-wrapper {
-    width:100%;
+    width: 375px;
     position:fixed;
     z-index:10;
-    background:inherit;
+    background: inherit;
 }
 
 .content-opactity-wrapper {
@@ -142,7 +142,7 @@
 }
 
 .footer-opactity-wrapper {
-width:100%;
+width: 375px;
 position:fixed;
 z-index:10;
 background:inherit;
