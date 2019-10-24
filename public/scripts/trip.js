@@ -29,15 +29,25 @@ const formValidation = () => {
     if ($('#description').val() === "") {validation = false}
 }
 
+const selectFriends = new Array ()
+$('#add-friends-section').on('click', 'input', function(event) {
+    console.log(event.target)
+    if (event.target.checked) {
+        console.log('Hello')
+        console.log(this.value)
+        selectFriends.push({
+            friendId: this.value,
+            name: this.name,
+        })
+    }
+})
+
+console.log(selectFriends)
+
 $('#form').on('submit', function (event) {
     let newId = window.location.pathname.split('/')[2]
     event.preventDefault()
     formValidation()
-    
-    // let selectFriends = new Array ()
-    // $('input[name:"friend"]:checked').each(function () {
-    //     selectFriends.push(this.value)
-    // })
 
     if (validation) {
         $.ajax({
@@ -50,7 +60,7 @@ $('#form').on('submit', function (event) {
                 "end": $('#date_end').val(),
                 "activities": $('#activity').val(),
                 "description": $('#description').val(),
-                // "friend": selectFriends,
+                "friend": selectFriends,
 
             },
             success: onSuccessTrip,
@@ -97,6 +107,7 @@ const onSuccessGetTrip = (data) => {
             </button>
             <div class="dropdown-container">
                 <div id=${element._id}>
+                    // Appending New Data //
                     <p>Activity : ${element.activities}</p>
                     <p>Description : ${element.description}</p>
                     <button class="delete">Delete</button>

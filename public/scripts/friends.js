@@ -2,7 +2,7 @@ const friends = (friends) => {
     friends.forEach(function (element) {
         const friendTemplate = `
             <div>
-                <input type="checkbox" id="f-${element._id}" name="friend" value="${element._id}">
+                <input type="checkbox" id="f-${element._id}" name="${element.name}" value="${element._id}">
                 <label for="f-${element._id}">${element.name}</label>
             </div>
     `
