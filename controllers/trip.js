@@ -24,7 +24,7 @@ const showTrip = (req, res) => {
 
 //-------------------- Create Trip ---------------------------//
 const createTrip = (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     req.body.user = req.session.currentUser
     db.Trip.create(req.body, (err, createEvent) => {
         if (createEvent) {
