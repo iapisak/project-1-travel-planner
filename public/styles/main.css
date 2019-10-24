@@ -15,6 +15,11 @@
     min-height: 100vh;
   }
   
+.wrap {
+  width: 550px;
+  margin: 0 auto;
+}
+
   body {
     display: block;
     font-family: sans-serif;
