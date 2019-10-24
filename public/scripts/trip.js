@@ -84,14 +84,14 @@ const onSuccessGetTrip = (data) => {
         const tripTemplete = `
         <div class="trip-section">
             <button class="dropdown-btn">
-                ${element.name}<br>
+            <strong>${element.name}</strong><br>
                 Destination : ${element.destination}<br>
                 Date: ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
             </button>
             <div class="dropdown-container">
                 <div id=${element._id}>
-                    <p>Activity : ${element.activities}</p>
-                    <p>Description : ${element.description}</p>
+                    <p>Activities : ${element.activities}</p>
+                    <p class="description">Description : ${element.description}</p>
                     <button class="delete">Delete</button>
                     <button class="update">Update</button>
                 </div>
