@@ -10,10 +10,10 @@
     justify-content: center;
   }
   
-  html {
+  /* html {
     position: relative;
     min-height: 100vh;
-  }
+  } */
   
 .wrap {
   width: 550px;
@@ -21,19 +21,34 @@
 }
 
   body {
+    position: relative;
     display: block;
     font-family: sans-serif;
-    min-height: 90vh;
-    max-height: 90vh;
+    min-height: 100vh;
+    /* max-height: 90vh; */
     background-image: url("/point-reyes.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     max-width: 375px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    /* margin-bottom: 100px; */
   }
 
+  main {
+    /* position: relative; */
+    min-height: 78vh;
+    padding-bottom: 100px;
+  }
+
+/* @media (max-width: 380px){
+    html {  
+      min-height: 50vh;
+      margin-bottom: 0px; 
+    }
+  } */
+
   h1, h2 {
-    margin-bottom: 35px;
+    margin: 20px 20px;
     justify-content: center;
     color: white;
     font-family: 'Dancing Script', cursive;
@@ -48,7 +63,7 @@
   }
   
   input {
-    width: 100%;
+    width: 300px;
     padding: 10px;
     font-size: 16px;
     /* line-height: 1.6; */
@@ -71,13 +86,20 @@
     box-shadow: none;
   }
 
+/* .form-section {
+  margin-bottom: -74px;
+} */
+
+
   /* LAYOUT */
   
   .container {
+    display: flex;
     max-width: 375px;
-    margin: 5px 5px 50px 5px;
+    max-height: 100vh;
+    margin: 5px;
     overflow: hidden;
-    padding: 10px 20px 50px 20px;
+    padding: 10px 20px 0px 20px;
     border: 0;
   }
   
@@ -158,10 +180,10 @@ nav form {
   
 /* ------- LOGIN PAGE ------- */
   
-  .login {
+  /* .login {
     max-width: 600px;
-    /* margin: 40px auto; */
-  }
+    margin: 40px auto;
+  } */
 
 /* ------- FOOTER ------*/
   
@@ -174,14 +196,14 @@ nav form {
     text-shadow: lightcyan;
     text-align: center;
     bottom: 0;
-    margin-top: 20px;
+    margin: 0;
   }
 
-  @media only screen and (max-width: 400px) {
+  /* @media only screen and (max-width: 400px) {
     footer {
       position: absolute;
     }
-  }
+  } */
 
   .copyright {
   text-align: center;
@@ -190,17 +212,6 @@ nav form {
   }
 
 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 /* ALERT */
 
     .alert.error:first-of-type {
