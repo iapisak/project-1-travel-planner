@@ -26,6 +26,11 @@
     outline: none;
 }
 
+#add-friends-section {
+    padding-bottom: 15px;
+    background-color: rgba(24, 78, 78, 0.2);
+}
+
 .delete {
 border: white;
 border-width: 5px;
