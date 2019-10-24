@@ -101,7 +101,7 @@ const onSuccessGetTrip = (data) => {
         const tripTemplete = `
         <div class="trip-section">
             <button class="dropdown-btn">
-                ${element.name}<br>
+            <strong>${element.name}</strong><br>
                 Destination : ${element.destination}<br>
                 Date: ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
             </button>
