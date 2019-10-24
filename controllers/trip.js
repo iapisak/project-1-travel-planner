@@ -25,8 +25,8 @@ const showTrip = (req, res) => {
 //-------------------- Show Trip with Member  ---------------------------//
 
 const memberTrip = (req, res) => {
-    console.log(req.params.userId);
-    console.log(req.session.currentUser);
+    // console.log(req.params.userId);
+    // console.log(req.session.currentUser);
     db.Trip.find( { 'friends.friendId': req.params.userId }, (err, foundMember) => {
         // $in: [ { friendId: req.params.userId } ]
         if (err) {return console.log(err)}
