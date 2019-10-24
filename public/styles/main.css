@@ -30,7 +30,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     max-width: 375px;
-    /* margin: 0 auto; */
+    margin: 0 auto;
     /* margin-bottom: 100px; */
   }
 
@@ -48,7 +48,7 @@
   } */
 
   h1, h2 {
-    margin: 20px 20px;
+    margin: 0px 20px 0px 20px;
     justify-content: center;
     color: white;
     font-family: 'Dancing Script', cursive;
@@ -73,7 +73,7 @@
   }
   
   input[type="submit"] {
-    background: rgb(243, 245, 247);
+    background: white;
     width: auto;
     margin: 10px 20px;
     /* margin-bottom: 70px; */
@@ -126,7 +126,31 @@
     font-size: 40px;
   } 
   
+
+  .header-opactity-wrapper {
+    width:100%;
+    position:fixed;
+    z-index:10;
+    background:inherit;
+}
+
+.content-opactity-wrapper {
+    width:100%;
+    padding-top:92px;
+    z-index:5;
+    overflow:auto;
+}
+
+.footer-opactity-wrapper {
+width:100%;
+position:fixed;
+z-index:10;
+background:inherit;
+}
+
 nav {
+    position: fixed;
+    top: 0;
     background-color: rgba(11, 206, 241, 0.5);
     width: 100%;
     padding: 0;
@@ -192,7 +216,7 @@ nav form {
     position: absolute;
     background-color: rgba(11, 206, 241, 0.5);
     width: 375px;
-    height: 74px;
+    height: 73px;
     color: rgba(39, 39, 39, 0.637);
     text-shadow: lightcyan;
     text-align: center;
@@ -209,7 +233,7 @@ nav form {
   .copyright {
   text-align: center;
   vertical-align: middle;
-  line-height: 75px;
+  line-height: 74px;
   }
 
 
