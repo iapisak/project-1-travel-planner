@@ -1,6 +1,6 @@
 const db = require('../models')
 
-//-------------------- Get Trip ---------------------------//
+//-------------------- Get Trip for update ---------------------------//
 const getTrip = (req, res) => {
     db.Trip.findOne( { _id: req.params.tripId }, (err, foundTrip) => {
         if (err) {return console.log(err)}
@@ -11,7 +11,7 @@ const getTrip = (req, res) => {
     })
 }
 
-//-------------------- Show Trip ---------------------------//
+//-------------------- Show Trip in user profile ---------------------------//
 const showTrip = (req, res) => {
     db.Trip.find({ user: req.params.userId}, (err, foundTrip) => {
         if (err) {return console.log(err)}
@@ -21,6 +21,22 @@ const showTrip = (req, res) => {
         })
     })
 }
+
+//-------------------- Show Trip with Member  ---------------------------//
+
+const memberTrip = (req, res) => {
+    // console.log(req.params.userId);
+    // console.log(req.session.currentUser);
+    db.Trip.find( { 'friends.friendId': req.params.userId }, (err, foundMember) => {
+        // $in: [ { friendId: req.params.userId } ]
+        if (err) {return console.log(err)}
+        res.json({
+            status: 200,
+            data: foundMember,
+        })
+    })
+}
+
 
 //-------------------- Create Trip ---------------------------//
 const createTrip = (req, res) => {
@@ -61,4 +77,5 @@ module.exports = {
     createTrip,
     deleteTrip,
     updateTrip,
+    memberTrip,
 }

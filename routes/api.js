@@ -16,6 +16,7 @@ router.get('/friends', ctrl.friend.findFriends)
 // ----------------------------- TRIPS -------------------------- //
 router.get('/:tripId', ctrl.trip.getTrip)
 router.get('/trip/:userId', ctrl.trip.showTrip)
+router.get('/trip/member/:userId', ctrl.trip.memberTrip)
 router.post('/trip/create', ctrl.trip.createTrip)
 router.delete('/trip/delete/:tripId', ctrl.trip.deleteTrip)
 router.put('/trip/update/:tripId', ctrl.trip.updateTrip)

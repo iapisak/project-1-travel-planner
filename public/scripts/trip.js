@@ -1,20 +1,20 @@
 // ================ Find Friends ================  //
-const onSuccessGetFriend = (friends) => {
-    console.log(friends)
-}
+// const onSuccessGetFriend = (friends) => {
+//     console.log(friends)
+// }
 
 
-$('#friends').on('click', function () {
-    console.log('Hello')
-    fetch(`http://localhost:3000/api/v1/friends`, {
-        method: 'GET',
-    })
-    .then(stream => stream.json())
-    .then(res => {
-        onSuccessGetFriend(res.data)
-    })
-    .catch(err => console.log(err))
-})
+// $('#friends').on('click', function () {
+//     console.log('Hello')
+//     fetch(`http://localhost:3000/api/v1/friends`, {
+//         method: 'GET',
+//     })
+//     .then(stream => stream.json())
+//     .then(res => {
+//         onSuccessGetFriend(res.data)
+//     })
+//     .catch(err => console.log(err))
+// })
 
 
 // ================ Trip form front-end ================  //
@@ -94,8 +94,7 @@ $('.show-trip').on('click', '.delete', function (event) {
 
 // ================ Show Trip ================  //
 const onSuccessGetTrip = (data) => {
-    console.log(data)
-
+    // console.log(data)
     data.forEach(function(element) {
         const members = element.friends.map(friend => {
             return `<p>${friend.name}</p>`
@@ -121,7 +120,12 @@ const onSuccessGetTrip = (data) => {
             <div class="update-section"></div>
         </div>
     `
-    $('.show-trip').append(tripTemplete)
+    if (userId) {
+        $('.show-trip').append(tripTemplete)
+    } else {
+        $('.trip-from-friend').append(tripTemplete)
+    }
+    
     })
 }
 
@@ -135,10 +139,24 @@ const getTrip = () => {
     })
     .catch(err => console.log(err));
 }
-
 getTrip()
 
-// ================ Pull Data Before Update  ================  //
+// console.log(userId)
+const getMemberWithTrip = () => {
+    fetch(`/api/v1/trip/member/${userId}`, {
+        credentials: 'include',
+        method: 'GET',
+    })
+    .then(dataStream => dataStream.json())
+    .then(res => {
+        onSuccessGetTrip(res.data)
+    })
+    .catch(err => console.log(err))
+}
+
+getMemberWithTrip()
+
+// ================ Get Data Before Update  ================  //
 const onSuccessPullTrip = (data, newTarget) => {
     const tripUpdateTemplete = `
         <section id="${data._id}" class="container">
