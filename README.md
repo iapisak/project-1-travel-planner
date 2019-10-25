@@ -13,3 +13,10 @@ We hope you enjoy it!
 [wireframe sketch](wireframe.png);
 
 ## User Story
+
+-A user is greeted with a simple login page to access your profile. If you don't have one, no problem!
+-Go ahead and click the "sign up" in the upper right of the screen and fill in your information.
+-You'll be redirected back to the first page in order to login in. 
+
+-Once in, you might already see a trip if a friend has added one!
+-Go ahead and add a trip, filling out all details. If you have any friends on the application that are coming along with you, feel free to add then. -They now have access to your trip!
