@@ -27,5 +27,6 @@ app.use('/', routes.view)
 
 app.use('/api/v1', routes.api)
 
-app.listen(port, () => console.log(`Server start on port ${port}`))
 
+// Start Server
+app.listen(port, () => console.log(`Server start on port ${port}`))

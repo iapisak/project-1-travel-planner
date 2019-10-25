@@ -5,10 +5,21 @@ form && form.addEventListener('submit', (event) => {
   let formIsValid = true;
   const userData = {};
   event.preventDefault();
+  $('.alert').remove();
+  
   
   // Add Alert Message
   [...form.elements].forEach(input => {
-    if (input.type !== 'submit' && input.value === '') {
+    if (input.id === 'password2' && input.value === '') {
+      formIsValid = false;
+      input.classList.add('input-error');
+      input.insertAdjacentHTML('afterend', `
+        <div class='alert ${input.id}-message'>
+          Please confirm your password
+        </div>
+    `);
+    
+    } else if (input.type !== 'submit' && input.value === '') {
       formIsValid = false;
       input.classList.add('input-error');
       input.insertAdjacentHTML('afterend', `
@@ -16,6 +27,7 @@ form && form.addEventListener('submit', (event) => {
           Please enter your ${input.id}
         </div>
     `);
+    
     } else if (input.type === 'password' && input.value.length < 4) {
       formIsValid = false;
       input.classList.add('input-error');

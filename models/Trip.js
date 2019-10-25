@@ -7,6 +7,8 @@ const tripSchema = new Schema({
   start: Date,
   end: Date,
   activities: String,
+  description: String,
+  friends: Array,
   user: {
     type: Schema.Types.ObjectId,
     ref :'User'

@@ -7,20 +7,24 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="/styles/main.css">
     <!-- Main JS -->
+    <script defer
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
     <script defer src="/scripts/main.js"></script>
     <title>Sign Up</title>
   </head>
   <body>
 
-    <nav>
+    <nav class="header-opactity-wrapper">
       <ul>
         <li><a href="/">Log In</a></li>
       </ul>
     </nav>
 
-    <main class="login">
-      <section class="container">
-        <h1>Welcome to your Travel Planner!</h1>
+    <main class="login content-opactity-wrapper">
+    <h1>Welcome to your <br> Travel Planner</h1>
+      <section class="container form-section">
         <form id="signup">
           <div class="form-group">
             <label for="name">First Name</label>
@@ -48,8 +52,8 @@
       </section>
     </main>
 
-    <footer>
-      <p>&copy; Brent & Jun Travel Inc.</p>
+    <footer class="footer-opactity-wrapper">
+      <section class="copyright">&copy; Brent & Jun Travel Inc.</section>
     </footer>
 
   </body>
