@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const app = express()
 
+require('dotenv').config();
+
 const port = process.env.port || 3000
 
 // routes
