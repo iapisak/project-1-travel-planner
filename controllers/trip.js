@@ -56,9 +56,17 @@ const deleteTrip = (req, res) => {
 }
 
 const removeSelf = (req, res) => {
-    db.Trip.findByIdAndDelete({ 'friends.friendId': req.params.userId }, (err, deleteThis) => {
-        if (deleteThis) { res.json(deleteThis)}
-        console.log(err)
+    // find the trip with the req.params.tripId
+    db.Trip.findById(req.params.tripId, (err, foundTrip) => {
+        if (err) { return res.status(500).json({ error: "Could not find trip with that Id"}) }
+        // loop through the foundTrip's friends array, returning every entry that doesn't contain the user's ID
+        let newArray = foundTrip.friends.filter( friend => friend.friendId !== req.session.currentUser)
+        // set the value of the friends array to the new array we created using filter
+        foundTrip.friends = newArray
+        // save the found trip
+        foundTrip.save()
+        // return it to the front-end
+        return res.json(foundTrip)
     })
 }
 

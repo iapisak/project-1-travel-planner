@@ -55,10 +55,6 @@ const onSuccessTrip = (data)=> {
     console.log(data)
 }
 
-// const onError = (response) => {
-//     console.log(response);
-// }
-
 // ================ Append Trip Created By User ================  //
 
 const getTrip = () => {
@@ -99,7 +95,33 @@ const onSuccessGetTrip = (data) => {
             <div class="update-section"></div>
         </div>
     `
+        const memberTemplete = `
+        <div class="trip-section">
+        <button class="dropdown-btn">
+        <strong>${element.name}</strong><br>
+            Destination : ${element.destination}<br>
+            Date: ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}<br>
+            Create by ${element.userName}
+        </button>
+        <div class="dropdown-container">
+            <div id=${element._id}>
+                
+                ${
+                    `<p>On trip: ${members.join(', ')}</p>`
+                }
+                <p>Activity : ${element.activities}</p>
+                <p>Description : ${element.description}</p>
+                <button class="remove">Remove</button>
+                <button class="update">Update</button>
+            </div>
+        <div class="update-section"></div>
+    </div>
+        `
+    if (element.user == userId){
     $('.show-trip').append(tripTemplete)
+    } else  if (element.user !== userId) {
+        $('.trip-from-friend').append(memberTemplete)
+    }
     })
 }
 
@@ -114,81 +136,16 @@ const getMemberWithTrip = () => {
     })
     .then(dataStream => dataStream.json())
     .then(res => {
-        onSuccessMemberTrip(res.data)
+        onSuccessGetTrip(res.data)
     })
     .catch(err => console.log(err))
-}
-
-const onSuccessMemberTrip = (data) => {
-    console.log(data)
-    data.forEach(function(element) {
-        const members = element.friends.map(friend => {
-            return `${friend.name}`
-        });
-        const tripTemplete = `
-        <div class="trip-section">
-            <button class="dropdown-btn">
-            <strong>${element.name}</strong><br>
-                Destination : ${element.destination}<br>
-                Date: ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}<br>
-                Create by ${element.userName}
-            </button>
-            <div class="dropdown-container">
-                <div id=${element._id}>
-                    
-                    ${
-                        `<p>On trip: ${members.join(', ')}</p>`
-                    }
-                    <p>Activity : ${element.activities}</p>
-                    <p>Description : ${element.description}</p>
-                    <button class="remove">Remove</button>
-                    <button class="update">Update</button>
-                </div>
-            <div class="update-section"></div>
-        </div>
-    `
-    if (data.user !== userId) {
-        $('.trip-from-friend').append(tripTemplete)
-    }
-    
-    })
-    
 }
 
 getMemberWithTrip()
 
-// ================ Delete Trip ================  //
-
-$('.content-opactity-wrapper').on('click', '.delete', function (event) {
-    $(event.target).parents('.trip-section').remove()
-    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
-    fetch(`http://localhost:3000/api/v1/trip/delete/${tripId}`, {
-        method: 'DELETE',
-    })
-    .then(stream => stream.json())
-    .then(res => {
-        console.log(res)
-    })
-    .catch(err => console.log(err))
-})
-
-$('.content-opactity-wrapper').on('click', '.remove', function (event) {
-    $(event.target).parents('.trip-section').remove()
-    //let memberId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
-    fetch(`http://localhost:3000/api/v1/trip/member/destroy/${userId}`, {
-        method: 'DELETE',
-    })
-    .then(stream => stream.json())
-    .then(res => {
-        console.log(res)
-    })
-    .catch(err => console.log(err))
-})
-
 // ================ Call Data to The Form Before Update  ================  //
 
 $('.content-opactity-wrapper').on('click', '.update', function (event) {
-    console.log(this)
     $('.update-section').children().remove()
     const newTarget = event.target
     let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
@@ -235,35 +192,35 @@ const onSuccessPullTrip = (data, newTarget) => {
         </section>
     `
     const memberUpdateTemplete = `
-        <section id="${data._id}" class="container">
-            <form class="update-form">
-                <div class="form-group">
-                    <label for="activity">Activity</label>
-                    <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" class="form-control" id="update_description" name="description" value="${data.description}">
-                </div>
-
-                <input type="submit" value="Save"/>
-            </form> 
-        </section>
+    <section id="${data._id}" class="container">
+    <form class="update-form">
+        <div class="form-group">
+            <label for="activity">Activity</label>
+            <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="update_description" name="description" value="${data.description}">
+        </div>
+        <input type="submit" value="Save"/>
+    </form> 
+</section>
     
     `
-    if (data.user === userId) {
-        $(newTarget).parents('.content-opactity-wrapper').children('.show-trip').children('.trip-section').children('.dropdown-container').children('.update-section').append(tripUpdateTemplete)
+    if (data.user == userId) {
+        $(newTarget).parent().parent().parent().children('.dropdown-container').children('.update-section').append(tripUpdateTemplete);
     } else {
-        $(newTarget).parents('.content-opactity-wrapper').children('.trip-from-friend').children('.trip-section').children('.dropdown-container').children('.update-section').append(memberUpdateTemplete)
+        $(newTarget).parent().parent().parent().children('.dropdown-container').children('.update-section').append(memberUpdateTemplete);
     }
-
+        
 }
 
 // ================ Update After User Edit The Form  ================  //
 
-$(".show-trip").on('submit', ".update-form", function (event) {
+$(".content-opactity-wrapper").on('submit', ".update-form", function (event) {
     event.preventDefault()
     formValidation()
+
     let tripId = $(event.target).parent().attr('id')
     const updateData = {
         name: $('#update_name').val(),
@@ -286,6 +243,35 @@ $(".show-trip").on('submit', ".update-form", function (event) {
     })
     .catch(err => console.log(err))
     window.location = `/profile/${newId}`
+})
+
+// ================ Delete Trip ================  //
+
+$('.content-opactity-wrapper').on('click', '.delete', function (event) {
+    $(event.target).parents('.trip-section').remove()
+    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
+    fetch(`http://localhost:3000/api/v1/trip/delete/${tripId}`, {
+        method: 'DELETE',
+    })
+    .then(stream => stream.json())
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => console.log(err))
+})
+
+$('.content-opactity-wrapper').on('click', '.remove', function (event) {
+    $(event.target).parents('.trip-section').remove()
+    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
+    console.log(userId)
+    fetch(`http://localhost:3000/api/v1/trip/member/destroy/${tripId}`, {
+        method: 'DELETE',
+    })
+    .then(stream => stream.json())
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => console.log(err))
 })
 
 
