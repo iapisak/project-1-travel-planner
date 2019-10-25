@@ -15,15 +15,6 @@ logout.on('click', (event) => {
 
 const userId = window.location.pathname.split('/')[2]
 
-const onSuccess = (user) => {
-        const template =`
-            <p><strong>Name</strong>: ${user.name} ${user.lastName}</p>
-            <p><strong>Email</strong>: ${user.email}</p>
-            <p><strong>Member Since</strong>: ${new Date(user.signupDate).toLocaleDateString()}</p>
-        `
-        $('.user-data').append(template)
-}
-
 
 const getProfile = () => {
   fetch(`/api/v1/profiles/${userId}`, {
@@ -34,6 +25,15 @@ const getProfile = () => {
       onSuccess(res.data)
     })
     .catch(err => console.log(err));
+}
+
+const onSuccess = (user) => {
+  const template =`
+      <p><strong>Name</strong>: ${user.name} ${user.lastName}</p>
+      <p><strong>Email</strong>: ${user.email}</p>
+      <p><strong>Member Since</strong>: ${new Date(user.signupDate).toLocaleDateString()}</p>
+  `
+  $('.user-data').append(template)
 }
 
 getProfile()
