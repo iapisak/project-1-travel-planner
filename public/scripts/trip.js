@@ -1,22 +1,3 @@
-// ================ Find Friends ================  //
-// const onSuccessGetFriend = (friends) => {
-//     console.log(friends)
-// }
-
-
-// $('#friends').on('click', function () {
-//     console.log('Hello')
-//     fetch(`http://localhost:3000/api/v1/friends`, {
-//         method: 'GET',
-//     })
-//     .then(stream => stream.json())
-//     .then(res => {
-//         onSuccessGetFriend(res.data)
-//     })
-//     .catch(err => console.log(err))
-// })
-
-
 // ================ Trip form front-end ================  //
 let validation = true
 
@@ -92,12 +73,12 @@ $('.show-trip').on('click', '.delete', function (event) {
     .catch(err => console.log(err))
 })
 
-// ================ Show Trip ================  //
+// ================ get Trip from user create ================  //
 const onSuccessGetTrip = (data) => {
     // console.log(data)
     data.forEach(function(element) {
         const members = element.friends.map(friend => {
-            return `<p>${friend.name}</p>`
+            return `${friend.name}`
         });
         const tripTemplete = `
         <div class="trip-section">
@@ -110,7 +91,7 @@ const onSuccessGetTrip = (data) => {
                 <div id=${element._id}>
                     
                     ${
-                        members.join('')
+                        `<p>On trip: ${members.join(', ')}</p>`
                     }
                     <p>Activity : ${element.activities}</p>
                     <p>Description : ${element.description}</p>
@@ -139,9 +120,10 @@ const getTrip = () => {
     })
     .catch(err => console.log(err));
 }
+//======== Call Function =================//
 getTrip()
 
-// console.log(userId)
+// ================ Get Trip from member create  ================  //
 const getMemberWithTrip = () => {
     fetch(`/api/v1/trip/member/${userId}`, {
         credentials: 'include',
@@ -154,6 +136,7 @@ const getMemberWithTrip = () => {
     .catch(err => console.log(err))
 }
 
+//======== Call Function =================//
 getMemberWithTrip()
 
 // ================ Get Data Before Update  ================  //
@@ -206,7 +189,7 @@ $('.show-trip').on('click', '.update', function (event) {
     .catch(err => console.log(err))
 })
 
-// ================ Update  ================  //
+// ================ Update after user Edit the form  ================  //
 $(".show-trip").on('submit', ".update-form", function (event) {
     let newId = window.location.pathname.split('/')[2]
     event.preventDefault()
@@ -236,7 +219,7 @@ $(".show-trip").on('submit', ".update-form", function (event) {
 })
 
 
-
+// =========== Drop down function ** when ** the page load ========== //
 $('.dropdown-btn-add-trip').on('click', function (event) {
     event.target.classList.toggle("active")
      dropdownContainer = event.target.nextElementSibling;
@@ -247,6 +230,7 @@ $('.dropdown-btn-add-trip').on('click', function (event) {
     }
 })
 
+// =========== Drop down function ** after ** the page load ========== //
 $('.show-trip').on('click', '.dropdown-btn', function (event) {
     event.target.classList.toggle("active")
     var dropdownContainer = event.target.nextElementSibling;
