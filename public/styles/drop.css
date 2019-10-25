@@ -40,6 +40,15 @@ color: white;
 background: rgba(255, 166, 0, 0.425);
 }
 
+.remove {   
+    border: white;
+    border-width: 5px;
+    margin: 20px;
+    border-radius: 20px;
+    color: white;
+    background: rgba(255, 166, 0, 0.425);
+}
+
 .update {
     border: white;
     border-width: 5px;
