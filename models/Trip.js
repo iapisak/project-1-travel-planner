@@ -12,7 +12,8 @@ const tripSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref :'User'
-  }
+  },
+  userName: String,
 })
 
 module.exports = mongoose.model('Trip', tripSchema)

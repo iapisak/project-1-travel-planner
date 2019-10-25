@@ -6,7 +6,10 @@ const friends = (friends) => {
                 <label for="f-${element._id}">${element.name}</label>
             </div>
     `
+    if (element._id !== userId) {
         $('#add-friends-section').append(friendTemplate)
+    }
+        
     })
 }
 

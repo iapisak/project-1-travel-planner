@@ -1,3 +1,4 @@
+
 const form = document.querySelector('form');
 
 // If form is not falsey, listen for form submit event

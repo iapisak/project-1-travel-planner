@@ -11,7 +11,7 @@ const getTrip = (req, res) => {
     })
 }
 
-//-------------------- Show Trip in user profile ---------------------------//
+//-------------------- Find Trip created By User ---------------------------//
 const showTrip = (req, res) => {
     db.Trip.find({ user: req.params.userId}, (err, foundTrip) => {
         if (err) {return console.log(err)}
@@ -22,13 +22,10 @@ const showTrip = (req, res) => {
     })
 }
 
-//-------------------- Show Trip with Member  ---------------------------//
+//-------------------- Find Trip Created By Member  ---------------------------//
 
 const memberTrip = (req, res) => {
-    // console.log(req.params.userId);
-    // console.log(req.session.currentUser);
     db.Trip.find( { 'friends.friendId': req.params.userId }, (err, foundMember) => {
-        // $in: [ { friendId: req.params.userId } ]
         if (err) {return console.log(err)}
         res.json({
             status: 200,
@@ -40,8 +37,8 @@ const memberTrip = (req, res) => {
 
 //-------------------- Create Trip ---------------------------//
 const createTrip = (req, res) => {
-    // console.log(req.body)
     req.body.user = req.session.currentUser
+    req.body.userName = req.session.currentName
     db.Trip.create(req.body, (err, createEvent) => {
         if (createEvent) {
             res.json(createEvent)
@@ -58,9 +55,15 @@ const deleteTrip = (req, res) => {
     })
 }
 
+const removeSelf = (req, res) => {
+    db.Trip.findByIdAndDelete({ 'friends.friendId': req.params.userId }, (err, deleteThis) => {
+        if (deleteThis) { res.json(deleteThis)}
+        console.log(err)
+    })
+}
+
 //-------------------- Update Trip ---------------------------//
 const updateTrip = (req, res) => {
-    // console.log(req.body)
     db.Trip.findByIdAndUpdate(
        req.params.tripId,
        req.body,
@@ -78,4 +81,5 @@ module.exports = {
     deleteTrip,
     updateTrip,
     memberTrip,
+    removeSelf,
 }

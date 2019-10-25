@@ -20,7 +20,7 @@ router.get('/findTrip', (req, res) => {
 })
 
 router.delete('/delete', (req, res) => {
-  db.User.deleteMany({}, (err, deleteIt) => {
+  db.Trip.deleteMany({}, (err, deleteIt) => {
     if (err) {return console.log(err)}
     res.json(deleteIt)
   })
