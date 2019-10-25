@@ -20,7 +20,7 @@ router.get('/findTrip', (req, res) => {
 })
 
 router.delete('/delete', (req, res) => {
-  db.User.deleteMany({}, (err, deleteIt) => {
+  db.Trip.deleteMany({}, (err, deleteIt) => {
     if (err) {return console.log(err)}
     res.json(deleteIt)
   })
@@ -44,7 +44,7 @@ router.get('/signup', (req, res) => {
 // GET User Profile
 router.get('/profile/:userId', (req, res) => {
   if (!req.session.currentUser) {
-    return res.redirect('/login');
+    return res.redirect('/');
   }
     
   res.sendFile('views/profile/show.html', {

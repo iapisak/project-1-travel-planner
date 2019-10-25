@@ -72,6 +72,7 @@ const createSession = (req, res) => {
 
           if (isMatch) {
               req.session.currentUser = foundUser._id
+              req.session.currentName = foundUser.name
               return res.status(201).json({
                   status: 201,
                   data: { id: foundUser._id}

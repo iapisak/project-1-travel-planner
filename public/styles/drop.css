@@ -1,0 +1,79 @@
+.dropdown-btn {
+    margin-top: 20px;
+    padding: 15px;
+    font-size: 20px;
+    color: #f8f7f7;
+    text-align: center;
+    display: block;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+}
+
+.dropdown-btn-add-trip {
+    margin-top: 20px;
+    padding: 30px;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+}
+
+#add-friends-section {
+    padding-bottom: 15px;
+    background-color: rgba(24, 78, 78, 0.2);
+}
+
+.delete {
+border: white;
+border-width: 5px;
+margin: 20px;
+border-radius: 20px;
+color: white;
+background: rgba(255, 166, 0, 0.425);
+}
+
+.remove {   
+    border: white;
+    border-width: 5px;
+    margin: 20px;
+    border-radius: 20px;
+    color: white;
+    background: rgba(255, 166, 0, 0.425);
+}
+
+.update {
+    border: white;
+    border-width: 5px;
+    margin: 20px;
+    border-radius: 20px;
+    color: white;
+    background: rgba(255, 166, 0, 0.425);
+}
+.active {
+    background-color: rgba(24, 78, 78, 0.6);
+    color: white;
+    outline: none;
+    }
+
+
+.dropdown-container {
+    position: relative;
+    display: none;
+    background-color: rgba(24, 78, 78, 0.6);
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    outline: none;
+}
+
+.description {
+    font-size: 15px;
+}

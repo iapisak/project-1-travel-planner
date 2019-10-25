@@ -6,55 +6,80 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Main CSS -->
     <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/drop.css">
     <script defer
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
     <script defer src="/scripts/showProfile.js"></script>
     <script defer src="/scripts/trip.js"></script>
+    <script defer src="/scripts/friends.js"></script>
     <title>Profile</title>
   </head>
   <body>
-
-    <nav>
+    
+    <nav class="header-opactity-wrapper">
       <ul>
-        <li><a id="logout" href="/logout">Log Out</a></li>
+        <section class="organizer">Trip Organizer</section>
+        <li id="logoutbutton"><a id="logout" href="/logout">Log Out</a></li>
       </ul>
     </nav>
-    <section class="container"></section>
 
-    <main>
-        <form id="form">
-            <div class="form-group">
-                <label for="name">Trip Name</label>
-                <input type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="form-group">
-              <label for="destination">Destination</label>
-              <input type="text" class="form-control" id="destination" name="destination">
-          </div>
-            <div class="form-group">
-              <label for="date_start">Date Start</label>
-              <input type="date" class="form-control" id="date_start" name="date_start">
-          </div>
-            <div class="form-group">
-                <label for="date_end">Date End</label>
-                <input type="date" class="form-control" id="date_end" name="date_end">
-            </div>
-            <div class="form-group">
-                <label for="activity">Activity</label>
-                <input type="text" class="form-control" id="activity" name="activity">
-            </div>
+    <main class="content-opactity-wrapper">
+        <section class="user-data" class="container"></section>
+        <section class='show-trip' class="container"></section>
+        <section class='trip-from-friend' class="container"></section>
+    
+        <div class="form-section">
+          <button class="dropdown-btn-add-trip flash-button">Add Trips</button>
+          <div class="dropdown-container">
+            <section class="container">
+              <form id="form">
+                <div class="form-group">
+                    <label for="name">Trip Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                  <label for="destination">Destination</label>
+                  <input type="text" class="form-control" id="destination" name="destination">
+                </div>
+                <div class="form-group">
+                  <label for="date_start">Date Start</label>
+                  <input type="date" class="form-control" id="date_start" name="date_start">
+                </div>
+                <div class="form-group">
+                    <label for="date_end">Date End</label>
+                    <input type="date" class="form-control" id="date_end" name="date_end">
+                </div>
 
-            <input type="submit" value="Submit"/>
-        </form>
-      </main>
+                <!-- Adding Friends Area -->
+                <button class="dropdown-btn-add-trip">
+                  Add Friends
+                </button>
+                <div class="dropdown-container">
+                    <div id="add-friends-section">Friends</div>
+                </div>
+                <!-- Adding Friends Area -->
 
-      <section class='show-trip'></section>
+                <div class="form-group">
+                    <label for="activity">Activity</label>
+                    <input type="text" class="form-control" id="activity" name="activity">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" id="description" name="description">
+                </div>
 
-    <footer>
-      <p>&copy; Brent & Jun Travel Inc.</p>
+                <input type="submit" value="Submit"/>
+            </form>
+          </section>
+        </div>
+      </div>
+    </main>
+    
+    
+    <footer class="footer-opactity-wrapper">
+        <section class="copyright">&copy; Brent & Jun Travel Inc.</section>
     </footer>
-
   </body>
 </html>
