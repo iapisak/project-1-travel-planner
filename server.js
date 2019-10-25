@@ -3,7 +3,9 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const app = express()
 
-const port = process.env.port || 3000
+require('dotenv').config();
+
+const port = process.env.PORT || 3000
 
 // routes
 const routes = require('./routes')
