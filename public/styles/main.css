@@ -9,42 +9,33 @@
   padding: 0;
   outline: none;
   font-weight: 600;
+  font-family: 'Lato', sans-serif;
   color: #6d6d62;
 }
 
-
-html {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-
+body {
+  margin: 0 auto;
+  height: 100vh;
 }
 
-body {
+.wrap {
   position: relative;
-  display: flex;
-  align-items: center;
-  width: 750px;
-  margin: 0 auto;
-  min-height: 100vh;
-  background-image: url("/point-reyes.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  font-family: 'Lato', sans-serif;
 }
 
 /* ==== Heading ===== */
 nav {
-  flex: 1;
-  position: absolute;
-  position: sticky;
+  height: 140px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   top: 0;
   width: 100%;
   background-color: #e4d8d3;
   border-bottom: solid 1px #73736f;
+  border-top: solid 1px #73736f;
+}
+
+nav h1 {
+  flex: 1;
 }
 
 span {
@@ -79,6 +70,12 @@ h1 {
   font-size: 35px;
 }
 
+h3 {
+  padding: 15px;
+  background-color: black;
+  color: white;
+}
+
 a, button{
   text-decoration: none;
   background-color: #73736f;
@@ -87,86 +84,67 @@ a, button{
   font-weight: 400;
   color: white;
   border-radius: 10px;
+  margin: 10px 0;
   cursor: pointer;
-  margin-left: 10px;
-  margin-right: 10px;
   padding: 10px;
   border: none;
   border-radius: 10px;
   text-align: center;
 }
 
+
 /* ==== Heading ===== */
+
 
 main {
   display: flex;
-  flex: 11;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
   background-image: url("/friends-car.jpg");
-  background-position: 0px 0px;
+  /* background-position: 250px 0px; */
   background-size: cover;
+  /* background-attachment: fixed; */
   background-repeat: no-repeat;
-  opacity: 0.8;
-}
-
-.wrap {
-  height: 1000px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
 }
 
 .content-opactity-wrapper {
   width:100%;
 }
 
-.flash-button {
-  animation-name: flash;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-size: 14px;
-    color: rgb(250, 246, 246);
-  }
-  
-
-  
-
-
-
-  /* LAYOUT */
-  
-
-  
-  .alert .container {
-    margin-bottom: 0;
-  }
-
-
-.form-group {
-  flex: 1;
+.menu-controller {
+  /* flex-basis: 350px; */
   display: flex;
-  margin: 5px 0;
+  flex-direction: column;
 }
+
+.user-trip {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+.friend-trip {
+  padding: 20px;
+  background-color: blue;
+}
+
+.user-information {
+  margin-left: 20px;
+  flex: 1;
+}
+
+/* == Form Area == */
 
 .form-section{
   background: rgba(186, 192, 186, 0.3);
-  width: 500px;
+  margin: 0 auto;
+  /* width: 500px; */
   height: 650px;
   padding: 30px;
-  margin: 30px 0;
   border-radius: 30px;
   
+}
+
+label {
+  margin-bottom: 5px;
 }
 
 form#login, #signup {
@@ -176,9 +154,44 @@ form#login, #signup {
   padding: 15px 0;
 }
 
+.main-signup {
+  display: flex;
+  align-items: center;;
+}
+
+.login-form {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.login-form a {
+  margin: 0 10px;
+}
+
+.login-form button {
+  margin: 0 10px;
+}
+
+
+
+form {
+  flex: 1;
+}
+
 form#signup .form-group{
   margin-bottom: 15px;
   padding: 0 15px;
+}
+
+form#signup input:hover {
+  transform: scale(1.1);
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
 }
 
 
@@ -195,22 +208,20 @@ input {
   
 }
 
-input[type=text]:hover {
+input[type=text]:focus {
   border: 2px solid #555;
-  transform: scale(1.1);
 }
 
-input[type=email]:hover {
+input[type=email]:focus {
   border: 2px solid #555;
-  transform: scale(1.1);
 }
 
-input[type=password]:hover {
+input[type=password]:focus {
   border: 2px solid #555;
-  transform: scale(1.1);
 }
 
 input[type=submit] {
+  flex: 1;
   background-color: #73736f;
   color: white;
   font-weight: 400;
@@ -220,13 +231,6 @@ input[type=submit]:hover {
   border: 2px solid #555;
   transform: scale(1.1);
 }
-
-
-
-
-
-  
-
 
   /* NAVIGATION */
 
@@ -258,18 +262,15 @@ li.active a, nav li:hover a {
   
 footer {
   flex: 1;
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #e4d8d3;
+  height: 70px;
   width: 100%;
-  text-align: center;
-  bottom: 0;
   border-top: solid 1px #73736f;
-}
-
-.footer-opactity-wrapper {
-  bottom: 0;
+  border-bottom: solid 1px #73736f;
 }
 
   /* @media only screen and (max-width: 400px) {
@@ -283,6 +284,10 @@ footer {
 
 /* ALERT */
 
+
+.alert .container {
+  margin-bottom: 0;
+}
     .alert.error:first-of-type {
       margin: -30px auto 10px;
     }

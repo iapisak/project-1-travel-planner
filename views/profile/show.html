@@ -19,17 +19,26 @@
   <body>
     <div class="wrap">
       <nav>
-        <h1><span>WELCOME</span><span class="small-letter">TO YOUR</span> <br><span class="brand-logo">Travel Planner</span></h1>
-        <a href="/signup">SIGN UP</a>
+        <h1><span>WELCOME</span><span class="small-letter">TO</span> <br><span class="brand-logo">Travel Planner</span></h1>
+        <a id="logout" href="/logout">Log Out</a>
+        <section class="user-data" class="container"></section>
       </nav>
 
       <main class="content-opactity-wrapper">
-        <section class="user-data" class="container"></section>
-        <section class='show-trip' class="container"></section>
-        <section class='trip-from-friend' class="container"></section>
-    
-        <div class="form-section">
-          <button class="dropdown-btn-add-trip flash-button">Add Trips</button>
+        <div class="menu-controller">
+          <section class="user-trip">
+            <h3>+ My Trip</h3>
+            <section class='show-trip' class="container"></section>
+          </section>
+            
+          <section class="friend-trip">
+            <h3>Friends invite</h3>
+            <section class='trip-from-friend' class="container"></section>
+          </section>
+        </div>          
+        
+        <div class="user-information form-section">
+          <button class="dropdown-btn-add-trip flash-button">+ Add Trips</button>
           <div class="dropdown-container">
             <section class="container">
               <form id="form">
@@ -55,7 +64,7 @@
                   Add Friends
                 </button>
                 <div class="dropdown-container">
-                    <div id="add-friends-section">Friends</div>
+                    <div id="add-friends-section"></div>
                 </div>
                 <!-- Adding Friends Area -->
 
@@ -73,6 +82,7 @@
             </section>
           </div>
         </div>
+
       </main>
     
       <footer class="footer-opactity-wrapper">
