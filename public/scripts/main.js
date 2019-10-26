@@ -46,7 +46,7 @@ form && form.addEventListener('submit', (event) => {
 
   // Handle Signup Form
   if (form.id === 'signup' && formIsValid) {
-    fetch('/api/v1/signup', {
+    fetch('http://localhost:3000/api/v1/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ form && form.addEventListener('submit', (event) => {
 
   // Handle Login
   if (form.id === 'login' && formIsValid) {
-    fetch('/api/v1/login', {
+    fetch('http://localhost:3000/api/v1/login', {
       method: 'POST',
       credentials: 'include',
       headers: {

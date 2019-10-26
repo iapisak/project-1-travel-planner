@@ -15,34 +15,29 @@
     <title>Log in</title>
   </head>
   <body>
+    <div class="wrap">
+      <nav>
+          <h1><span>WELCOME</span><span class="small-letter">TO YOUR</span> <br><span class="brand-logo">Travel Planner</span></h1>         
+            <form id="login">
+              <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="EMAIL" />
+                <a href="/signup">SIGN UP</a>
+              </div>
+              <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="PASSWORD" />
+                <button type="submit">LOG IN</button>
+              </div>
+            </form>           
+      </nav>
 
-    <nav class="header-opactity-wrapper">
-      <ul>
-        <li><a href="/signup">Sign Up</a></li>
-      </ul>
-    </nav>
+      <main class="login content-opactity-wrapper">
+        
+      </main>
 
-    <main class="login content-opactity-wrapper">
-  <h1>Welcome to your<br> Travel Planner</h1>
-      <section class="container">
-        <form id="login">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" />
-          </div>
-
-          <input type="submit" value="Login" />
-        </form>
-      </section>
-    </main>
-
-    <footer class="footer-opactity-wrapper">
-      <section class="copyright">&copy; Brent & Jun Travel Inc.</section>
-    </footer>
+      <footer class="footer-opactity-wrapper">
+        <section class="copyright">&copy; Brent & Jun Travel Inc.</section>
+      </footer>
+    </div>
 
   </body>
 </html>
