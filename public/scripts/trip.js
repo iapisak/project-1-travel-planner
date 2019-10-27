@@ -13,13 +13,29 @@ const formValidation = () => {
 }
 
 const selectFriends = new Array ()
-$('#add-friends-section').on('click', 'input', function(event) {
-    if (event.target.checked) {
-        selectFriends.push({
-            friendId: this.value,
-            name: this.name,
-        })
-    }
+    $('#add-friends-section').on('click', 'input', function(event) {
+        if (event.target.checked) {
+            selectFriends.push({
+                friendId: this.value,
+                name: this.name,
+            })
+        }
+})
+
+// Adding Activities //
+const addActivities = new Array ()
+    $("#activities-section").on('click', '#add', function(event) {
+        // console.log(event.target)
+        const activitiesTemplate = `
+        <div>${$('#activity').val()}</div>
+    `
+    $('#show-activities-area').append(activitiesTemplate)
+
+    addActivities.push({
+        activities: $('#activity').val(),
+    })
+
+    $(event.target).parent().toggle()
 })
 
 $('#form').on('submit', function (event) {
@@ -36,6 +52,7 @@ $('#form').on('submit', function (event) {
                 "destination": $('#destination').val(),
                 "start": $('#date_start').val(),
                 "end": $('#date_end').val(),
+                "activities": addActivities,
                 "activities": $('#activity').val(),
                 "description": $('#description').val(),
                 "friends": selectFriends,
@@ -288,6 +305,16 @@ $('.content-opactity-wrapper').on('click', '.remove', function (event) {
 
 
 // =========== Drop down function ** when ** the page load ========== //
+
+$('.dropdown-btn-add-friends').on('click', function (event) {
+    event.target.classList.toggle("active")
+     dropdownContainer = event.target.nextElementSibling;
+    if (dropdownContainer.style.display === "block") {
+    dropdownContainer.style.display = "none"
+    } else {
+    dropdownContainer.style.display = "block"
+    }
+})
 
 $('.dropdown-btn-add-trip').on('click', function (event) {
     event.target.classList.toggle("active")

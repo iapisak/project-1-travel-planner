@@ -3,7 +3,6 @@ const form = document.querySelector('form');
 
 // If form is not falsey, listen for form submit event
 form && form.addEventListener('submit', (event) => {
-  console.log('Hello')
   let formIsValid = true;
   const userData = {};
   event.preventDefault();
