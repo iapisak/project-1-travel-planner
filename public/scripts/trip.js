@@ -242,7 +242,7 @@ $(".content-opactity-wrapper").on('submit', ".update-form", function (event) {
         activities: $('#update_activity').val(),
         description: $('#update_description').val(),
     }
-    fetch(`http://localhost:3000/api/v1/trip/update/${tripId}`, {
+    fetch(`/api/v1/trip/update/${tripId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -262,7 +262,7 @@ $(".content-opactity-wrapper").on('submit', ".update-form", function (event) {
 $('.content-opactity-wrapper').on('click', '.delete', function (event) {
     $(event.target).parents('.trip-section').remove()
     let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
-    fetch(`http://localhost:3000/api/v1/trip/delete/${tripId}`, {
+    fetch(`/api/v1/trip/delete/${tripId}`, {
         method: 'DELETE',
     })
     .then(stream => stream.json())
@@ -276,7 +276,7 @@ $('.content-opactity-wrapper').on('click', '.remove', function (event) {
     $(event.target).parents('.trip-section').remove()
     let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
     console.log(userId)
-    fetch(`http://localhost:3000/api/v1/trip/member/destroy/${tripId}`, {
+    fetch(`/api/v1/trip/member/destroy/${tripId}`, {
         method: 'DELETE',
     })
     .then(stream => stream.json())

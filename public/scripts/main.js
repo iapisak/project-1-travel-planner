@@ -3,11 +3,11 @@ const form = document.querySelector('form');
 
 // If form is not falsey, listen for form submit event
 form && form.addEventListener('submit', (event) => {
+  console.log('Hello')
   let formIsValid = true;
   const userData = {};
   event.preventDefault();
   $('.alert').remove();
-  
   
   // Add Alert Message
   [...form.elements].forEach(input => {
@@ -55,7 +55,6 @@ form && form.addEventListener('submit', (event) => {
     })
       .then(dataStream => dataStream.json())
       .then(res => {
-        console.log(res)
         if (res.status === 201) return window.location = `/`;
       })
       .catch(err => console.log(err));
