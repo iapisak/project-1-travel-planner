@@ -8,14 +8,18 @@
   margin: 0;
   padding: 0;
   outline: none;
-  font-weight: 600;
-  font-family: 'Lato', sans-serif;
-  color: #6d6d62;
+
 }
 
 body {
   margin: 0 auto;
-  height: 100vh;
+  height: 80vh;
+  font-size: 13px;
+  font-weight: 200px;
+  font-family: 'Lato', sans-serif;
+  color: #6d6d62;
+  max-width: 650px;
+
 }
 
 .wrap {
@@ -24,9 +28,10 @@ body {
 
 /* ==== Heading ===== */
 nav {
-  height: 140px;
+  height: 100px;
   display: flex;
   align-items: center;
+  position: sticky;
   top: 0;
   width: 100%;
   background-color: #e4d8d3;
@@ -45,8 +50,8 @@ span {
 
 .small-letter {
   font-family: 'Lato', sans-serif;
-  font-size: 15px;
-  padding-left: 20px;
+  font-size: 12px;
+  padding-left: 10px;
   font-weight: 900;
 }
 
@@ -54,24 +59,37 @@ span {
   padding-top: 5px;
   letter-spacing: 0.05em;
   font-family: 'Dancing Script', cursive;
-  font-size: 40px;
+  font-size: 25px;
   font-weight: 300;
 }
 
 .container {
-  padding: 0 20px;
   display: flex;
   flex: 1;
 }
 
 h1 {
-  padding: 30px;
+  padding: 10px;
   padding-left: 30px;
-  font-size: 35px;
+  font-size: 22px;
+}
+
+h2 {
+  background-color: #73736f;
+  margin-bottom: 20px;
+  padding: 20px;
+  font-size: 18px;
+  color: white;
+  font-weight: 100;
+  text-align: center;
+}
+
+h2 span {
+  font-size: 15px;
 }
 
 h3 {
-  padding: 15px;
+  padding: 10px;
   background-color: black;
   color: white;
 }
@@ -79,30 +97,24 @@ h3 {
 a, button{
   text-decoration: none;
   background-color: #73736f;
-  width: 100px;
-  font-size: 16px;
+  width: 70px;
+  font-size: 12px;
   font-weight: 400;
   color: white;
-  border-radius: 10px;
-  margin: 10px 0;
   cursor: pointer;
-  padding: 10px;
+  padding: 5px;
   border: none;
-  border-radius: 10px;
-  text-align: center;
 }
-
 
 /* ==== Heading ===== */
 
 
 main {
+  min-height: 100vh;
   display: flex;
-  height: 100vh;
-  background-image: url("/friends-car.jpg");
-  /* background-position: 250px 0px; */
-  background-size: cover;
-  /* background-attachment: fixed; */
+  /* background-image: url("/friends-car.jpg"); */
+  /* background-position: 200px 0px; */
+  background-size: 100%;
   background-repeat: no-repeat;
 }
 
@@ -111,33 +123,31 @@ main {
 }
 
 .menu-controller {
-  /* flex-basis: 350px; */
+  /* flex-basis: 300px; */
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .user-trip {
   padding: 20px;
-  margin-bottom: 20px;
-  background-color: white;
+  background-color: rgba(24, 78, 78, 0.6);
 }
 .friend-trip {
   padding: 20px;
-  background-color: blue;
+  background-color: peachpuff;
 }
 
-.user-information {
-  margin-left: 20px;
+/* .user-information {
   flex: 1;
-}
+} */
 
 /* == Form Area == */
 
 .form-section{
   background: rgba(186, 192, 186, 0.3);
   margin: 0 auto;
-  /* width: 500px; */
-  height: 650px;
+  width: 500px;
   padding: 30px;
   border-radius: 30px;
   
@@ -151,7 +161,6 @@ form#login, #signup {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 15px 0;
 }
 
 .main-signup {
@@ -161,15 +170,16 @@ form#login, #signup {
 
 .login-form {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .login-form a {
-  margin: 0 10px;
+  padding-left: 10px;
+  margin-right: 10px;
 }
 
 .login-form button {
-  margin: 0 10px;
+  margin-right: 10px;
 }
 
 
@@ -180,11 +190,10 @@ form {
 
 form#signup .form-group{
   margin-bottom: 15px;
-  padding: 0 15px;
 }
 
 form#signup input:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .form-group {
@@ -197,14 +206,13 @@ form#signup input:hover {
 
 input {
   flex: 1;
-  height: 40px;
+  height: 30px;
   background: rgb(241, 245, 241);
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
   color: #50504a;
   padding: 10px;
   border: none;
-  border-radius: 10px;
   
 }
 
@@ -220,42 +228,34 @@ input[type=password]:focus {
   border: 2px solid #555;
 }
 
+input[type=date] {
+  flex: 1;
+}
+
 input[type=submit] {
   flex: 1;
   background-color: #73736f;
   color: white;
   font-weight: 400;
+  margin: 10px 0;
+  float: right;
+  cursor: pointer;
 }
 
 input[type=submit]:hover {
   border: 2px solid #555;
-  transform: scale(1.1);
+  /* transform: scale(1.02); */
 }
 
   /* NAVIGATION */
 
-.organizer {
-    float: left;
-    color: white;
-    font-family: 'Dancing Script', cursive;
-    margin-top: 10px;
-    font-size: 40px;
-  } 
-
-li.active a, nav li:hover a {
-    text-decoration: none;
-    color: #ddd;
-    border-width: 2px;
-    border-radius: 20px;
-    border: white;
-  }
-
   
 .user-data {
-  margin-top: 15px;
-  margin-left: 10px;
-  color: white;
-  }
+  font-size: 14px;
+  font-weight: 100;
+  padding: 10px;
+  color: #73736f;
+}
   
 
 /* ------- FOOTER ------*/
@@ -263,11 +263,13 @@ li.active a, nav li:hover a {
 footer {
   flex: 1;
   position: sticky;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #e4d8d3;
-  height: 70px;
+  font-size: 13px;
+  height: 50px;
   width: 100%;
   border-top: solid 1px #73736f;
   border-bottom: solid 1px #73736f;

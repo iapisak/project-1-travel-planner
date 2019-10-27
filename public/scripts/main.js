@@ -46,7 +46,7 @@ form && form.addEventListener('submit', (event) => {
 
   // Handle Signup Form
   if (form.id === 'signup' && formIsValid) {
-    fetch('http://localhost:3000/api/v1/signup', {
+    fetch('/api/v1/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -55,6 +55,7 @@ form && form.addEventListener('submit', (event) => {
     })
       .then(dataStream => dataStream.json())
       .then(res => {
+        console.log(res)
         if (res.status === 201) return window.location = `/`;
       })
       .catch(err => console.log(err));
@@ -62,7 +63,7 @@ form && form.addEventListener('submit', (event) => {
 
   // Handle Login
   if (form.id === 'login' && formIsValid) {
-    fetch('http://localhost:3000/api/v1/login', {
+    fetch('/api/v1/login', {
       method: 'POST',
       credentials: 'include',
       headers: {

@@ -1,50 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
 .dropdown-btn {
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 300px;
+    font-family: 'Lato', sans-serif;
     color: #f8f7f7;
     text-align: left;
     background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
+    line-height: 1.5;
+    margin-top: 10px;
+    padding: 10px;
+    padding-left: 30px;
+    border-radius: 20px 0 0 0;
+    cursor: pointer;
 }
 
 .active {
     background-color: rgba(24, 78, 78, 0.6);
     color: white;
+    cursor: pointer;
 }
 
 .dropdown-container {
+    font-size: 15px;
+    font-weight: 200px;
+    font-family: 'Lato', sans-serif;
     position: relative;
     display: none;
-    padding: 15px;
+    padding: 10px 15px;
     background-color: rgba(24, 78, 78, 0.6);
     text-align: left;
     color: white;
-    font-size: 18px;
+    border-top: solid 2px #73736f;
 }
 
 .dropdown-btn-add-trip {
-    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 200px;
+    font-family: 'Lato', sans-serif;
     padding: 10px;
-    font-size: 18px;
     color: #ffffff;
     display: block;
     border: none;
-    background-color: rgba(0, 0, 0, 0.6);
-    text-align: center;
+    background-color: black;
     width: 100%;
+    text-align: left;
+    margin-top: 15px;
     cursor: pointer;
-    outline: none;
 }
+
 
 /* == Checkout Style == */
 
 .friend-label {
     display: block;
     position: relative;
+    padding-top: 5px;
     padding-left: 35px;
-    margin-left: 30px;
-    margin-bottom: 12px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 100px;
     cursor: pointer;
-    font-size: 20px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -104,30 +122,41 @@
     transform: rotate(45deg);
   }
 
-#add-friends-section {
-    margin-bottom: 15px;
-    background-color: rgba(24, 78, 78, 0.2);
-}
 
-.delete {
-border: white;
-border-width: 5px;
-border-radius: 20px;
-color: white;
-background: rgba(255, 166, 0, 0.425);
+.delete, .remove {
+    margin-right: 10px;
+    color: white;
+    background: rgb(150, 49, 3);
+    cursor: pointer;
 }
 
 .update {
-    border: white;
-    border-width: 5px;
-    margin: 20px;
-    border-radius: 20px;
     color: white;
     background: rgba(255, 166, 0, 0.425);
+    cursor: pointer;
 }
 
+.delete:hover, .remove:hover, .update:hover {
+    transform: scale(1.05);
+}
 
-
-.description {
+/* .description {
     font-size: 15px;
+} */
+
+.float-right {
+    padding: 5px 5px 0 0;
+    text-align: right;
+}
+
+.set-left {
+    background-color: whitesmoke;
+    color: #73736f;
+    padding: 5px 0 5px 5px;
+    margin: 5px 0;
+}
+
+.center {
+    text-align: center;
+    padding: 10px 0;
 }

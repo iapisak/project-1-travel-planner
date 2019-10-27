@@ -73,23 +73,29 @@ const onSuccessGetTrip = (data) => {
         const members = element.friends.map(friend => {
             return `${friend.name}`
         });
+
         const tripTemplete = `
         <div class="trip-section">
             <button class="dropdown-btn">
-            <strong>${element.name}</strong><br>
-                ${element.destination}<br>
+            <strong>Name : ${element.name}</strong><br>
+                To : ${element.destination}<br>
                 ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
             </button>
             <div class="dropdown-container">
                 <div id=${element._id}>
                     
-                    ${
-                        `<p>On trip: ${members.join(', ')}</p>`
-                    }
-                    <p>Activity : ${element.activities}</p>
-                    <p>Description : ${element.description}</p>
-                    <button class="delete">Delete</button>
-                    <button class="update">Update</button>
+                ${ 
+                    `<div class="set-left">On Trip : ${members.join(', ')} </div>`
+                }
+
+                    <div>Activity</div>
+                    <div class="set-left">${element.activities}</div>
+                    <div>Description</div>
+                    <div class="set-left">${element.description}</div>
+                    <div class="center">
+                        <button class="delete">Delete</button>
+                        <button class="update">Update</button>
+                    </div>
                 </div>
             <div class="update-section"></div>
         </div>
@@ -97,21 +103,25 @@ const onSuccessGetTrip = (data) => {
         const memberTemplete = `
         <div class="trip-section">
         <button class="dropdown-btn">
-        <strong>${element.name}</strong><br>
-            ${element.destination}<br>
-            ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}<br>
-            Create by ${element.userName}
+        <strong>Name : ${element.name}</strong><br>
+            To : ${element.destination}<br>
+            ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
+            <div class="float-right">Create by ${element.userName}</div>
         </button>
         <div class="dropdown-container">
             <div id=${element._id}>
                 
                 ${
-                    `<p>On trip: ${members.join(', ')}</p>`
+                    `<div class="set-left">On Trip ( ${members.join(', ')} )</div>`
                 }
-                <p>Activity : ${element.activities}</p>
-                <p>Description : ${element.description}</p>
-                <button class="remove">Remove</button>
-                <button class="update">Update</button>
+                <div>Activity</div>
+                <div class="set-left">${element.activities}</div>
+                <div>Description</div>
+                <div class="set-left">${element.description}</div>
+                <div class="center">
+                    <button class="remove">Leave</button>
+                    <button class="update">Update</button>
+                </div>
             </div>
         <div class="update-section"></div>
     </div>
@@ -145,10 +155,13 @@ getMemberWithTrip()
 // ================ Call Data to The Form Before Update  ================  //
 
 $('.content-opactity-wrapper').on('click', '.update', function (event) {
+    $(event.target).parent().parent().toggle()
     $('.update-section').children().remove()
     const newTarget = event.target
-    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
-    fetch(`http://localhost:3000/api/v1/${tripId}`, {
+    let tripId = $(event.target).parent().parent().attr('id') // Select id from <div id> that just exists
+    // console.log($(event.target).parent().parent())
+    // console.log(tripId)
+    fetch(`/api/v1/${tripId}`, {
         method: 'GET',
     })
     .then(stream => stream.json())
@@ -207,9 +220,9 @@ const onSuccessPullTrip = (data, newTarget) => {
     
     `
     if (data.user == userId) {
-        $(newTarget).parent().parent().parent().children('.dropdown-container').children('.update-section').append(tripUpdateTemplete);
+        $(newTarget).parent().parent().parent().parent().children('.dropdown-container').children('.update-section').append(tripUpdateTemplete);
     } else {
-        $(newTarget).parent().parent().parent().children('.dropdown-container').children('.update-section').append(memberUpdateTemplete);
+        $(newTarget).parent().parent().parent().parent().children('.dropdown-container').children('.update-section').append(memberUpdateTemplete);
     }
         
 }
