@@ -36,7 +36,7 @@
     border-top: solid 2px #73736f;
 }
 
-.dropdown-btn-add-trip, .dropdown-btn-add-friends {
+.dropdown-btn-add-trip, .dropdown-btn-add-friends, .dropdown-btn-add-myTrip {
     font-size: 16px;
     font-weight: 200px;
     font-family: 'Lato', sans-serif;
@@ -122,6 +122,27 @@
     transform: rotate(45deg);
   }
 
+#add {
+    margin-left: 5px;
+    background-color: burlywood;
+    padding: 5px;
+    height: 30px;
+    font-weight: 200px;
+    cursor: pointer;
+}
+
+.cancel, .submit {
+    color: whitesmoke;
+    background-color: green;
+    margin: 10px 0;
+    margin-left: 10px;
+    padding: 10px;
+    float: right;
+}
+
+.cancel {
+    background-color: rgb(150, 49, 3);
+}
 
 .delete, .remove {
     margin-right: 10px;
@@ -136,7 +157,7 @@
     cursor: pointer;
 }
 
-.delete:hover, .remove:hover, .update:hover {
+.delete:hover, .remove:hover, .update:hover, #add:hover, .cancel:hover, .submit:hover {
     transform: scale(1.05);
 }
 

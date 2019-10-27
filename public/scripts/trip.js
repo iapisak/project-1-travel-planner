@@ -24,18 +24,19 @@ const selectFriends = new Array ()
 
 // Adding Activities //
 const addActivities = new Array ()
-    $("#activities-section").on('click', '#add', function(event) {
-        // console.log(event.target)
-        const activitiesTemplate = `
-        <div>${$('#activity').val()}</div>
-    `
-    $('#show-activities-area').append(activitiesTemplate)
 
-    addActivities.push({
-        activities: $('#activity').val(),
-    })
+$("#activities-section").on('click', '#add', function(event) {
+    // console.log(event.target)
+    const activitiesTemplate = `
+    <div>${$('#activity').val()}</div>
+`
+$('#show-activities-area').append(activitiesTemplate)
 
-    $(event.target).parent().toggle()
+addActivities.push({
+    name: $('#activity').val(),
+})
+
+$(event.target).parent().toggle()
 })
 
 $('#form').on('submit', function (event) {
@@ -53,8 +54,8 @@ $('#form').on('submit', function (event) {
                 "start": $('#date_start').val(),
                 "end": $('#date_end').val(),
                 "activities": addActivities,
-                "activities": $('#activity').val(),
-                "description": $('#description').val(),
+                // "activities": $('#activity').val(),
+                // "description": $('#description').val(),
                 "friends": selectFriends,
 
             },
@@ -91,6 +92,10 @@ const onSuccessGetTrip = (data) => {
             return `${friend.name}`
         });
 
+        const appendActivities = element.activities.map(activity => {
+            return `${activity.name}`
+        })
+
         const tripTemplete = `
         <div class="trip-section">
             <button class="dropdown-btn">
@@ -103,6 +108,10 @@ const onSuccessGetTrip = (data) => {
                     
                 ${ 
                     `<div class="set-left">On Trip : ${members.join(', ')} </div>`
+                }
+
+                ${ 
+                    `<div class="set-left">Activity : ${appendActivities.join(', ')} </div>`
                 }
 
                     <div>Activity</div>
@@ -152,6 +161,10 @@ const onSuccessGetTrip = (data) => {
 }
 
 getTrip()
+
+$('.cancel').on('click', function () {
+    window.location = `/profile/${newId}`
+})
 
 // ================ Append Trip Created By Member ================  //
 
@@ -277,14 +290,15 @@ $(".content-opactity-wrapper").on('submit', ".update-form", function (event) {
 // ================ Delete Trip ================  //
 
 $('.content-opactity-wrapper').on('click', '.delete', function (event) {
+
     $(event.target).parents('.trip-section').remove()
-    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
+    let tripId = $(event.target).parent().parent().attr('id') // Select id from <div id> that just exists
     fetch(`/api/v1/trip/delete/${tripId}`, {
         method: 'DELETE',
     })
     .then(stream => stream.json())
     .then(res => {
-        console.log(res)
+        return
     })
     .catch(err => console.log(err))
 })
@@ -306,7 +320,7 @@ $('.content-opactity-wrapper').on('click', '.remove', function (event) {
 
 // =========== Drop down function ** when ** the page load ========== //
 
-$('.dropdown-btn-add-friends').on('click', function (event) {
+$('.dropdown-btn-add-myTrip').on('click', function (event) {
     event.target.classList.toggle("active")
      dropdownContainer = event.target.nextElementSibling;
     if (dropdownContainer.style.display === "block") {
@@ -316,7 +330,15 @@ $('.dropdown-btn-add-friends').on('click', function (event) {
     }
 })
 
-$('.dropdown-btn-add-trip').on('click', function (event) {
+$('.dropdown-btn-add-friends').on('mouseover', function (event) {
+    event.target.classList.toggle("active")
+    dropdownContainer = event.target.nextElementSibling
+
+    if (dropdownContainer.style.display === "block") { dropdownContainer.style.display = "none" } 
+        else { dropdownContainer.style.display = "block" }
+})
+
+$('.dropdown-btn-add-trip').on('mouseover', function (event) {
     event.target.classList.toggle("active")
      dropdownContainer = event.target.nextElementSibling;
     if (dropdownContainer.style.display === "block") {

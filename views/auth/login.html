@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Main CSS -->
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/newMain.css">
     <!-- Main JS -->
     <script defer
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -15,27 +15,35 @@
     <title>Log in</title>
   </head>
   <body>
-    <div class="wrap">
-      <nav>
-        <h1><span>WELCOME</span><span class="small-letter">TO</span> <br><span class="brand-logo">Travel Planner</span></h1>         
-        <form id="login">
-          <div class="login-form">
-            <input type="email" id="email" name="email" placeholder="EMAIL" />
-            <a href="/signup">SIGN UP</a>
-          </div>
-          <div class="login-form">
-            <input type="password" id="password" name="password" placeholder="PASSWORD" />
-            <button type="submit">LOG IN</button>
-          </div>
-        </form>           
+      <nav class="flex">
+        <div class="col flex-col">
+            <div class="col"><h1><span class="welcome">WELCOME</span><span class="small-letter">TO</span></h1></div>
+            <div class="col"><h1><span class="brand-logo">Travel Planner</span></h1></div>
+        </div>
+        <div>
+            <a class="sign-up-button" href="/signup">SIGN UP</a>
+        </div>
       </nav>
 
-      <main class="login content-opactity-wrapper"></main>
+      <main class="content-opactity-wrapper flex f-a-center f-j-content">
+        <div class="flex container-m">
+            <form id="login" class="col flex-col">
+                <div class="login-form">
+                  <input type="email" id="email" name="email" placeholder="EMAIL" />
+                  
+                </div>
+                <div class="login-form">
+                  <input type="password" id="password" name="password" placeholder="PASSWORD" />
+                  <button class="log-in-button" type="submit">LOG IN</button>
+                </div>
+              </form>
+        </div>
+
+
+      </main>
 
       <footer class="footer-opactity-wrapper">
-        <section class="copyright">&copy; Brent & Jun Travel Inc.</section>
+        <section class="copyright">&copy; Jun Project 1 Inc.</section>
       </footer>
-    </div>
-
   </body>
 </html>

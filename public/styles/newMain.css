@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+
+}
+
+body {
+    position: relative;
+    max-width: 650px;
+    height: auto;
+    margin: 0 auto;
+    font-size: 13px;
+    font-family: 'Lato', sans-serif;
+    color: #73736f;
+    
+}
+
+a, button{
+    cursor: pointer;
+    border: none;
+}
+
+/* ======== Manage All Form =======  */
+input {
+    flex: 1;
+    height: 28px;
+    background: rgb(241, 245, 241);
+    font-size: 13px;
+    font-weight: 400;
+    color: #50504a;
+    padding: 10px;
+    border: none;
+}
+
+/* ======== Manage All Nav Bar =======  */
+nav {
+    align-items: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #e4d8d3;
+    border-bottom: solid 1px #73736f;
+    border-top: solid 1px #73736f;
+}
+
+nav span {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+}
+
+.welcome {
+    padding-left: 30px;
+    font-size: 22px;
+}
+
+.small-letter {
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.brand-logo {
+    padding-left: 30px;
+    padding-top: 5px;
+    letter-spacing: 0.05em;
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+/* ======== Manage First Page Log-in Form =======  */
+
+.login-form {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.log-in-button, .sign-up-button {
+    font-size: 13px;
+    font-weight: 500px;
+    color: whitesmoke;
+    background-color: #50504a;
+    padding: 5px 13px;
+    margin: 0 10px 0 5px;
+}
+
+.sign-up-button {
+    padding: 5px 10px;
+}
+
+/* ======== Manage Main Area =======  */
+
+main {
+    position: sticky;
+    height: 100vh;
+    background-image: url("/friends-car.jpg");
+    background-size: cover;
+    background-position-x: 0px;
+    background-repeat: no-repeat;
+    background-position: fixed;
+    opacity: 0.8;
+}
+
+/* ------- FOOTER ------*/
+  
+footer {
+    flex: 1;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e4d8d3;
+    font-size: 14px;
+    font-weight: 400px;
+    color: #50504a;
+    height: 50px;
+    width: 100%;
+    border-top: solid 1px #73736f;
+    border-bottom: solid 1px #73736f;
+}
+/* 
+@media only screen and (max-width: 700px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background-color: #e4d8d3;
+        border-bottom: solid 1px #73736f;
+        border-top: solid 1px #73736f;
+    }
+} */
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.col {
+    flex: 1;
+}
+
+.f-a-center {
+    align-items: center;
+}
+
+.f-j-content {
+    justify-content: center;
+}
+
+.container {
+    width: 80%;
+}
+
+.container-m {
+    width: 70%;
+}
+
+
