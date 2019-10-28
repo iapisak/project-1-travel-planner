@@ -203,46 +203,46 @@ $('.content-opactity-wrapper').on('click', '.update', function (event) {
 
 const onSuccessPullTrip = (data, newTarget) => {
     const tripUpdateTemplete = `
-        <section id="${data._id}" class="container">
+        <section id="${data._id}">
             <form class="update-form">
-                <div class="form-group">
+                <div class="col flex-col margin-t-5">
                     <label for="name">Trip Name</label>
-                    <input type="text" class="form-control" id="update_name" name="name" value="${data.name}">
+                    <input type="text" class="col" id="update_name" name="name" value="${data.name}">
                 </div>
-                <div class="form-group">
+                <div class="col flex-col margin-t-5">
                     <label for="destination">Destination</label>
-                    <input type="text" class="form-control" id="update_destination" name="destination" value="${data.destination}">
+                    <input type="text" class="col" id="update_destination" name="destination" value="${data.destination}">
                 </div>
-                <div class="form-group">
+                <div class="col flex-col margin-t-5">
                     <label for="date_start">Date Start</label>
-                    <input type="text" class="form-control" id="update_date_start" name="date_start" value="${new Date(data.start).toLocaleDateString()}">
+                    <input type="text" class="col" id="update_date_start" name="date_start" value="${new Date(data.start).toLocaleDateString()}">
                 </div>
-                <div class="form-group">
+                <div class="col flex-col margin-t-5">
                     <label for="date_end">Date End</label>
-                    <input type="text" class="form-control" id="update_date_end" name="date_end" value="${new Date(data.end).toLocaleDateString()}">
+                    <input type="text" class="col" id="update_date_end" name="date_end" value="${new Date(data.end).toLocaleDateString()}">
                 </div>
-                <div class="form-group">
+                <div class="col flex-col margin-t-5">
                     <label for="activity">Activity</label>
-                    <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
+                    <input type="text" class="col" id="update_activity" name="activity" value="${data.activities}">
                 </div>
-                <div class="form-group">
+                <div class="col flex-col margin-t-5">
                     <label for="description">Description</label>
-                    <input type="text" class="form-control" id="update_description" name="description" value="${data.description}">
+                    <input type="text" class="col" id="update_description" name="description" value="${data.description}">
                 </div>
                 <input type="submit" value="Save"/>
             </form> 
         </section>
     `
     const memberUpdateTemplete = `
-    <section id="${data._id}" class="container">
+    <section id="${data._id}">
     <form class="update-form">
-        <div class="form-group">
+        <div class="col flex-col margin-t-5">
             <label for="activity">Activity</label>
-            <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
+            <input type="text" class="col" id="update_activity" name="activity" value="${data.activities}">
         </div>
-        <div class="form-group">
+        <div class="col flex-col margin-t-5">
             <label for="description">Description</label>
-            <input type="text" class="form-control" id="update_description" name="description" value="${data.description}">
+            <input type="text" class="col" id="update_description" name="description" value="${data.description}">
         </div>
         <input type="submit" value="Save"/>
     </form> 

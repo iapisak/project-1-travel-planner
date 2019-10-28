@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Main CSS -->
+    <!-- <link rel="stylesheet" href="/styles/section.css"> -->
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/drop.css">
     <script defer
@@ -16,93 +17,100 @@
     <script defer src="/scripts/friends.js"></script>
     <title>Profile</title>
   </head>
+
   <body>
-    <div class="wrap">
-      <nav>
-        <h1><span>WELCOME</span><span class="small-letter">TO</span> <br><span class="brand-logo">Travel Planner</span></h1>
-        <a id="logout" href="/logout">Log Out</a>
-        <section class="user-data" class="container"></section>
-      </nav>
+      <main>
+        <div class="flex f-j-end">
+            <section class="user-data" class="container"></section>
+        </div>
+        <div class='flex f-j-end margin-r padding'>
+            <a class="margin-r" href="#">Search Friends</a>
+            <a id="logout" href="/logout">Log Out</a>
+        </div>
+        <div class="flex-col f-j-content f-a-center" >
+          <fieldset>
+              <legend>
+                  <div><h1><span class="welcome">WELCOME</span><span class="small-letter">TO</span></h1></div>
+              </legend>
+              <div class="logo"><h1><span class="brand-logo">Travel Planner</span></h1></div>
+              <!-- Form Start Here -->
+              <section class="content-opactity-wrapper flex">
+                <div class="col flex-col">
+                  <section class="user-trip">
+                    <button class="dropdown-btn-add-myTrip my-trips">+ My Trips</button>
+                    <div class="dropdown-container">
+                      <section class="flex">
+                        <form id="form" class="col flex-col">
+                          <div class="col flex-col margin-t-5">
+                              <label for="name">Trip Name</label>
+                              <input type="text" class="col" id="name" name="name">
+                          </div>
+                          <div class="col flex-col margin-t-5">
+                            <label for="destination">Destination</label>
+                            <input type="text" class="col" id="destination" name="destination">
+                          </div>
+                          <div class="col flex-col margin-t-5">
+                            <label for="date_start">Date Start</label>
+                            <input type="date" class="col" id="date_start" name="date_start">
+                          </div>
+                          <div class="col flex-col margin-t-5">
+                              <label for="date_end">Date End</label>
+                              <input type="date" class="col" id="date_end" name="date_end">
+                          </div>
+          
+                          <!-- Adding Friends Area -->
+                          <button class="dropdown-btn-add-friends margin-t">
+                            + Add Friends
+                          </button>
+                          <div class="dropdown-container">
+                              <div id="add-friends-section"></div>
+                          </div>
+                          <!-- Adding Friends Area -->
 
-      <main class="content-opactity-wrapper">
-        <div class="menu-controller">
-          <section class="user-trip">
-            <button class="dropdown-btn-add-myTrip my-trips">+ My Trips</button>
-            <div class="dropdown-container">
-              <section class="container">
-                <form id="form">
-                  <div class="form-group">
-                      <label for="name">Trip Name</label>
-                      <input type="text" class="form-control" id="name" name="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="destination">Destination</label>
-                    <input type="text" class="form-control" id="destination" name="destination">
-                  </div>
-                  <div class="form-group">
-                    <label for="date_start">Date Start</label>
-                    <input type="date" class="form-control" id="date_start" name="date_start">
-                  </div>
-                  <div class="form-group">
-                      <label for="date_end">Date End</label>
-                      <input type="date" class="form-control" id="date_end" name="date_end">
-                  </div>
-  
-                  <!-- Adding Friends Area -->
-                  <button class="dropdown-btn-add-friends">
-                    + Add Friends
-                  </button>
-                  <div class="dropdown-container">
-                      <div id="add-friends-section"></div>
-                  </div>
-                  <!-- Adding Friends Area -->
+                          <!-- Adding Trips Area -->
+                          <!-- <button class="dropdown-btn-add-trip">
+                              + Add Activity
+                          </button>
+                          <div id="activities-section" class="dropdown-container">
+                              <label for="activity">Activity Name :  </label>
+                              <input type="text" class="col" id="activity" name="activity">
+                              <button id="add">Add</button>
+                          </div>
 
-                  <!-- Adding Trips Area -->
-                  <!-- <button class="dropdown-btn-add-trip">
-                      + Add Activity
-                  </button>
-                  <div id="activities-section" class="dropdown-container">
-                      <label for="activity">Activity Name :  </label>
-                      <input type="text" class="form-control" id="activity" name="activity">
-                      <button id="add">Add</button>
-                  </div>
+                          <div id="show-activities-area"></div> -->
+                          <!-- Adding Trips Area -->
 
-                  <div id="show-activities-area"></div> -->
-                  <!-- Adding Trips Area -->
+                          <!-- <div class="col flex-col margin-t-5">
+                              <label for="activity">Activity</label>
+                              <input type="text" class="col" id="activity" name="activity">
+                          </div>
+                          <div class="col flex-col margin-t-5">
+                              <label for="description">Description</label>
+                              <input type="text" class="col" id="description" name="description">
+                          </div> -->
+                          <div>
+                              
+                              <button class="submit" type="submit">Add</button>
+                              <button class="cancel">Cancel</button>
+                          </div>
 
-                  <!-- <div class="form-group">
-                      <label for="activity">Activity</label>
-                      <input type="text" class="form-control" id="activity" name="activity">
-                  </div>
-                  <div class="form-group">
-                      <label for="description">Description</label>
-                      <input type="text" class="form-control" id="description" name="description">
-                  </div> -->
+                        </form>
+                      </section>
+                    </div>
+                    <section class='show-trip' class="container"></section>
+                  </section>
+                    
                   <div>
-                      
-                      <button class="submit" type="submit">Add</button>
-                      <button class="cancel">Cancel</button>
+                      <h3>Friends invite</h3>
+                      <section class='trip-from-friend' class="container"></section>
                   </div>
 
-                </form>
+                  </section>
+                </div> 
+
               </section>
-            </div>
-            <section class='show-trip' class="container"></section>
-          </section>
-            
-          <section class="friend-trip">
-            <h3>Friends invite</h3>
-            <section class='trip-from-friend' class="container"></section>
-          </section>
-        </div>          
-
+          </fieldset>
+        </div>
       </main>
-    
-      <footer class="footer-opactity-wrapper">
-        <section class="copyright">&copy; Brent & Jun Travel Inc.</section>
-      </footer>
-
-    </div>   
-
   </body>
 </html>

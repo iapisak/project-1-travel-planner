@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Main CSS -->
-    <link rel="stylesheet" href="/styles/newMain.css">
+    <link rel="stylesheet" href="/styles/main.css">
     <!-- Main JS -->
     <script defer
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -18,63 +18,40 @@
 
 
       <main class="content-opactity-wrapper flex f-j-content f-a-center">
-          <!-- <form id="login" class="flex-col"> -->
             <fieldset class="login-form">
                 <legend>
                     <div><h1><span class="welcome">WELCOME</span><span class="small-letter">TO</span></h1></div>
                 </legend>
                 <div class="logo"><h1><span class="brand-logo">Travel Planner</span></h1></div>
-                
                 <h2>Please give us your information</h1>
-                  <form id="signup">
-                    <div class="form-group">
-                      <input type="text" id="name" name="name" placeholder="FIRST NAME" />
+                  <form id="signup" class="flex-col">
+                    <div class="flex-col">
+                      <label for="name">First Name</label>
+                      <input class="col margin-b" type="text" id="name" name="name" />
                     </div>
-                    <div class="form-group"> 
-                      <input type="text" id="lastName" name="lastName" placeholder="LAST NAME"/>
+                    <div class="flex-col">
+                      <label class="col" for="lastName">Last Name</label>
+                      <input class="col margin-b" type="text" id="lastName" name="lastName" />
                     </div>
-                    <div class="form-group">
-                      <input type="email" id="email" name="email" placeholder="EMAIL"/>
+                    <div class="flex-col">
+                      <label class="col" for="email">Email</label>
+                      <input class="col margin-b" type="email" id="email" name="email" />
                     </div>
-                    <div class="form-group"> 
-                      <input type="password" id="password" name="password" placeholder="PASSWORD"/>
+                    <div class="flex-col">
+                      <label class="col" for="password">Password</label>
+                      <input class="col margin-b" type="password" id="password" name="password" />
                     </div>
-                    <div class="form-group">
-                      <input type="password" id="password2" name="password2" placeholder="CONFIRM PASSWORD"/>
+                    <div class="flex-col">
+                      <label class="col" for="password2">Confirm Password</label>
+                      <input class="col margin-b" type="password" id="password2" name="password2" />
                     </div>
-                    <div class="form-group">
-                      <input type="submit" value="submit" />
+                    <div class="margin-t">
+                        <button class="sign-up-button padding" type="submit">Sign up</button>
+                        <a class="sign-up-button padding" href="/">Home</a>
                     </div>
+                    
                   </form>
-
             </fieldset>
-          <!-- </form> -->
         </main>
-
-
-    <div class="wrap">
-      <nav>
-          <h1><span>WELCOME</span><span class="small-letter">TO</span> <br><span class="brand-logo">Travel Planner</span></h1>
-          <a href="/">HOME</a>
-            <!-- <form id="login">
-              <div class="login-form">
-                <input type="email" id="email" name="email" placeholder="EMAIL" />
-                <a href="/">HOME</a>
-              </div>
-              <div class="login-form">
-                <input type="password" id="password" name="password" placeholder="PASSWORD" />
-                <button type="submit">LOG IN</button>
-              </div>
-            </form> -->
-      </nav>
-      
-      <main class="main-signup content-opactity-wrapper">
-          <section class="form-section">
-
-          </section>
-      </main>
-
-    </div>
-
   </body>
 </html>

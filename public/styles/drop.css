@@ -10,7 +10,6 @@
     background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
     line-height: 1.5;
-    margin-top: 10px;
     padding: 10px;
     padding-left: 30px;
     border-radius: 20px 0 0 0;
@@ -47,7 +46,6 @@
     background-color: black;
     width: 100%;
     text-align: left;
-    margin-top: 15px;
     cursor: pointer;
 }
 
@@ -157,14 +155,8 @@
     cursor: pointer;
 }
 
-.delete:hover, .remove:hover, .update:hover, #add:hover, .cancel:hover, .submit:hover {
-    transform: scale(1.05);
-}
 
-/* .description {
-    font-size: 15px;
-} */
-
+/* -- Arange Form -- */
 .float-right {
     padding: 5px 5px 0 0;
     text-align: right;
@@ -180,4 +172,18 @@
 .center {
     text-align: center;
     padding: 10px 0;
+}
+
+/* -- Animation -- */
+
+a:hover, button:hover {
+    transform: scale(1.05);
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+    border: 2px solid #555;
+}
+
+.delete:hover, .remove:hover, .update:hover, #add:hover, .cancel:hover, .submit:hover {
+transform: scale(1.05);
 }
