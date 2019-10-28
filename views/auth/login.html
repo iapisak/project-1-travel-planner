@@ -15,35 +15,31 @@
     <title>Log in</title>
   </head>
   <body>
-      <nav class="flex">
-        <div class="col flex-col">
-            <div class="col"><h1><span class="welcome">WELCOME</span><span class="small-letter">TO</span></h1></div>
-            <div class="col"><h1><span class="brand-logo">Travel Planner</span></h1></div>
-        </div>
-        <div>
-            <a class="sign-up-button" href="/signup">SIGN UP</a>
-        </div>
-      </nav>
+      <main class="content-opactity-wrapper flex f-j-content f-a-center">
+        <form id="login" class="flex-col">
+          <fieldset class="login-form">
+              <legend>
+                  <div><h1><span class="welcome">WELCOME</span><span class="small-letter">TO</span></h1></div>
+              </legend>
 
-      <main class="content-opactity-wrapper flex f-a-center f-j-content">
-        <div class="flex container-m">
-            <form id="login" class="col flex-col">
-                <div class="login-form">
-                  <input type="email" id="email" name="email" placeholder="EMAIL" />
-                  
-                </div>
-                <div class="login-form">
-                  <input type="password" id="password" name="password" placeholder="PASSWORD" />
-                  <button class="log-in-button" type="submit">LOG IN</button>
-                </div>
-              </form>
-        </div>
+              <div class="logo"><h1><span class="brand-logo">Travel Planner</span></h1></div>
 
-
+              <div>
+                  <div class="flex-col">
+                      <label class="col" for="email">Email</label>
+                      <input class="col margin-b" type="email" id="email" name="email" />
+                  </div>
+                  <div class="flex-col">
+                      <label class="col" for="password">Password</label>
+                      <input class="col margin-b" type="password" id="password" name="password" />                 
+                  </div>
+                  <div class="col">
+                      <button class="log-in-button padding" type="submit">Log In</button>
+                      <a class="sign-up-button padding" href="/signup">Sign up</a>
+                  </div>
+              </div>
+            </fieldset>
+        </form>
       </main>
-
-      <footer class="footer-opactity-wrapper">
-        <section class="copyright">&copy; Jun Project 1 Inc.</section>
-      </footer>
   </body>
 </html>
