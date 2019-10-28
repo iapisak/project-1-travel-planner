@@ -76,19 +76,13 @@ nav {
     font-weight: 300;
 }
 
-form#login {
-    width: 90%;
-}
-
 fieldset {
     height: 600px;
+    width: 90%;
+    padding: 0 30px;
     border-color: rgb(235, 235, 220);
 }
 
-.login-form {
-    padding: 0 30px;
-    
-}
 /* ======== Manage First Page Log-in Form =======  */
 
 .log-in-button, .sign-up-button {
