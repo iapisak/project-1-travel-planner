@@ -3,7 +3,7 @@ const db = require('../models');
 
 // POST Sign Up
 const createUser = (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   db.User.findOne({ email: req.body.email }, (err, foundUser) => {
       if (err) return res.status(500).json ({
           status: 500,
@@ -117,9 +117,18 @@ const showProfile = (req, res) => {
   });
 };
 
+const mustBeLogin = (req, res, next) => {
+  if (req.session.currentUser) {
+    next()
+  } else {
+    res.redirect('/signup')
+  }
+}
+
 module.exports = {
   createUser,
   createSession,
   deleteSession,
   showProfile,
+  mustBeLogin,
 };

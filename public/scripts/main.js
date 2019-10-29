@@ -77,3 +77,16 @@ form && form.addEventListener('submit', (event) => {
   }
 
 })
+
+// =========== Handle with Create and Add Trip ============== //
+
+$('.trip').on('click', function (event) {
+  fetch(`/api/v1/trip/member/${userId}`, {
+      method: 'GET',
+  })
+  .then(stream => stream.json())
+  .then(res => {
+    if (res.status === 201) return window.location = `/profile/${res.data.id}`;
+  })
+  .catch(err => console.log(err))
+})
