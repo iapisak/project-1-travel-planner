@@ -15,7 +15,6 @@ logout.on('click', (event) => {
 
 const userId = window.location.pathname.split('/')[2]
 
-
 const getProfile = () => {
   fetch(`/api/v1/profiles/${userId}`, {
     method: 'GET',
