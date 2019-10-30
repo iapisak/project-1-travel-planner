@@ -6,7 +6,7 @@ const tripSchema = new Schema({
   destination: String,
   start: Date,
   end: Date,
-  activities: Array,
+  activities: String,
   description: String,
   friends: Array,
   user: {

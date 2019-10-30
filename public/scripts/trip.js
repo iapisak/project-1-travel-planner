@@ -54,8 +54,8 @@ $('#form').on('submit', function (event) {
                 "start": $('#date_start').val(),
                 "end": $('#date_end').val(),
                 "activities": addActivities,
-                // "activities": $('#activity').val(),
-                // "description": $('#description').val(),
+                "activities": $('#activity').val(),
+                "description": $('#description').val(),
                 "friends": selectFriends,
 
             },
