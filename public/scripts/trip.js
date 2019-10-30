@@ -92,17 +92,13 @@ const onSuccessGetTrip = (data) => {
             return `${friend.name}`
         });
 
-        const appendActivities = element.activities.map(activity => {
-            return `${activity.name}`
-        })
-
         const tripTemplete = `
         <div class="trip-section">
-            <button class="dropdown-btn">
+            <div class="dropdown-btn">
             <strong>Name : ${element.name}</strong><br>
                 To : ${element.destination}<br>
                 ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
-            </button>
+            </div>
             <div class="dropdown-container">
                 <div id=${element._id}>
                     
@@ -110,14 +106,9 @@ const onSuccessGetTrip = (data) => {
                     `<div class="set-left">On Trip : ${members.join(', ')} </div>`
                 }
 
-                ${ 
-                    `<div class="set-left">Activity : ${appendActivities.join(', ')} </div>`
-                }
 
-                    <div>Activity</div>
-                    <div class="set-left">${element.activities}</div>
-                    <div>Description</div>
-                    <div class="set-left">${element.description}</div>
+                <div class="set-left">Activity : ${element.activities}</div>
+                <div class="set-left">Description : ${element.description}</div>
                     <div class="center">
                         <button class="delete">Delete</button>
                         <button class="update">Update</button>
@@ -128,22 +119,22 @@ const onSuccessGetTrip = (data) => {
     `
         const memberTemplete = `
         <div class="trip-section">
-        <button class="dropdown-btn">
+        <div class="dropdown-btn">
         <strong>Name : ${element.name}</strong><br>
             To : ${element.destination}<br>
             ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
             <div class="float-right">Create by ${element.userName}</div>
-        </button>
+        </div>
         <div class="dropdown-container">
             <div id=${element._id}>
                 
                 ${
-                    `<div class="set-left">On Trip ( ${members.join(', ')} )</div>`
+                    `<div class="set-left">On Trip : ( ${members.join(', ')} )</div>`
                 }
-                <div>Activity</div>
-                <div class="set-left">${element.activities}</div>
-                <div>Description</div>
-                <div class="set-left">${element.description}</div>
+
+                <div class="set-left">Activity : ${element.activities}</div>
+                <div class="set-left">Description : ${element.description}</div>
+        
                 <div class="center">
                     <button class="remove">Leave</button>
                     <button class="update">Update</button>
@@ -229,7 +220,7 @@ const onSuccessPullTrip = (data, newTarget) => {
                     <label for="description">Description</label>
                     <input type="text" class="col" id="update_description" name="description" value="${data.description}">
                 </div>
-                <input type="submit" value="Save"/>
+                <button class="save" type="submit">Save</button>
             </form> 
         </section>
     `
@@ -244,7 +235,7 @@ const onSuccessPullTrip = (data, newTarget) => {
             <label for="description">Description</label>
             <input type="text" class="col" id="update_description" name="description" value="${data.description}">
         </div>
-        <input type="submit" value="Save"/>
+        <button class="save" type="submit">Save</button>
     </form> 
 </section>
     
