@@ -1,52 +1,65 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
-.dropdown-btn {
-    font-size: 15px;
-    font-weight: 300px;
-    font-family: 'Lato', sans-serif;
-    color: whitesmoke;
-    background-color: rgba(245, 245, 245, 0.105);
-    text-align: left;
-    width: 100%;
-    line-height: 1.5;
-    padding: 10px;
-    padding-left: 30px;
-    margin-top: 10px;
-    border: 1px solid whitesmoke;
-    cursor: pointer;
+.user-trip .dropdown-container {
+    background-color: whitesmoke;
 }
 
-.active {
-    background-color: black;
-    color: white;
-    cursor: pointer;
+.user-trip input {
+    background-color: rgba(126, 164, 194, 0.139);
+    border-radius: 10px;
+}
+
+.user-trip label {
+    color: rgb(8, 133, 235);
 }
 
 .dropdown-container {
-    font-size: 13px;
-    font-weight: 200px;
-    font-family: 'Lato', sans-serif;
     position: relative;
     display: none;
-    padding: 10px 15px;
     text-align: left;
-    color: white;
-    border-top: solid 2px #73736f;
+    border-radius: 0 0 10px 10px;
 }
 
-.dropdown-btn-add-trip, .dropdown-btn-add-friends, .dropdown-btn-add-myTrip {
-    font-size: 13px;
-    font-weight: 200px;
-    font-family: 'Lato', sans-serif;
+.dropdown-btn {
+    font-weight: 800;
+    font-size: 15px;
     padding: 10px;
-    color: #ffffff;
-    display: block;
-    border: none;
-    background-color: black;
+    color: white;
     width: 100%;
-    text-align: left;
     cursor: pointer;
+    border-radius: 10px;
+}
+
+.active {
+    border-radius: 10px 10px 0 0;
+}
+
+.bg-blue {
+    background-color: rgb(55, 147, 223);
+}
+
+.bg-white {
+    background-color: whitesmoke;
+    color: rgb(106, 102, 102);
+    padding: 10px 0 10px 10px;
+    line-height: 150%;
+    font-weight: 400;
+}
+
+.green {
+    color: rgb(31, 143, 31);
+    font-weight: 800;
+}
+
+.blue {
+    color: rgb(6, 136, 244);
+    font-weight: 800;
+}
+
+.red {
+    color: rgb(187, 49, 49);
+    font-weight: 800;
 }
 
 
@@ -132,9 +145,8 @@
 .cancel, .submit, .save {
     color: whitesmoke;
     background-color: rgb(20, 130, 20);
-    margin-top: 5px;
-    margin-right: 5px;
-    padding: 7px 15px;
+    margin: 10px 20px 10px 0;
+    padding: 5px 15px;
     cursor: pointer;
     border-radius: 10px;
     border: 1px solid whitesmoke;
@@ -147,8 +159,8 @@
 
 
 .delete, .remove, .cancel {
-    padding: 7px;
-    margin-right: 5px;
+    padding: 5px;
+    margin: 10px 5px;
     color: white;
     background: rgb(235, 77, 3);
     cursor: pointer;
@@ -157,7 +169,7 @@
 }
 
 .update {
-    padding: 7px;
+    padding: 5px;
     color: white;
     background: rgba(255, 166, 0, 0.906);
     cursor: pointer;

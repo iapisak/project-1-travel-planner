@@ -28,9 +28,9 @@ const getProfile = () => {
 
 const onSuccess = (user) => {
   const template =`
-      <p><strong>Name</strong> : ${user.name} ${user.lastName}</p>
-      <p><strong>Email</strong> : ${user.email}</p>
-      <p><strong>Member Since</strong> : ${new Date(user.signupDate).toLocaleDateString()}</p>
+      <div>Name : ${user.name} ${user.lastName}</div>
+      <div>Email : ${user.email}</div>
+      <div>Member Since : ${new Date(user.signupDate).toLocaleDateString()}</div>
   `
   $('.user-data').append(template)
 }

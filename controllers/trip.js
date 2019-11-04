@@ -1,5 +1,18 @@
 const db = require('../models')
 
+//-------------------- Create Trip ---------------------------//
+const createTrip = (req, res) => {
+    req.body.user = req.session.currentUser
+    req.body.userName = req.session.currentName
+    db.Trip.create(req.body, (err, createEvent) => {
+        if (createEvent) {
+            res.json(createEvent)
+        } else {
+            console.log(err)
+        }
+    })
+}
+
 //-------------------- Get Trip for update ---------------------------//
 const getTrip = (req, res) => {
     db.Trip.findOne( { _id: req.params.tripId }, (err, foundTrip) => {
@@ -34,19 +47,6 @@ const memberTrip = (req, res) => {
     })
 }
 
-
-//-------------------- Create Trip ---------------------------//
-const createTrip = (req, res) => {
-    req.body.user = req.session.currentUser
-    req.body.userName = req.session.currentName
-    db.Trip.create(req.body, (err, createEvent) => {
-        if (createEvent) {
-            res.json(createEvent)
-        } else {
-            console.log(err)
-        }
-    })
-}
 //-------------------- Delete Trip ---------------------------//
 const deleteTrip = (req, res) => {
     db.Trip.findByIdAndDelete({ _id: req.params.tripId}, (err, deleteThis) => {

@@ -33,38 +33,45 @@
                   <div><h1><span class="welcome">WELCOME</span><span class="small-letter">TO</span></h1></div>
               </legend>
               <div class="logo"><h1><span class="brand-logo">Travel Planner</span></h1></div>
+
               <!-- Form Start Here -->
-              <section class="content-opactity-wrapper flex">
+              <section class="content-opactity-wrapper flex margin-b">
                 <div class="col flex-col">
                   <section class="user-trip">
-                    <div class="dropdown-btn-add-myTrip my-trips">+ My Trips</div>
+                    <div class="dropdown-btn my-trips bg-blue">+ Create Trip</div>
                     <div class="dropdown-container">
                       <section class="flex">
                         <form id="form" class="col flex-col">
+                          <!-- Trip Name -->
                           <div class="col flex-col margin-t-5">
                               <label for="name">Trip Name</label>
                               <input type="text" class="col" id="name" name="name">
                           </div>
+                          <!-- Destination -->
                           <div class="col flex-col margin-t-5">
                             <label for="destination">Destination</label>
                             <input type="text" class="col" id="destination" name="destination">
                           </div>
-                          <div class="col flex-col margin-t-5">
-                            <label for="date_start">Date Start</label>
-                            <input type="date" class="col" id="date_start" name="date_start">
+                          <!-- Date -->
+                          <div class='col flex'>
+                              <div class="col flex-col margin-t-5">
+                                  <label for="date_start">Start</label>
+                                  <input type="date" class="col" id="date_start" name="date_start">
+                                </div>
+                              <div class="col flex-col margin-t-5">
+                                  <label for="date_end">End</label>
+                                  <input type="date" class="col" id="date_end" name="date_end">
+                              </div>
                           </div>
-                          <div class="col flex-col margin-t-5">
-                              <label for="date_end">Date End</label>
-                              <input type="date" class="col" id="date_end" name="date_end">
-                          </div>
-          
+                      
+
                           <!-- Adding Friends Area -->
-                          <button class="dropdown-btn-add-friends margin-t">
+                          <!-- <div class="dropdown-btn-add-friends margin-t">
                             + Add Friends
-                          </button>
+                          </div>
                           <div class="dropdown-container">
                               <div id="add-friends-section"></div>
-                          </div>
+                          </div> -->
                           <!-- Adding Friends Area -->
 
                           <!-- Adding Trips Area -->
@@ -88,27 +95,31 @@
                               <label for="description">Description</label>
                               <input type="text" class="col" id="description" name="description">
                           </div>
+
                           <div>
-                              
                               <button class="submit" type="submit">Add</button>
                               <button class="cancel">Cancel</button>
                           </div>
-
                         </form>
                       </section>
                     </div>
-                    <section class='show-trip' class="container"></section>
                   </section>
-                    
-                  <div>
-                      <h3>Friends invite</h3>
-                      <section class='trip-from-friend' class="container"></section>
-                  </div>
-
-                  </section>
-                </div> 
-
               </section>
+
+              <div class='margin-b'>
+                <div class="dropdown-btn margin-b bg-blue"> + My Trip</div>
+                <div class="dropdown-container">
+                  <section class='show-trip' class="container"></section>
+                </div>
+              </div>
+
+              <div class='margin-b'>
+                <div class="dropdown-btn margin-b bg-blue"> + Friends invite</div>
+                <div class="dropdown-container">
+                  <section class='trip-from-friend' class="container"></section>
+                </div>
+              </div>
+
           </fieldset>
         </div>
       </main>

@@ -40,7 +40,8 @@ $(event.target).parent().toggle()
 })
 
 $('#form').on('submit', function (event) {
-    let newId = window.location.pathname.split('/')[2]
+    // let newId = window.location.pathname.split('/')[2]
+    console.log(newId)
     event.preventDefault()
     formValidation()
 
@@ -53,10 +54,10 @@ $('#form').on('submit', function (event) {
                 "destination": $('#destination').val(),
                 "start": $('#date_start').val(),
                 "end": $('#date_end').val(),
-                "activities": addActivities,
-                "activities": $('#activity').val(),
-                "description": $('#description').val(),
-                "friends": selectFriends,
+                // "activities": addActivities,
+                // "activities": $('#activity').val(),
+                // "description": $('#description').val(),
+                // "friends": selectFriends,
 
             },
             success: onSuccessTrip,
@@ -93,55 +94,53 @@ const onSuccessGetTrip = (data) => {
         });
 
         const tripTemplete = `
-        <div class="trip-section">
-            <div class="dropdown-btn">
-            <strong>Name : ${element.name}</strong><br>
-                To : ${element.destination}<br>
-                ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
+        <div class="trip-section margin-b">
+            <div class="flex">
+                <div class="dropdown-btn-trip bg-white col">
+                    Name : <span class='blue'>${element.name}</span><br>
+                    Destination : <span class='red'>${element.destination}</span><br>
+                    ${ `On Trip : <span class='green'>${members.join(', ')}</span>`}
+                </div>
+                <div class="bg-white basic">
+                    <span class='red'>${new Date(element.start).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${new Date(element.end).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                </div>
             </div>
-            <div class="dropdown-container">
-                <div id=${element._id}>
-                    
-                ${ 
-                    `<div class="set-left">On Trip : ${members.join(', ')} </div>`
-                }
 
-
+            <div id=${element._id} class="dropdown-container">
                 <div class="set-left">Activity : ${element.activities}</div>
                 <div class="set-left">Description : ${element.description}</div>
-                    <div class="center">
-                        <button class="delete">Delete</button>
-                        <button class="update">Update</button>
-                    </div>
+                <div class="center">
+                    <button class="delete">Delete</button>
+                    <button class="update">Update</button>
                 </div>
+            </div>
             <div class="update-section"></div>
         </div>
     `
         const memberTemplete = `
-        <div class="trip-section">
-        <div class="dropdown-btn">
-        <strong>Name : ${element.name}</strong><br>
-            To : ${element.destination}<br>
-            ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}
-            <div class="float-right">Create by ${element.userName}</div>
-        </div>
-        <div class="dropdown-container">
-            <div id=${element._id}>
-                
-                ${
-                    `<div class="set-left">On Trip : ( ${members.join(', ')} )</div>`
-                }
+        <div class="trip-section margin-b">
+            <div class="flex">
+                <div class="dropdown-btn-trip bg-white col">
+                    Name : <span class='blue'>${element.name}</span><br>
+                    Destination : <span class='red'>${element.destination}</span><br>
+                    ${ `On Trip : <span class='green'>${members.join(', ')}</span>`}
+                </div>
+                <div class="bg-white basic">
+                    Invited by ${element.userName}<br>
+                    <span class='red'>${new Date(element.start).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${new Date(element.end).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                </div>
+            </div>
 
+            <div id=${element._id} class="dropdown-container">
                 <div class="set-left">Activity : ${element.activities}</div>
                 <div class="set-left">Description : ${element.description}</div>
-        
                 <div class="center">
-                    <button class="remove">Leave</button>
+                    <button class="delete">Delete</button>
                     <button class="update">Update</button>
                 </div>
             </div>
-        <div class="update-section"></div>
-    </div>
+            <div class="update-section"></div>
+        </div>
         `
     if (element.user == userId){
     $('.show-trip').append(tripTemplete)
@@ -175,13 +174,14 @@ getMemberWithTrip()
 
 // ================ Call Data to The Form Before Update  ================  //
 
-$('.content-opactity-wrapper').on('click', '.update', function (event) {
-    $(event.target).parent().parent().toggle()
+$('main').on('click', '.update', function (event) {
+    console.log(event.target)
+    // $(event.target).parent().parent().toggle()
     $('.update-section').children().remove()
     const newTarget = event.target
     let tripId = $(event.target).parent().parent().attr('id') // Select id from <div id> that just exists
     // console.log($(event.target).parent().parent())
-    // console.log(tripId)
+    console.log(tripId)
     fetch(`/api/v1/${tripId}`, {
         method: 'GET',
     })
@@ -311,7 +311,7 @@ $('.content-opactity-wrapper').on('click', '.remove', function (event) {
 
 // =========== Drop down function ** when ** the page load ========== //
 
-$('.dropdown-btn-add-myTrip').on('click', function (event) {
+$('main').on('click', '.dropdown-btn', function (event) {
     event.target.classList.toggle("active")
      dropdownContainer = event.target.nextElementSibling;
     if (dropdownContainer.style.display === "block") {
@@ -321,31 +321,64 @@ $('.dropdown-btn-add-myTrip').on('click', function (event) {
     }
 })
 
-$('.dropdown-btn-add-friends').on('mouseover', function (event) {
-    event.target.classList.toggle("active")
-    dropdownContainer = event.target.nextElementSibling
-
-    if (dropdownContainer.style.display === "block") { dropdownContainer.style.display = "none" } 
-        else { dropdownContainer.style.display = "block" }
-})
-
-$('.dropdown-btn-add-trip').on('mouseover', function (event) {
-    event.target.classList.toggle("active")
-     dropdownContainer = event.target.nextElementSibling;
+$('main').on('click', '.dropdown-btn-trip', function (event) {
+     dropdownContainer = event.target.parentElement.nextElementSibling;
     if (dropdownContainer.style.display === "block") {
     dropdownContainer.style.display = "none"
     } else {
     dropdownContainer.style.display = "block"
     }
 })
+
+
+
+// $('.dropdown-btn-add-friends').on('mouseover', function (event) {
+//     event.target.classList.toggle("active")
+//     dropdownContainer = event.target.nextElementSibling
+
+//     if (dropdownContainer.style.display === "block") { dropdownContainer.style.display = "none" } 
+//         else { dropdownContainer.style.display = "block" }
+// })
+
+// $('.dropdown-btn-add-trip').on('mouseover', function (event) {
+//     event.target.classList.toggle("active")
+//      dropdownContainer = event.target.nextElementSibling;
+//     if (dropdownContainer.style.display === "block") {
+//     dropdownContainer.style.display = "none"
+//     } else {
+//     dropdownContainer.style.display = "block"
+//     }
+// })
 
 // =========== Drop down function ** after ** the page load ========== //
-$('.content-opactity-wrapper').on('click', '.dropdown-btn', function (event) {
-    event.target.classList.toggle("active")
-    var dropdownContainer = event.target.nextElementSibling;
-    if (dropdownContainer.style.display === "block") {
-    dropdownContainer.style.display = "none"
-    } else {
-    dropdownContainer.style.display = "block"
-    }
-})
+// $('.show-trip').on('click', '.dropdown-btn', function (event) {
+//     console.log(event.target)
+//     event.target.classList.toggle("active")
+//     var dropdownContainer = event.target.nextElementSibling;
+//     if (dropdownContainer.style.display === "block") {
+//     dropdownContainer.style.display = "none"
+//     } else {
+//     dropdownContainer.style.display = "block"
+//     }
+// })
+
+// $('.trip-from-friend').on('click', '.dropdown-btn', function (event) {
+//     event.target.classList.toggle("active")
+//     var dropdownContainer = event.target.nextElementSibling;
+//     if (dropdownContainer.style.display === "block") {
+//     dropdownContainer.style.display = "none"
+//     } else {
+//     dropdownContainer.style.display = "block"
+//     }
+// })
+
+// ========== Hide =========
+// $('.show-trip').on('click', '.dropdown-btn', function(event) {
+//     console.log(event.target)
+//     $('.friend-area').toggle()
+// })
+
+// $('.friend-area').on('click', '.dropdown-btn', function(event) {
+//     console.log(event.target)
+//     $('.show-trip').toggle()
+// })
