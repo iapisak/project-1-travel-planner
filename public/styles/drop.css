@@ -57,6 +57,15 @@
     font-weight: 800;
 }
 
+.gray {
+    color: rgb(106, 102, 102);
+    font-weight: 800;
+}
+
+.dark-blue {
+    color: rgb(3, 85, 152);
+}
+
 .red {
     color: rgb(187, 49, 49);
     font-weight: 800;
@@ -142,40 +151,35 @@
     cursor: pointer;
 }
 
-.cancel, .submit, .save {
-    color: whitesmoke;
-    background-color: rgb(20, 130, 20);
-    margin: 10px 20px 10px 0;
-    padding: 5px 15px;
+.view-update {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: underline;
     cursor: pointer;
-    border-radius: 10px;
-    border: 1px solid whitesmoke;
-    float: right;
+}
+
+.box {
+    position: relative;
+}
+
+.add_trip {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+.delete, .update, .cancel, .submit {
+    margin: 10px 0 10px 10px;
+    cursor: pointer;
 }
 
 .save {
     margin-top: 5px;
 }
 
-
-.delete, .remove, .cancel {
-    padding: 5px;
-    margin: 10px 5px;
-    color: white;
-    background: rgb(235, 77, 3);
-    cursor: pointer;
-    border-radius: 10px;
-    border: 1px solid whitesmoke;
-}
-
-.update {
-    padding: 5px;
-    color: white;
-    background: rgba(255, 166, 0, 0.906);
-    cursor: pointer;
-    border-radius: 10px;
-    border: 1px solid whitesmoke;
-}
 
 
 /* -- Arange Form -- */
@@ -191,8 +195,8 @@
 }
 
 .center {
-    text-align: right;
-    padding: 10px 0;
+    display: block;
+    text-align: center;
 }
 
 /* -- Animation -- */

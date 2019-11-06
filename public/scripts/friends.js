@@ -26,4 +26,4 @@ const getFriends = () => {
     .catch(err => console.log(err))
 }
 
-getFriends()
+// getFriends()

@@ -51,16 +51,6 @@ label {
     font-weight: 800;
 }
 
-/* ======== Manage All Nav Bar =======  *
-/* nav {
-    align-items: center;
-    padding: 10px 0;
-    width: 100%;
-    background-color: #e4d8d3;
-    border-bottom: solid 1px #73736f;
-    border-top: solid 1px #73736f;
-} */
-
 .welcome {
     font-size: 27px;
     font-weight: 800;
@@ -119,12 +109,12 @@ main {
 }
 
 /* ==============  */
-p {
+/* p {
     margin-top: 10px;
     padding: 10px;
     background-color: black;
     color: white;
-}
+} */
 
 .user-data {
 font-size: 14px;
@@ -132,6 +122,27 @@ font-weight: 100;
 padding: 10px;
 color: #73736f;
 margin: 10px 10px 0 0;
+}
+
+.trip_detail {
+    background-color: rgb(55, 147, 223);
+    padding: 10px;
+    line-height: 150%;
+}
+
+.activity-detail {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+    margin-bottom: 10px;
+}
+.activity_information {
+    border-radius: 10px;
+}
+
+#activity-form {
+    display: none;
 }
 
 .flex {
@@ -179,12 +190,20 @@ margin: 10px 10px 0 0;
     margin-top: 10px;
 }
 
+.margin-t-20 {
+    margin-top: 20px;
+}
+
 .margin-b {
     margin-bottom: 10px;
 }
 
 .margin-r {
     margin-right: 10px;
+}
+
+.margin-l {
+    margin-left: 10px;
 }
 
 .padding {

@@ -52,6 +52,20 @@ router.get('/profile/:userId', (req, res) => {
   });
 });
 
+// GET Trip to Update
+
+router.get('/views/trip/:tripId', (req, res) => {
+  if (!req.session.currentUser) {
+    return res.redirect('/');
+  }
+    
+  res.sendFile('views/auth/trip.html', {
+    root: `${__dirname}/../`
+  });
+});
+
+
+
 // GET Trip Form
 router.get('/trip', (req, res) => {
   console.log(req.session.currentUser)

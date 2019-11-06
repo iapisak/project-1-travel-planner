@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Main CSS -->
+    <!-- <link rel="stylesheet" href="/styles/section.css"> -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/drop.css">
+    <script defer
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script defer src="/scripts/trip.js"></script>
+    <title>View Trip</title>
+  </head>
+
+  <body>
+      <main>
+        <div class='flex f-j-end margin-r padding'>
+            <div id="profile" class="margin-r">Profile</div>
+            <a id="logout" href="/logout">Log Out</a>
+        </div>
+        <div class="flex-col f-j-content f-a-center" >
+          <fieldset>
+              <legend>
+                  <div><h1><span class="welcome">WELCOME</span><span class="small-letter">TO</span></h1></div>
+              </legend>
+              <div class="logo"><h1><span class="brand-logo">Travel Planner</span></h1></div>
+
+              <!-- Form Start Here -->
+              <section class="content-opactity-wrapper flex-col margin-b">
+                  <div class='flex f-j-end'>
+                      <div class="trip-update">Update</div>
+                      <div class="trip-delete">Delete</div>
+                    </div>
+                <div class='update-trip-info'></div>
+                <div class='trip-info'></div>
+                
+
+                
+
+
+                <div class='box flex margin-t-20 margin-l'>
+                    <p class="activity-detail">Activity & Detail</p>
+                    <p><span class="add_trip">Add Activity</span></p>
+                </div>
+
+                <form id="activity-form">
+                    <div class="col flex-col margin-t-5">
+                        <label for="activity">Activity Name</label>
+                        <input type="text" class="col" id="activity" name="name">
+                    </div>
+                    <div class="col flex-col margin-t-5">
+                        <label for="detail_activity">Detail</label>
+                        <input type="text" class="col" id="detail_activity" name="Detail">
+                    </div>
+                    <div class="flex f-j-end">
+                        <button class="submit" type="submit">Add</button>
+                    </div>
+                </form> 
+                <div class="activity_information bg-white"></div>
+
+
+              </section>
+
+          </fieldset>
+        </div>
+      </main>
+  </body>
+</html>

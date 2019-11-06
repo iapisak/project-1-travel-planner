@@ -1,28 +1,39 @@
 const db = require('../models')
 
+//-------------------- Get Trip for update ---------------------------//
+const getTrip = (req, res) => {
+    db.Trip.findById( req.params.tripId, (err, foundThisActivity) => {
+        if (err) { return res.status(500).json({ error: "Could not find trip with that Id"}) }
+        res.json({ status: 200, data: foundThisActivity })
+    })
+}
+
 //-------------------- Create Trip ---------------------------//
 const createTrip = (req, res) => {
     req.body.user = req.session.currentUser
     req.body.userName = req.session.currentName
     db.Trip.create(req.body, (err, createEvent) => {
-        if (createEvent) {
-            res.json(createEvent)
-        } else {
-            console.log(err)
-        }
+        if (err) { return res.status(400).json({ error: "Could not create this event"}) }
+        res.json({ status: 200, data: createEvent })
     })
 }
 
-//-------------------- Get Trip for update ---------------------------//
-const getTrip = (req, res) => {
-    db.Trip.findOne( { _id: req.params.tripId }, (err, foundTrip) => {
-        if (err) {return console.log(err)}
-        res.json({
-            status: 200,
-            data: foundTrip,
-        })
+//-------------------- Create Activity ---------------------------//
+const activity = (req, res) => {
+    db.Trip.findById( req.params.tripId, (err, foundThisTrip) => {
+        if (err) { return res.status(500).json({ error: "Could not find trip with that Id"}) }
+        foundThisTrip.activities.push(req.body)
+        foundThisTrip.save()
+        res.json({ status: 200, data: foundThisTrip })
     })
 }
+
+
+
+
+
+
+
 
 //-------------------- Find Trip created By User ---------------------------//
 const showTrip = (req, res) => {
@@ -86,6 +97,7 @@ module.exports = {
     getTrip,
     showTrip,
     createTrip,
+    activity,
     deleteTrip,
     updateTrip,
     memberTrip,
