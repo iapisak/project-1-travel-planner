@@ -1,3 +1,14 @@
+const getFriends = () => {
+    fetch('/api/v1/friends', {
+        method: 'GET',
+    })
+    .then(stream => stream.json())
+    .then(res => {
+        friends(res.data)
+    })
+    .catch(err => console.log(err))
+}
+
 const friends = (friends) => {
     friends.forEach(function (element) {
         const friendTemplate = `
@@ -15,15 +26,4 @@ const friends = (friends) => {
     })
 }
 
-const getFriends = () => {
-    fetch('/api/v1/friends', {
-        method: 'GET',
-    })
-    .then(stream => stream.json())
-    .then(res => {
-        friends(res.data)
-    })
-    .catch(err => console.log(err))
-}
-
-// getFriends()
+getFriends()

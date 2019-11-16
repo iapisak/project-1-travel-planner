@@ -65,7 +65,6 @@ router.get('/views/trip/:tripId', (req, res) => {
 });
 
 
-
 // GET Trip Form
 router.get('/trip', (req, res) => {
   console.log(req.session.currentUser)

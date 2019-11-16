@@ -12,10 +12,10 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   color: whitesmoke;
-
 }
 
 body {
+    background-color: rgb(34, 31, 30);
     position: relative;
     max-width: 650px;
     height: auto;
@@ -33,6 +33,27 @@ h2 {
     font-weight: 100;
 }
 
+h4 {
+    margin: 20px 0px 10px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: green;
+}
+.content-opactity-wrapper {
+    width: 100%;
+}
+
+#profile {
+    cursor: pointer;
+}
+
+#add-friends-section {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(133, 192, 207, 0.144);
+    
+}
+
 /* ======== Manage All Form =======  */
 input {
     background: rgb(246, 249, 246);
@@ -41,7 +62,6 @@ input {
     font-size: 14px;
     padding: 10px;
     border: none;
-    /* border-radius: 10px; */
 }
 
 label {

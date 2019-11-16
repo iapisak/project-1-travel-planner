@@ -21,7 +21,13 @@
     border-radius: 0 0 10px 10px;
 }
 
-.dropdown-btn {
+.dropdown-container-trip {
+    position: relative;
+    text-align: left;
+    border-radius: 0 0 10px 10px;
+}
+
+.dropdown-btn, .dropdown-btn-trip {
     font-weight: 800;
     font-size: 15px;
     padding: 10px;
@@ -171,9 +177,86 @@
     cursor: pointer;
 }
 
-.delete, .update, .cancel, .submit {
-    margin: 10px 0 10px 10px;
+.update-trip-info {
+    display: none;
+    border: 1px solid white;
+}
+
+.trip-delete {
     cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: whitesmoke;
+    background: rgb(240, 79, 11);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 70px;
+}
+
+.trip-update {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: whitesmoke;
+    background: rgb(8, 203, 102);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.form-update-save {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: whitesmoke;
+    background: dodgerblue;
+    font-size: 15px;
+    margin: 20px 0;
+    margin-right: 20px;
+    float: right;
+    border-radius: 10px;
+}
+
+.cancel {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: red;
+    background: none;
+    margin-right: 10px;
+    text-decoration-line: underline;
+}
+
+.submit {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: dodgerblue;
+    background: none;
+    text-decoration-line: underline;
+}
+.activity-container {
+    position: relative;
+}
+
+.remove-activity {
+    position: absolute;
+    right: 0;
+    color: red;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 10px;
+    text-decoration-line: underline;
+}
+
+.remove-self-trip {
+    padding: 10px;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .save {

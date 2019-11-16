@@ -10,6 +10,16 @@ const formValidation = () => {
     if ($('#date_end').val() === "") {validation = false}
 }
 
+const selectFriends = new Array ()
+  $('#add-friends-section').on('click', 'input', function(event) {
+      if (event.target.checked) {
+          selectFriends.push({
+              friendId: this.value,
+              name: this.name,
+          })
+      }
+  })
+
 $('#form').on('submit', function (event) {
   event.preventDefault()
   formValidation()
@@ -23,6 +33,7 @@ $('#form').on('submit', function (event) {
               "destination": $('#destination').val(),
               "start": $('#date_start').val(),
               "end": $('#date_end').val(),
+              "friends": selectFriends 
           },
           success: onSuccessTrip,
           error: (err) => console.log(err)
@@ -37,6 +48,36 @@ $('#form').on('submit', function (event) {
 const onSuccessTrip = (data)=> {
   console.log(data)
 }
+
+const getFriends = () => {
+  fetch('/api/v1/friends', {
+      method: 'GET',
+  })
+  .then(stream => stream.json())
+  .then(res => {
+      friends(res.data)
+  })
+  .catch(err => console.log(err))
+}
+
+const friends = (friends) => {
+  friends.forEach(function (element) {
+      const friendTemplate = `
+          <div class="add-member">
+              <label class="friend-label" for="f-${element._id}">${element.name}
+                  <input type="checkbox" id="f-${element._id}" name="${element.name}" value="${element._id}">
+                  <span class="checkmark"></span>
+              </label>
+          </div>
+  `
+  if (element._id !== userId) {
+      $('#add-friends-section').append(friendTemplate)
+  }
+      
+  })
+}
+
+getFriends()
 
 // ================ Append Trip Created By User ================  //
 
@@ -134,6 +175,10 @@ $('main').on('click', '.dropdown-btn', function (event) {
   }
 })
 
+$('main').on('click', '.dropdown-btn-trip', function (event) {
+  event.taret.nextElementSibling.toggle()
+})
+
 
 $('main').on('click', '.view-update', function (event) {
   const tripId = $(event.target).attr('id') 
@@ -151,6 +196,10 @@ $('#logout').on('click', (event) => {
         window.location = '/';
       }
     })
+})
+
+$('main').on('click', '.cancel', function () {
+  window.location = `/profile/${userId}`
 })
 
 

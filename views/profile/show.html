@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Main CSS -->
-    <!-- <link rel="stylesheet" href="/styles/section.css"> -->
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/drop.css">
     <script defer
@@ -22,7 +21,6 @@
             <section class="user-data" class="container"></section>
         </div>
         <div class='flex f-j-end margin-r padding'>
-            <a class="margin-r" href="#">Search Friends</a>
             <a id="logout" href="/logout">Log Out</a>
         </div>
         <div class="flex-col f-j-content f-a-center" >
@@ -61,39 +59,12 @@
                                   <input type="date" class="col" id="date_end" name="date_end">
                               </div>
                           </div>
-                      
-
                           <!-- Adding Friends Area -->
-                          <!-- <div class="dropdown-btn-add-friends margin-t">
-                            + Add Friends
-                          </div>
-                          <div class="dropdown-container">
+                          <div>
+                              <h4>Add friends to your trip</h4>
                               <div id="add-friends-section"></div>
-                          </div> -->
+                          </div>
                           <!-- Adding Friends Area -->
-
-                          <!-- Adding Trips Area -->
-                          <!-- <button class="dropdown-btn-add-trip">
-                              + Add Activity
-                          </button>
-                          <div id="activities-section" class="dropdown-container">
-                              <label for="activity">Activity Name :  </label>
-                              <input type="text" class="col" id="activity" name="activity">
-                              <button id="add">Add</button>
-                          </div>
-
-                          <div id="show-activities-area"></div> -->
-                          <!-- Adding Trips Area -->
-
-                          <!-- <div class="col flex-col margin-t-5">
-                              <label for="activity">Activity</label>
-                              <input type="text" class="col" id="activity" name="activity">
-                          </div>
-                          <div class="col flex-col margin-t-5">
-                              <label for="description">Description</label>
-                              <input type="text" class="col" id="description" name="description">
-                          </div> -->
-
                           <div class="flex f-j-end">
                               <button class="submit" type="submit"> Add </button>
                               <button class="cancel">Cancel</button>
@@ -106,14 +77,14 @@
 
               <div class='margin-b'>
                 <div class="dropdown-btn margin-b bg-blue"> + My Trip</div>
-                <div class="dropdown-container">
+                <div class="dropdown-container-trip">
                   <section class='show-trip' class="container"></section>
                 </div>
               </div>
 
               <div class='margin-b'>
                 <div class="dropdown-btn margin-b bg-blue"> + Friends invite</div>
-                <div class="dropdown-container">
+                <div class="dropdown-container-trip">
                   <section class='trip-from-friend' class="container"></section>
                 </div>
               </div>
