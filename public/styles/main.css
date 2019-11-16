@@ -1,267 +1,261 @@
-
-/* Imported Fonts */
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap');
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-    justify-content: center;
-  }
-  
-  /* html {
-    position: relative;
-    min-height: 100vh;
-  } */
-  
-.wrap {
-  width: 550px;
-  margin: 0 auto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: whitesmoke;
 }
 
-  body {
+body {
+    background-color: rgb(34, 31, 30);
     position: relative;
-    display: block;
-    font-family: sans-serif;
-    min-height: 100vh;
-    /* max-height: 90vh; */
-    background-image: url("/point-reyes.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    max-width: 375px;
+    max-width: 650px;
+    height: auto;
     margin: 0 auto;
-    /* margin-bottom: 100px; */
-  }
+}
 
-  main {
-    /* position: relative; */
-    min-height: 78vh;
-    padding-bottom: 100px;
-  }
-
-/* @media (max-width: 380px){
-    html {  
-      min-height: 50vh;
-      margin-bottom: 0px; 
-    }
-  } */
-
-  h1, h2 {
-    margin: 0px 20px 0px 20px;
-    text-align: center;
-    color: white;
-    font-family: 'Dancing Script', cursive;
-    font-size: 40px;
-
-  }
-
-  .flash-button{
-    animation-name: flash;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-size: 14px;
-    color: rgb(250, 246, 246);
-  }
-  
-  input {
-    width: 300px;
-    padding: 10px;
-    font-size: 16px;
-    /* line-height: 1.6; */
-    border: 2px solid rgba(11, 206, 241, 0.2);
-    border-radius: 10px;
-  }
-  
-  input[type="submit"] {
-    background: white;
-    width: auto;
-    margin: 10px 20px;
-    /* margin-bottom: 70px; */
-    font-size: 16px;
-    color: rgb(59, 57, 57);
-    font-weight: 600;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    float: right;
+a, button{
     cursor: pointer;
-    box-shadow: none;
-  }
+    border: none;
+}
 
-/* .form-section {
-  margin-bottom: -74px;
+h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+h4 {
+    margin: 20px 0px 10px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: green;
+}
+.content-opactity-wrapper {
+    width: 100%;
+}
+
+#profile {
+    cursor: pointer;
+}
+
+#add-friends-section {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(133, 192, 207, 0.144);
+    
+}
+
+/* ======== Manage All Form =======  */
+input {
+    background: rgb(246, 249, 246);
+    color: rgb(106, 102, 102);
+    margin: 0 15px;
+    font-size: 14px;
+    padding: 10px;
+    border: none;
+}
+
+label {
+    color: whitesmoke;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.welcome {
+    font-size: 27px;
+    font-weight: 800;
+    padding-left: 10px;
+    color: whitesmoke;
+}
+
+.small-letter {
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+.brand-logo {
+    padding-left: 30px;
+    padding-top: 5px;
+    letter-spacing: 0.09em;
+    font-family: 'Dancing Script', cursive;
+    font-size: 35px;
+    font-weight: 300;
+}
+
+fieldset {
+    width: 90%;
+    padding: 0 30px;
+    padding-bottom: 30px;
+    border-color: rgb(235, 235, 220);
+}
+
+
+fieldset#home {
+    height: 600px;
+}
+
+/* ======== Manage First Page Log-in Form =======  */
+
+.log-in-button, .sign-up-button {
+    font-size: 14px;
+    font-weight: 900px;
+    color: whitesmoke;
+    border-radius: 10px;
+    background-color: transparent !important;
+    text-decoration: underline;
+}
+
+/* ======== Manage Main Area =======  */
+
+main {
+    position: sticky;
+    height: 100vh;
+    background-image: url("/red.jpg");
+    background-size: cover;
+    background-position: 20px 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: auto;
+}
+
+/* ==============  */
+/* p {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: black;
+    color: white;
 } */
 
-
-  /* LAYOUT */
-  
-  .container {
-    display: flex;
-    max-width: 375px;
-    max-height: 100vh;
-    margin: 5px;
-    overflow: hidden;
-    padding: 10px 20px 0px 20px;
-    border: 0;
-  }
-  
-  .alert .container {
-    margin-bottom: 0;
-  }
-  
-  .form-group {
-    width: 100%;
-    margin-bottom: 20px;
-    overflow: hidden;
-  }
-  
-
-
-  /* NAVIGATION */
-
-.organizer {
-    float: left;
-    color: white;
-    font-family: 'Dancing Script', cursive;
-    margin-top: 10px;
-    font-size: 40px;
-  } 
-  
-
-  .header-opactity-wrapper {
-    width: 375px;
-    position:fixed;
-    z-index:10;
-    background: inherit;
-}
-
-.content-opactity-wrapper {
-    width:100%;
-    padding-top:92px;
-    z-index:5;
-    overflow:auto;
-}
-
-.footer-opactity-wrapper {
-width: 375px;
-position:fixed;
-z-index:10;
-background:inherit;
-}
-
-nav {
-    position: fixed;
-    top: 0;
-    background-color: rgba(11, 206, 241, 0.5);
-    width: 100%;
-    padding: 0;
-    color: rgb(253, 251, 251);
-    overflow: hidden;
-    position: sticky;
-  }
-
-nav ul li {
-    list-style:none;
-    float: right;
-    justify-content: center;
-  }
-  
-nav li {
-    list-style-type: none;
-    display: inline-block;
-    font-size: 20px;
-  }
-  
-nav li a {
-    display: block;
-    padding: 25px 0px;
-    width: 100px;
-    text-decoration: none;
-    color: rgb(253, 251, 251);
-    text-align: center;
-  }
-  
-li.active a, nav li:hover a {
-    text-decoration: none;
-    color: #ddd;
-    border-width: 2px;
-    border-radius: 20px;
-    border: white;
-  }
-  
-nav form {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-width: 2px;
-    border-radius: 20px;
-    border: white;
-  }
-  
 .user-data {
-  margin-top: 15px;
-  margin-left: 10px;
-  color: white;
-  }
-  
-/* ------- LOGIN PAGE ------- */
-  
-  /* .login {
-    max-width: 600px;
-    margin: 40px auto;
-  } */
+font-size: 14px;
+font-weight: 100;
+padding: 10px;
+color: #73736f;
+margin: 10px 10px 0 0;
+}
 
-/* ------- FOOTER ------*/
-  
-  footer {
-    position: absolute;
-    background-color: rgba(11, 206, 241, 0.5);
-    width: 375px;
-    height: 73px;
-    color: rgba(39, 39, 39, 0.637);
-    text-shadow: lightcyan;
-    text-align: center;
-    bottom: 0;
-    margin: 0;
-  }
+.trip_detail {
+    background-color: rgb(55, 147, 223);
+    padding: 10px;
+    line-height: 150%;
+}
 
-  /* @media only screen and (max-width: 400px) {
-    footer {
-      position: absolute;
-    }
-  } */
+.activity-detail {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+    margin-bottom: 10px;
+}
+.activity_information {
+    border-radius: 10px;
+}
 
-  .copyright {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 74px;
-  }
+#activity-form {
+    display: none;
+}
 
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.col {
+    flex: 1;
+}
+
+.basic {
+    flex-basis: 140px;
+}
+
+.f-a-center {
+    align-items: center;
+}
+
+.f-j-content {
+    justify-content: center;
+}
+
+.f-j-end {
+    justify-content: flex-end;
+}
+
+.f-j-item {
+    justify-items: flex-end;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.margin-t-5 {
+    margin-top: 5px;
+}
+
+.margin-t {
+    margin-top: 10px;
+}
+
+.margin-t-20 {
+    margin-top: 20px;
+}
+
+.margin-b {
+    margin-bottom: 10px;
+}
+
+.margin-r {
+    margin-right: 10px;
+}
+
+.margin-l {
+    margin-left: 10px;
+}
+
+.padding {
+    padding: 10px;
+}
 
 /* ALERT */
 
-    .alert.error:first-of-type {
-      margin: -30px auto 10px;
-    }
-    
-    .alert.error {
-      background-color: #f8d7da;
-      max-width: 680px;
-      padding: 20px;
-      margin: 0 auto 10px;
-      border: 1px solid #f5c6cb;
-      border-radius: 4px;
-      color: #721c24;
-    }
-    
-    .input-error {
-      background-color: #f8d7da;
-      border: 2px solid #721c24;
-    }
+.alert {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: rgb(31, 143, 31);
+}
+
+.alert .container {
+    margin-bottom: 0;
+}
+.alert.error:first-of-type {
+    margin: -30px auto 10px;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    max-width: 680px;
+    padding: 20px;
+    margin: 0 auto 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    color: #94303a;
+}
+
+.input-error {
+    background-color: #f8d7da;
+    border: 2px solid #721c24;
+}

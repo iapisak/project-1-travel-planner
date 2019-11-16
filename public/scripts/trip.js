@@ -1,236 +1,188 @@
-// ================ Trip form front-end ================  //
-const newId = window.location.pathname.split('/')[2]
+const tripId = window.location.pathname.split('/')[3]
 
-let validation = true
+// $('profile').on('click', function (event) {
+//     const tripId = $(event.target).attr('id') 
+//     window.location = `/views/trip/${tripId}`
+// })
 
-const formValidation = () => {
-    if ($('#name').val() === "") {validation = false}
-    if ($('#destination').val() === "") {validation = false} 
-    if ($('#date_start').val() === "") {validation = false}
-    if ($('#date_end').val() === "") {validation = false}
-    if ($('#activity').val() === "") {validation = false}
-    if ($('#description').val() === "") {validation = false}
-}
-
-const selectFriends = new Array ()
-$('#add-friends-section').on('click', 'input', function(event) {
-    if (event.target.checked) {
-        selectFriends.push({
-            friendId: this.value,
-            name: this.name,
-        })
-    }
-})
-
-$('#form').on('submit', function (event) {
-    let newId = window.location.pathname.split('/')[2]
-    event.preventDefault()
-    formValidation()
-
-    if (validation) {
-        $.ajax({
-            method: "POST",
-            url: `http://localhost:3000/api/v1/trip/create`,
-            data: { 
-                "name": $('#name').val(),
-                "destination": $('#destination').val(),
-                "start": $('#date_start').val(),
-                "end": $('#date_end').val(),
-                "activities": $('#activity').val(),
-                "description": $('#description').val(),
-                "friends": selectFriends,
-
-            },
-            success: onSuccessTrip,
-            error: (err) => console.log(err)
-        })
-        $('input').val('')
-    } else {
-        return validation = true
-    }
-    window.location = `/profile/${newId}`
-})
-
-const onSuccessTrip = (data)=> {
-    console.log(data)
-}
-
-// ================ Append Trip Created By User ================  //
-
-const getTrip = () => {
-    fetch(`/api/v1/trip/${userId}`, {
+const viewTrip = () => {
+    fetch(`/api/v1/views/trip/${tripId}`, {
         method: 'GET',
       })
     .then(dataStream => dataStream.json())
     .then(res => {
-        onSuccessGetTrip(res.data)
+        onSuccessViewTrip(res)
     })
     .catch(err => console.log(err));
 }
 
-const onSuccessGetTrip = (data) => {
-    data.forEach(function(element) {
-        const members = element.friends.map(friend => {
-            return `${friend.name}`
-        });
-        const tripTemplete = `
-        <div class="trip-section">
-            <button class="dropdown-btn">
-            <strong>${element.name}</strong><br>
-                Destination : ${element.destination}<br>
-                Date: ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}<br>
-                Create by ${element.userName}
-            </button>
-            <div class="dropdown-container">
-                <div id=${element._id}>
-                    
-                    ${
-                        `<p>On trip: ${members.join(', ')}</p>`
-                    }
-                    <p>Activity : ${element.activities}</p>
-                    <p>Description : ${element.description}</p>
-                    <button class="delete">Delete</button>
-                    <button class="update">Update</button>
-                </div>
-            <div class="update-section"></div>
+const onSuccessViewTrip = (trip) => {
+    
+    const members = []
+    trip.data.friends.forEach(function(element) {
+        members.push(element.name)
+        })
+
+    const userMenuTemplete = `
+        <div class='flex f-j-end'>
+            <div class="trip-update">Update</div>
+            <div class="trip-delete">Delete</div>
         </div>
     `
-        const memberTemplete = `
-        <div class="trip-section">
-        <button class="dropdown-btn">
-        <strong>${element.name}</strong><br>
-            Destination : ${element.destination}<br>
-            Date: ${new Date(element.start).toLocaleDateString()} - ${new Date(element.end).toLocaleDateString()}<br>
-            Create by ${element.userName}
-        </button>
-        <div class="dropdown-container">
-            <div id=${element._id}>
-                
-                ${
-                    `<p>On trip: ${members.join(', ')}</p>`
-                }
-                <p>Activity : ${element.activities}</p>
-                <p>Description : ${element.description}</p>
-                <button class="remove">Remove</button>
-                <button class="update">Update</button>
+    const currentUserTemplete = `
+        <div class='flex f-j-end'>
+            <div class='remove-self-trip'>Leave this trip</div>
+        </div>
+    `
+    
+    const tripTemplete = `
+        ${ trip.data.user == trip.current_user ? `${userMenuTemplete}` : `${currentUserTemplete}` }
+        <div class="trip_detail">
+            <div>
+                Name : ${trip.data.name}<br>
+                Destination : ${trip.data.destination}<br>
+                On Trip : ${members.join(', ')}</br>
             </div>
-        <div class="update-section"></div>
-    </div>
+            <div class="flex">
+                <div class="col">Date : ${new Date(trip.data.start).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${new Date(trip.data.end).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</div>
+                <div class="col flex f-j-end">
+                    <div>Trip Created By : ${trip.data.userName}</div>
+                </div>
+            </div>
+        </div>
+    `
+
+    $('.trip-info').append(tripTemplete)
+
+    trip.data.activities.forEach((element, index) => {
+        const activity_template = `
+            <div class='activity-container'>
+                <p>
+                    <span class="dark-blue">${index+1}.</span>
+                    <span class="green">${element.ativityName}</span>
+                    <span class="dark-blue">: </span><span class="dark-blue">${element.detail}</span>
+                    <span id="${element.ativityName}" class="remove-activity">Remove</span>
+                </p> 
+                
+            </div>
         `
-    if (element.user == userId){
-    $('.show-trip').append(tripTemplete)
-    } else  if (element.user !== userId) {
-        $('.trip-from-friend').append(memberTemplete)
-    }
+        $('.activity_information').append(activity_template)
     })
 }
 
-getTrip()
+viewTrip()
 
-// ================ Append Trip Created By Member ================  //
+$('.add_trip').on('click', function (event) {
+    $('#activity-form').toggle()
+})
 
-const getMemberWithTrip = () => {
-    fetch(`/api/v1/trip/member/${userId}`, {
-        credentials: 'include',
-        method: 'GET',
+
+// Activaties Form //
+let validation = true
+
+const formValidation = () => {
+    if ($('#activity').val() === "") {validation = false}
+    if ($('#detail_activity').val() === "") {validation = false}
+}
+
+$('#activity-form').on('submit', function (event) {
+  event.preventDefault()
+  formValidation()
+  if (validation) {
+      $.ajax({
+          method: "POST",
+          url: `/api/v1/trip/${tripId}/create/activity`,
+          data: { 
+              "ativityName": $('#activity').val(),
+              "detail": $('#detail_activity').val(),
+          },
+          success: onSuccessActivity,
+          error: (err) => console.log(err)
+      })
+      $('input').val('')
+      $('#activity-form').toggle()
+  } else {
+      return validation = true
+  }
+  $('.activity_information').toggle()
+  window.location = `/views/trip/${tripId}`
+})
+
+const onSuccessActivity = (data)=> {
+  console.log('Your activity addded')
+}
+
+// Delete Activity
+$('main').on('click', '.remove-activity', function(event) {
+    const activityId = $(event.target).attr('id')
+    fetch(`/api/v1/trip/activity/${activityId}/destroy/${tripId}`, {
+        method: 'DELETE',
     })
-    .then(dataStream => dataStream.json())
+    .then(stream => stream.json())
     .then(res => {
-        onSuccessGetTrip(res.data)
+        window.location = `/views/trip/${tripId}`
     })
     .catch(err => console.log(err))
-}
 
-getMemberWithTrip()
+})
 
 // ================ Call Data to The Form Before Update  ================  //
 
-$('.content-opactity-wrapper').on('click', '.update', function (event) {
-    $('.update-section').children().remove()
-    const newTarget = event.target
-    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
-    fetch(`http://localhost:3000/api/v1/${tripId}`, {
+$('main').on('click', '.trip-update', function () {
+    $('.update-trip-info').toggle()
+    $('.update-trip-info').empty()
+    
+    fetch(`/api/v1/views/trip/${tripId}`, {
         method: 'GET',
     })
     .then(stream => stream.json())
     .then(res => {
-        onSuccessPullTrip(res.data, newTarget)
+        onSuccessPullTrip(res.data)
     })
     .catch(err => console.log(err))
 })
 
-const onSuccessPullTrip = (data, newTarget) => {
+const onSuccessPullTrip = (data) => {
     const tripUpdateTemplete = `
-        <section id="${data._id}" class="container">
-            <form class="update-form">
-                <div class="form-group">
-                    <label for="name">Trip Name</label>
-                    <input type="text" class="form-control" id="update_name" name="name" value="${data.name}">
+        <form class="update-form">
+            <div class="col flex-col margin-t-5">
+                <label for="update_name">Trip Name</label>
+                <input type="text" class="col" id="update_name" name="name" value="${data.name}">
+            </div>
+            <div class="col flex-col margin-t-5">
+                <label for="update_destination">Destination</label>
+                <input type="text" class="col" id="update_destination" name="destination" value="${data.destination}">
+            </div>
+            <div class='col flex'>
+                <div class="col flex-col margin-t-5">
+                    <label for="update_date_start">Start</label>
+                    <input type="text" class="col" id="update_date_start" name="date_start" value="${new Date(data.start).toLocaleDateString()}">
                 </div>
-                <div class="form-group">
-                    <label for="destination">Destination</label>
-                    <input type="text" class="form-control" id="update_destination" name="destination" value="${data.destination}">
+                <div class="col flex-col margin-t-5">
+                    <label for="update_date_end">End</label>
+                    <input type="text" class="col" id="update_date_end" name="date_end" value="${new Date(data.end).toLocaleDateString()}">
                 </div>
-                <div class="form-group">
-                    <label for="date_start">Date Start</label>
-                    <input type="text" class="form-control" id="update_date_start" name="date_start" value="${new Date(data.start).toLocaleDateString()}">
-                </div>
-                <div class="form-group">
-                    <label for="date_end">Date End</label>
-                    <input type="text" class="form-control" id="update_date_end" name="date_end" value="${new Date(data.end).toLocaleDateString()}">
-                </div>
-                <div class="form-group">
-                    <label for="activity">Activity</label>
-                    <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" class="form-control" id="update_description" name="description" value="${data.description}">
-                </div>
-                <input type="submit" value="Save"/>
-            </form> 
-        </section>
+            </div>
+            <button class='form-update-save' type="submit">Save</button>
+        </form>
     `
-    const memberUpdateTemplete = `
-    <section id="${data._id}" class="container">
-    <form class="update-form">
-        <div class="form-group">
-            <label for="activity">Activity</label>
-            <input type="text" class="form-control" id="update_activity" name="activity" value="${data.activities}">
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" id="update_description" name="description" value="${data.description}">
-        </div>
-        <input type="submit" value="Save"/>
-    </form> 
-</section>
-    
-    `
-    if (data.user == userId) {
-        $(newTarget).parent().parent().parent().children('.dropdown-container').children('.update-section').append(tripUpdateTemplete);
-    } else {
-        $(newTarget).parent().parent().parent().children('.dropdown-container').children('.update-section').append(memberUpdateTemplete);
-    }
-        
+    $('.update-trip-info').append(tripUpdateTemplete)
 }
 
 // ================ Update After User Edit The Form  ================  //
 
-$(".content-opactity-wrapper").on('submit', ".update-form", function (event) {
+$("main").on('submit', ".update-form", function (event) {
     event.preventDefault()
     formValidation()
 
-    let tripId = $(event.target).parent().attr('id')
     const updateData = {
         name: $('#update_name').val(),
         destination: $('#update_destination').val(),
         start: $('#update_date_start').val(),
         end: $('#update_date_end').val(),
-        activities: $('#update_activity').val(),
-        description: $('#update_description').val(),
     }
-    fetch(`http://localhost:3000/api/v1/trip/update/${tripId}`, {
+
+    fetch(`/api/v1/update/trip/${tripId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -239,61 +191,59 @@ $(".content-opactity-wrapper").on('submit', ".update-form", function (event) {
     })
     .then(stream => stream.json())
     .then(res => {
-        console.log(res)
+        window.location = `/views/trip/${res.data._id}`
     })
     .catch(err => console.log(err))
-    window.location = `/profile/${newId}`
+    
 })
+
+$('main').on('click', '.remove-self-trip', function (event) {
+    fetch(`/api/v1/trip/member/destroy/${tripId}`, {
+        method: 'DELETE',
+    })
+    .then(stream => stream.json())
+    .then(res => {
+        window.location = `/profile/${res.current_user}`
+    })
+    .catch(err => console.log(err))
+})
+
 
 // ================ Delete Trip ================  //
 
-$('.content-opactity-wrapper').on('click', '.delete', function (event) {
-    $(event.target).parents('.trip-section').remove()
-    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
-    fetch(`http://localhost:3000/api/v1/trip/delete/${tripId}`, {
+$("main").on('click', '.trip-delete', function (event) {
+    fetch(`/api/v1/delete/trip/${tripId}`, {
         method: 'DELETE',
     })
     .then(stream => stream.json())
     .then(res => {
-        console.log(res)
+        window.location = `/profile/${res.data.user}`
     })
     .catch(err => console.log(err))
 })
 
-$('.content-opactity-wrapper').on('click', '.remove', function (event) {
-    $(event.target).parents('.trip-section').remove()
-    let tripId = $(event.target).parent().attr('id') // Select id from <div id> that just exists
-    console.log(userId)
-    fetch(`http://localhost:3000/api/v1/trip/member/destroy/${tripId}`, {
-        method: 'DELETE',
+// ================ Back to Profile Page ================  //
+$("#profile").on('click', function () {
+    fetch(`/api/v1/views/trip/${tripId}`, {
+        method: 'GET',
     })
-    .then(stream => stream.json())
-    .then(res => {
-        console.log(res)
+        .then(dataStream => dataStream.json())
+        .then(res => {
+        window.location = `/profile/${res.current_user}`
+        })
+        .catch(err => console.log(err))
+})
+
+// ================ Log out ================  //
+$('#logout').on('click', (event) => {
+    event.preventDefault();
+    fetch('/api/v1/logout', {
+      method: 'DELETE',
     })
-    .catch(err => console.log(err))
-})
-
-
-// =========== Drop down function ** when ** the page load ========== //
-
-$('.dropdown-btn-add-trip').on('click', function (event) {
-    event.target.classList.toggle("active")
-     dropdownContainer = event.target.nextElementSibling;
-    if (dropdownContainer.style.display === "block") {
-    dropdownContainer.style.display = "none"
-    } else {
-    dropdownContainer.style.display = "block"
-    }
-})
-
-// =========== Drop down function ** after ** the page load ========== //
-$('.content-opactity-wrapper').on('click', '.dropdown-btn', function (event) {
-    event.target.classList.toggle("active")
-    var dropdownContainer = event.target.nextElementSibling;
-    if (dropdownContainer.style.display === "block") {
-    dropdownContainer.style.display = "none"
-    } else {
-    dropdownContainer.style.display = "block"
-    }
-})
+      .then(dataStream => dataStream.json())
+      .then(res => {
+        if (res.status === 200) {
+          window.location = '/';
+        }
+      })
+  })
