@@ -34,10 +34,10 @@ h2 {
 }
 
 h4 {
-    margin: 20px 0px 10px 30px;
+    margin: 20px 0px 10px 10px;
     font-size: 14px;
     font-weight: 600;
-    color: green;
+    color: black;
 }
 .content-opactity-wrapper {
     width: 100%;
@@ -50,15 +50,14 @@ h4 {
 #add-friends-section {
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(133, 192, 207, 0.144);
+    /* background-color: rgba(0, 0, 0, 0.294); */
     
 }
 
 /* ======== Manage All Form =======  */
 input {
     background: rgb(246, 249, 246);
-    color: rgb(106, 102, 102);
-    margin: 0 15px;
+    color: rgb(76, 71, 71);
     font-size: 14px;
     padding: 10px;
     border: none;
@@ -66,7 +65,6 @@ input {
 
 label {
     color: whitesmoke;
-    margin-left: 20px;
     margin-bottom: 10px;
     font-weight: 800;
 }
@@ -94,7 +92,7 @@ label {
 
 fieldset {
     width: 90%;
-    padding: 0 30px;
+    padding: 0 20px;
     padding-bottom: 30px;
     border-color: rgb(235, 235, 220);
 }
@@ -145,17 +143,19 @@ margin: 10px 10px 0 0;
 }
 
 .trip_detail {
-    background-color: rgb(55, 147, 223);
+    background-color:black;
     padding: 10px;
     line-height: 150%;
+    border-radius: 5px;
 }
 
 .activity-detail {
     font-family: 'Dancing Script', cursive;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 800;
     letter-spacing: 2.2px;
     margin-bottom: 10px;
+    color: whitesmoke;
 }
 .activity_information {
     border-radius: 10px;
@@ -233,9 +233,11 @@ margin: 10px 10px 0 0;
 /* ALERT */
 
 .alert {
-    margin-left: 20px;
-    margin-bottom: 10px;
-    color: rgb(31, 143, 31);
+    /* margin: 0 20px;
+    margin-bottom: 10px; */
+    padding: 5px;
+    color: rgb(235, 174, 184);
+    background-color: #94303a;
 }
 
 .alert .container {

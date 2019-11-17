@@ -1,10 +1,5 @@
 const tripId = window.location.pathname.split('/')[3]
 
-// $('profile').on('click', function (event) {
-//     const tripId = $(event.target).attr('id') 
-//     window.location = `/views/trip/${tripId}`
-// })
-
 const viewTrip = () => {
     fetch(`/api/v1/views/trip/${tripId}`, {
         method: 'GET',
