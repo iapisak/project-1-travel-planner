@@ -245,6 +245,16 @@
     background: none;
     text-decoration-line: underline;
 }
+
+.create-trip-submit {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: dodgerblue;
+    background: none;
+    text-decoration-line: underline;
+}
+
 .activity-container {
     position: relative;
 }
