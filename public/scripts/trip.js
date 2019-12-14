@@ -46,7 +46,7 @@ const onSuccessViewTrip = (trip) => {
             </div>
         </div>
     `
-
+    
     $('.trip-info').append(tripTemplete)
 
     trip.data.activities.forEach((element, index) => {
@@ -128,6 +128,7 @@ $('main').on('click', '.trip-update', function () {
     $('.update-trip-info').empty()
     
     fetch(`/api/v1/views/trip/${tripId}`, {
+
         method: 'GET',
     })
     .then(stream => stream.json())
@@ -161,6 +162,7 @@ const onSuccessPullTrip = (data) => {
             <button class='form-update-save' type="submit">Save</button>
         </form>
     `
+    
     $('.update-trip-info').append(tripUpdateTemplete)
 }
 
@@ -227,6 +229,7 @@ $("#profile").on('click', function () {
         window.location = `/profile/${res.current_user}`
         })
         .catch(err => console.log(err))
+
 })
 
 // ================ Log out ================  //

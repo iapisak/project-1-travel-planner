@@ -94,6 +94,53 @@ const memberTrip = (req, res) => {
     })
 }
 
+//-------------------- Create Trip ---------------------------//
+const createTrip = (req, res) => {
+    req.body.user = req.session.currentUser
+    req.body.userName = req.session.currentName
+    db.Trip.create(req.body, (err, createEvent) => {
+        if (createEvent) {
+            res.json(createEvent)
+        } else {
+            console.log(err)
+        }
+    })
+}
+//-------------------- Delete Trip ---------------------------//
+const deleteTrip = (req, res) => {
+    db.Trip.findByIdAndDelete({ _id: req.params.tripId}, (err, deleteThis) => {
+        if (deleteThis) { res.json(deleteThis)}
+        console.log(err)
+    })
+}
+
+const removeSelf = (req, res) => {
+    // find the trip with the req.params.tripId
+    db.Trip.findById(req.params.tripId, (err, foundTrip) => {
+        if (err) { return res.status(500).json({ error: "Could not find trip with that Id"}) }
+        // loop through the foundTrip's friends array, returning every entry that doesn't contain the user's ID
+        let newArray = foundTrip.friends.filter( friend => friend.friendId !== req.session.currentUser)
+        // set the value of the friends array to the new array we created using filter
+        foundTrip.friends = newArray
+        // save the found trip
+        foundTrip.save()
+        // return it to the front-end
+        return res.json(foundTrip)
+    })
+}
+
+//-------------------- Update Trip ---------------------------//
+const updateTrip = (req, res) => {
+    db.Trip.findByIdAndUpdate(
+       req.params.tripId,
+       req.body,
+       {new: true},
+    (err, updateThis) => {
+        if (updateThis) { res.json(updateThis)}
+        console.log(err)
+    })
+}
+
 module.exports = {
     getTrip,
     showTrip,
