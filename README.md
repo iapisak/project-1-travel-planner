@@ -12,7 +12,6 @@ We hope you enjoy it!
 ## Wireframe
 <img src="public/wireframe.png" width=600 height=auto>
 
-
 ## User Story
 
 -A user is greeted with a simple login page to access your profile. If you don't have one, no problem!
@@ -27,10 +26,10 @@ We hope you enjoy it!
 https://project-travel-planner.herokuapp.com/
 
 ## Example Account
-Please log sample account as below information
+Use below information to log-in example account
 
-### Email: guest@gmail.com
-### password: 1234
+#### Email: ```guest@gmail.com```
+#### password: 1234
 
 ## Tech :
 JavaScript, Node JS, Express, Mongo DB, HTML/CSS
