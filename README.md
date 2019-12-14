@@ -10,8 +10,8 @@ We hope you enjoy it!
 
 
 ## Wireframe
-[wireframe sketch](wireframe.png);
-<img src="public/styles/wireframe.png" width=600 height=auto>
+<img src="public/wireframe.png" width=600 height=auto>
+
 
 ## User Story
 
