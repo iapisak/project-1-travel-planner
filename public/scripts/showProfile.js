@@ -154,6 +154,7 @@ const getProfile = () => {
 
 const onSuccess = (user) => {
   const template =`
+
       <div>Name : ${user.name} ${user.lastName}</div>
       <div>Email : ${user.email}</div>
       <div>Member Since : ${new Date(user.signupDate).toLocaleDateString()}</div>
