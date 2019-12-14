@@ -29,7 +29,7 @@ https://project-travel-planner.herokuapp.com/
 Please log sample account as below information
 
 #### Email: ```guest@gmail.com```
-### password: 1234
+#### password: 1234
 
 ## Tech :
 JavaScript, Node JS, Express, Mongo DB, HTML/CSS
