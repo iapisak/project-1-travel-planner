@@ -19,4 +19,18 @@ We hope you enjoy it!
 -You'll be redirected back to the first page in order to login in. 
 
 -Once in, you might already see a trip if a friend has added one!
+
 -Go ahead and add a trip, filling out all details. If you have any friends on the application that are coming along with you, feel free to add then. -They now have access to your trip!
+
+## See My Projects
+https://project-travel-planner.herokuapp.com/
+
+## Example Account
+Please log sample account as below information
+
+### Email: guest@gmail.com
+### password: 1234
+
+## Tech :
+JavaScript, Node JS, Express, Mongo DB, HTML/CSS
+

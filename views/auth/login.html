@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Main CSS -->
     <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/drop.css">
     <!-- Main JS -->
     <script defer
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -15,34 +16,30 @@
     <title>Log in</title>
   </head>
   <body>
+      <main class="content-opactity-wrapper flex f-j-content f-a-center">
+          <fieldset id="home">
+              <legend>
+                  <div><h1><span class="welcome">WELCOME</span><span class="small-letter">TO</span></h1></div>
+              </legend>
 
-    <nav class="header-opactity-wrapper">
-      <ul>
-        <li><a href="/signup">Sign Up</a></li>
-      </ul>
-    </nav>
-
-    <main class="login content-opactity-wrapper">
-  <h1>Welcome to your<br> Travel Planner</h1>
-      <section class="container">
-        <form id="login">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" />
-          </div>
-
-          <input type="submit" value="Login" />
-        </form>
-      </section>
-    </main>
-
-    <footer class="footer-opactity-wrapper">
-      <section class="copyright">&copy; Brent & Jun Travel Inc.</section>
-    </footer>
-
+              <div class="logo"><h1><span class="brand-logo">Travel Planner</span></h1></div>
+              <form id="login" class="flex-col">
+                <div>
+                    <div class="flex-col">
+                        <label class="col" for="email">Email</label>
+                        <input class="col margin-b" type="email" id="email" name="email" />
+                    </div>
+                    <div class="flex-col">
+                        <label class="col" for="password">Password</label>
+                        <input class="col margin-b" type="password" id="password" name="password" />                 
+                    </div>
+                    <div class="flex f-j-end">
+                        <a class="sign-up-button padding" href="/signup">Sign up</a>
+                        <button class="log-in-button padding" type="submit">Log In</button>
+                    </div>
+                </div>
+              </form>
+          </fieldset>
+      </main>
   </body>
 </html>

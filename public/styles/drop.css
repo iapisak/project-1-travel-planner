@@ -1,79 +1,316 @@
-.dropdown-btn {
-    margin-top: 20px;
-    padding: 15px;
-    font-size: 20px;
-    color: #f8f7f7;
-    text-align: center;
-    display: block;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    cursor: pointer;
-    outline: none;
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+.user-trip .dropdown-container {
+    background-color: whitesmoke;
 }
 
-.dropdown-btn-add-trip {
-    margin-top: 20px;
-    padding: 30px;
-    font-size: 20px;
-    color: #ffffff;
-    display: block;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.6);
-    text-align: center;
-    width: 100%;
-    cursor: pointer;
-    outline: none;
+.user-trip input {
+    background-color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
-#add-friends-section {
-    padding-bottom: 15px;
-    background-color: rgba(24, 78, 78, 0.2);
+.destination-input {
+    margin-right: 10px;
 }
 
-.delete {
-border: white;
-border-width: 5px;
-margin: 20px;
-border-radius: 20px;
-color: white;
-background: rgba(255, 166, 0, 0.425);
+.user-trip label {
+    color: black;
 }
-
-.remove {   
-    border: white;
-    border-width: 5px;
-    margin: 20px;
-    border-radius: 20px;
-    color: white;
-    background: rgba(255, 166, 0, 0.425);
-}
-
-.update {
-    border: white;
-    border-width: 5px;
-    margin: 20px;
-    border-radius: 20px;
-    color: white;
-    background: rgba(255, 166, 0, 0.425);
-}
-.active {
-    background-color: rgba(24, 78, 78, 0.6);
-    color: white;
-    outline: none;
-    }
-
 
 .dropdown-container {
+    padding: 10px;
     position: relative;
     display: none;
-    background-color: rgba(24, 78, 78, 0.6);
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    outline: none;
+    text-align: left;
+    /* border-radius: 0 0 10px 10px; */
 }
 
-.description {
+.dropdown-container-trip {
+    position: relative;
+    text-align: left;
+    border-radius: 0 0 10px 10px;
+}
+
+.dropdown-btn, .dropdown-btn-trip {
+    font-weight: 800;
     font-size: 15px;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    /* border-radius: 10px; */
+}
+
+.active {
+    /* border-radius: 10px 10px 0 0; */
+}
+
+.bg-blue {
+    background-color: black;
+}
+
+.bg-white {
+    background-color: whitesmoke;
+    color: rgb(41, 39, 39);
+    padding: 10px 0 10px 10px;
+    line-height: 150%;
+    font-weight: 400;
+}
+
+.green {
+    color: rgb(31, 143, 31);
+    font-weight: 800;
+}
+
+.blue {
+    color: rgb(6, 136, 244);
+    font-weight: 800;
+}
+
+.gray {
+    color: rgb(106, 102, 102);
+    font-weight: 800;
+}
+
+.dark-blue {
+    color: rgb(3, 85, 152);
+}
+
+.red {
+    color: rgb(187, 49, 49);
+    font-weight: 800;
+}
+
+
+/* == Checkout Style == */
+
+.friend-label {
+    display: block;
+    position: relative;
+    padding: 5px;
+    padding-left: 37px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 100px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.friend-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    border: 1px solid black;
+    background-color: whitesmoke;
+}
+
+/* On mouse-over, add a grey background color */
+.friend-label:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .friend-label input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .friend-label input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .friend-label .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+#add {
+    margin-left: 5px;
+    background-color: burlywood;
+    padding: 7px;
+    height: 30px;
+    font-weight: 200px;
+    cursor: pointer;
+}
+
+.view-update {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.box {
+    position: relative;
+}
+
+.add_trip {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+.update-trip-info {
+    display: none;
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.trip-delete {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: whitesmoke;
+    /* background: rgb(240, 79, 11); */
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 70px;
+}
+
+.trip-update {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: whitesmoke;
+    /* background: rgb(8, 203, 102); */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.form-update-save {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: whitesmoke;
+    background: dodgerblue;
+    font-size: 15px;
+    margin: 20px 0;
+    margin-right: 20px;
+    float: right;
+    border-radius: 10px;
+}
+
+.cancel {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: red;
+    background: none;
+    margin-right: 10px;
+    text-decoration-line: underline;
+}
+
+.submit {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: whitesmoke;
+    background: none;
+    text-decoration-line: underline;
+}
+
+.create-trip-submit {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    color: dodgerblue;
+    background: none;
+    text-decoration-line: underline;
+}
+
+.activity-container {
+    position: relative;
+}
+
+.remove-activity {
+    position: absolute;
+    right: 0;
+    color: red;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 10px;
+    text-decoration-line: underline;
+}
+
+.remove-self-trip {
+    padding: 10px;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.save {
+    margin-top: 5px;
+}
+
+
+
+/* -- Arange Form -- */
+.float-right {
+    padding: 5px 5px 0 0;
+    text-align: right;
+}
+
+.set-left {
+    color: whitesmoke;
+    margin: 5px 0;
+    border-bottom: 1 solid black;
+}
+
+.center {
+    display: block;
+    text-align: center;
+}
+
+/* -- Animation -- */
+
+a:hover, button:hover {
+    transform: scale(1.05);
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+    border: 2px solid #555;
+}
+
+.delete:hover, .remove:hover, .update:hover, #add:hover, .cancel:hover, .submit:hover {
+transform: scale(1.05);
 }

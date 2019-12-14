@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Main CSS -->
     <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/drop.css">
     <!-- Main JS -->
     <script defer
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -16,45 +17,41 @@
   </head>
   <body>
 
-    <nav class="header-opactity-wrapper">
-      <ul>
-        <li><a href="/">Log In</a></li>
-      </ul>
-    </nav>
 
-    <main class="login content-opactity-wrapper">
-    <h1>Welcome to your <br> Travel Planner</h1>
-      <section class="container form-section">
-        <form id="signup">
-          <div class="form-group">
-            <label for="name">First Name</label>
-            <input type="text" id="name" name="name" />
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" />
-          </div>
-          <div class="form-group">
-            <label for="password2">Confirm Password</label>
-            <input type="password" id="password2" name="password2" />
-          </div>
-
-          <input type="submit" value="Signup" />
-        </form>
-      </section>
-    </main>
-
-    <footer class="footer-opactity-wrapper">
-      <section class="copyright">&copy; Brent & Jun Travel Inc.</section>
-    </footer>
-
+      <main class="content-opactity-wrapper flex f-j-content f-a-center">
+          <fieldset class="login-form">
+              <legend>
+                  <div><h1><span class="welcome">WELCOME</span><span class="small-letter">TO</span></h1></div>
+              </legend>
+              <div class="logo"><h1><span class="brand-logo">Travel Planner</span></h1></div>
+              <h2>Please give us your information</h2>
+                <form id="signup" class="flex-col">
+                  <div class="flex-col">
+                    <label for="name">First Name</label>
+                    <input class="col margin-b" type="text" id="name" name="name" />
+                  </div>
+                  <div class="flex-col">
+                    <label class="col" for="lastName">Last Name</label>
+                    <input class="col margin-b" type="text" id="lastName" name="lastName" />
+                  </div>
+                  <div class="flex-col">
+                    <label class="col" for="email">Email</label>
+                    <input class="col margin-b" type="email" id="email" name="email" />
+                  </div>
+                  <div class="flex-col">
+                    <label class="col" for="password">Password</label>
+                    <input class="col margin-b" type="password" id="password" name="password" />
+                  </div>
+                  <div class="flex-col">
+                    <label class="col" for="password2">Confirm Password</label>
+                    <input class="col margin-b" type="password" id="password2" name="password2" />
+                  </div>
+                  <div class="flex f-j-end margin-t">
+                      <a class="sign-up-button padding" href="/">Home</a>
+                      <button class="sign-up-button padding" type="submit">Sign up</button>
+                  </div>
+                </form>
+          </fieldset>
+      </main>
   </body>
 </html>
