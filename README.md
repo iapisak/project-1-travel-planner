@@ -28,7 +28,7 @@ https://project-travel-planner.herokuapp.com/
 ## Example Account
 Please log sample account as below information
 
-#### Email: `guest@gmail.com`
+#### Email: ```guest@gmail.com```
 ### password: 1234
 
 ## Tech :
